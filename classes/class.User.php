@@ -11,10 +11,25 @@
 		private $email;
 
 		// Db connection
-		public function __construct()
+		public function __construct($username = NULL)
 		{
 			$this->db = new Database();
 			$this->_conn = $this->db->getDB();
+			if(!empty($username)) { $this->username = $username; }
+		}
+
+		public function loadUser()
+		{
+			$sth = $this->db->selectDatabase('users', 'Username', $this->username,'');
+			if($row = $sth->fetch())
+			{
+				$this->id 			= $row['user_ID'];
+				$this->username 	= $row['Username'];
+				$this->Firstname 	= $row['Firstname'];
+				$this->lastname 	= $row['Lastname'];
+				$this->password 	= $row['Password'];
+				$this->email 		= $row['Email'];
+			}
 		}
 
 		// Login check
@@ -22,7 +37,7 @@
 		{
 			if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
 			{
-				$sth = $db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
+				$sth = $this->db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
 				if($sth->fetch())
 				{
 					return true;

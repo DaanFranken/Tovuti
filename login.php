@@ -22,11 +22,11 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$user = new User();
+	$user = new User($username);
 
 	if($user->login($username,$password))
 	{
-
+		$user->loadUser();
 	}
 	else
 	{
