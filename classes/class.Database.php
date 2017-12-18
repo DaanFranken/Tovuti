@@ -1,24 +1,18 @@
 <?php
 include 'dbHelper.php';
+$host = 'localhost';
+$database = 'tovuti';
+$username = 'root';
+$pass = '';
 
-if($DBlink = @dbconnect($host,$user,$pass,$db))
+
+try 
 {
-	// connection failed
+    $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
-else
+catch(PDOException $e)
 {
-	$host = 'localhost';
-	$user = 'root';
-	$pass = '';
-	$db = 'tovuti';
-	if($DBlink = dbconnect($host,$user,$pass,$db))
-	{
-		// Connected
-	}
-	else
-	{
-		// connection failed
-	}
-	$conn = new mysqli($host, $user, $pass, $db);
+	echo "Connection failed: " . $e->getMessage();
 }
 ?>
