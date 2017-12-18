@@ -36,10 +36,12 @@
 		// Login user
 		public function login($username, $password)
 		{
-			$sth = $this->_db->prepare($db, 'users', 'Username', $username);
+			$parameters = array(':Username'=>$username);
+			$sth = $this->_db->prepare('SELECT * FROM users WHERE Username=:Username');
+			$sth->execute($parameters);
 			if($row = $sth->fetch())
 			{
-				if(password_verify($password))
+				if(password_verify($password, $row['Password']))
 				{
 					$_SESSION['user_ID'] = $row['user_ID'];
 					$_SESSION['Username'] = $row['Username'];
