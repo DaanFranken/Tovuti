@@ -1,7 +1,7 @@
 <?php
 	class User
 	{
-		private $db;
+		private $_db;
 		private $id;
 		private $username;
 		private $firstname;
@@ -9,12 +9,16 @@
 		private $password;
 		private $email;
 
+		// Db connection
+		$db = new Database();
+		$this->_db = $db->getDB();
+
 		// Login check
 		public function loginCheck()
 		{
 			if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
 			{
-				$sth = selectDatabase($db, 'users', 'user_ID', $_SESSION['user_ID'], ' AND Username = '.$_SESSION['Username'].' AND Password = '.$_SESSION['Password']);
+				$sth = $this->_db->selectDatabase($db, 'users', 'user_ID', $_SESSION['user_ID'], ' AND Username = '.$_SESSION['Username'].' AND Password = '.$_SESSION['Password']);
 				if($sth->fetch())
 				{
 					return true;
@@ -27,6 +31,31 @@
 		}
 
 		// Login user
+		public function login($username, $password)
+		{
+			$sth = $this->_db->selectDatabase($db, 'users', 'Username', $username);
+			if($row = $sth->fetch())
+			{
+				if(password_verify($password))
+				{
+					$_SESSION['user_ID'] = $row['user_ID'];
+					$_SESSION['Username'] = $row['Username'];
+					$_SESSION['Password'] = $row['Password'];
+					echo 'You have successfully logged in';
+					return true;
+				}
+				else
+				{
+					echo 'Your username and/or password is incorrect';
+					return false;
+				}
+			}
+			else
+			{
+				echo 'Your username and/or password is incorrect';
+				return false;
+			}
+		}
 
 		public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 		{
