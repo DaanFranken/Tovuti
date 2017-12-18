@@ -64,6 +64,7 @@
 
 		public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 		{
+			$db = new Database();
 			// Register account
 			if(isset($_POST['register']))
 			{
@@ -99,10 +100,31 @@
 					$arrayValues['Lastname'] = $lastname;
 					$arrayValues['Password'] = password_hash($password);
 					$arrayValues['Email'] = $email;
-					insertDatabase($db, $tableName, $arrayValues);
+					insertDatabase($tableName, $arrayValues);
 					echo 'Your account has been successfully registered';
 				}
 			}
+		}
+
+		// Logout
+		public function logout()
+		{
+			// Unset session var 
+			$_SESSION = array();
+
+			// Retrieve session parameters
+			$params = session_get_cookie_params();
+
+			// Delete session cookie
+			setcookie(session_name(),
+					'', time() - 42000, 
+					$params["path"], 
+					$params["domain"], 
+					$params["secure"], 
+					$params["httponly"]);
+
+			// Destroy session
+			session_destroy();
 		}
 	}
 ?>
