@@ -1,4 +1,5 @@
 <?php
+	session_start();
     include_once 'classes/class.Database.php';
     include_once 'classes/class.Misc.php';
     include_once 'classes/class.User.php';
@@ -30,6 +31,27 @@
 </html>
 
 <?php
+
+if($misc->readVar('GET', 'pageStr'))
+{
+	$pageStr = $_GET['pageStr'];
+}
+else
+{
+	$pageStr = 1;
+}
+switch($pageStr)
+{
+	case '1':
+		include 'home.php';
+		break;
+	// case '2':
+	// 	include '';
+	// 	break;
+	default:
+		include 'home.php';
+}
+
 $username = $misc->readVar('POST','username');
 var_dump($username);
 
