@@ -1,5 +1,5 @@
 <?php
-include 'dbHelper.php';
+
 $host = 'localhost';
 $database = 'tovuti';
 $username = 'root';
