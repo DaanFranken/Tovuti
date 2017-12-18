@@ -1,3 +1,9 @@
+<?php
+    include_once 'classes/class.Database.php';
+    $db = new Database();
+    
+?>
+
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style/style.css">
