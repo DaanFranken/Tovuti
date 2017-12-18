@@ -36,8 +36,8 @@ CREATE TABLE `users` (
 -- Standard data for table `users`
 --
 
--- INSERT INTO `users` (`user_ID`, `Name`, `Password`, `Email`, `Level`) VALUES
--- (0, 'owner', 'a7b3b40998b69339a3676429e2eda61afb03f6140de56861b52890764d7ff739b836225dac586a61c49bcf5ad4927b78c58eb1a4327e58185e7e08d0174a78a6', 'stijnklomp1@hotmail.com', 3);
+INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`) VALUES
+(0, 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
 
 -- --------------------------------------------------------
 

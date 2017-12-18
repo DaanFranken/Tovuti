@@ -36,7 +36,7 @@
 		// Login user
 		public function login($username, $password)
 		{
-			$sth = $this->_db->selectDatabase($db, 'users', 'Username', $username);
+			$sth = $this->_db->prepare($db, 'users', 'Username', $username);
 			if($row = $sth->fetch())
 			{
 				if(password_verify($password))
