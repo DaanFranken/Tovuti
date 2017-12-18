@@ -1,5 +1,4 @@
 <?php
-	User->
 
 	class User
 	{
@@ -50,7 +49,11 @@
 
 				if($errorCheck)
 				{
-					
+					$arrayValues['Firstname'] = $firstname;
+					$arrayValues['Lastname'] = $lastname;
+					// $arrayValues['Password'] = $;
+					$arrayValues['Email'] = $email;
+					insertDatabase($db, $tableName, $arrayValues);
 				}
 		}
 	}
