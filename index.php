@@ -32,16 +32,16 @@ if($misc->readVar('GET', 'pageStr'))
 }
 else
 {
-	$pageStr = 1;
+	$pageStr = 'home';
 }
 switch($pageStr)
 {
-	case '1':
+	case 'home':
 		include 'home.php';
 		break;
-	// case '2':
-	// 	include '';
-	// 	break;
+	case 'login':
+		include 'login.php';
+		break;
 	default:
 		include 'home.php';
 }
