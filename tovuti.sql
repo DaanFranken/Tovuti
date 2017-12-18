@@ -42,6 +42,21 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `class`
+--
+
+CREATE TABLE `class` (
+  `class_ID` int NOT NULL,
+  `user_ID` int NOT NULL,
+  `Name` int NOT NULL,
+  `Leerjaar` int NOT NULL,
+  PRIMARY KEY (`class_ID`),
+  FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `students`
 --
 
@@ -77,22 +92,7 @@ CREATE TABLE `teachers` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `class`
---
-
-CREATE TABLE `class` (
-  `class_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
-  `Name` int NOT NULL,
-  `Leerjaar` int NOT NULL,
-  PRIMARY KEY (`class_ID`),
-  FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `class`
+-- Tabelstructuur voor tabel `upload`
 --
 
 CREATE TABLE `upload` (
