@@ -19,9 +19,10 @@
 		// Login check
 		public function loginCheck()
 		{
+			$db = new Database();
 			if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
 			{
-				$sth = $this->_db->selectDatabase($db, 'users', 'user_ID', $_SESSION['user_ID'], ' AND Username = '.$_SESSION['Username'].' AND Password = '.$_SESSION['Password']);
+				$sth = $db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
 				if($sth->fetch())
 				{
 					return true;
@@ -36,9 +37,8 @@
 		// Login user
 		public function login($username, $password)
 		{
-			$parameters = array(':Username'=>$username);
-			$sth = $this->_db->prepare('SELECT * FROM users WHERE Username=:Username');
-			$sth->execute($parameters);
+			$db = new Database();
+			$sth = $db->selectDatabase('users', 'Username', $username, '');
 			if($row = $sth->fetch())
 			{
 				if(password_verify($password, $row['Password']))

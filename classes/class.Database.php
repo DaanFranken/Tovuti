@@ -28,14 +28,15 @@ class Database
 	}
 
 	// Select from database
-	public function selectDatabase($tableName, $whereValue, $whereKey, $addon)
+	public function selectDatabase($tableName, $whereKey, $whereValue, $addon)
 	{
 		$query = 'SELECT * FROM '.$tableName;
-		if(!empty($whereValue))
+		if(!empty($whereKey))
 		{
-			$query .= ' WHERE '.$whereValue.' = "'.$whereKey.'" ';
+			$query .= ' WHERE '.$whereKey.' = "'.$whereValue.'" ';
 		}
-		$sth = $this->conn->prepare($query.$addon);
+		$query .= $addon;
+		$sth = $this->conn->prepare($query);
 		$sth->execute();
 		return $sth;
 	}

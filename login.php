@@ -26,11 +26,11 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 	
 	if($user->login($username,$password))
 	{
-		echo "login success";
+
 	}
 	else
 	{
-		echo "login failed";
+		// Login failed
 	}
 } 
 
