@@ -1,7 +1,8 @@
 <?php
 	class User
 	{
-		private $_db;
+		protected $db;
+		private $_conn;
 		private $id;
 		private $username;
 		private $firstname;
@@ -12,14 +13,13 @@
 		// Db connection
 		public function __construct()
 		{
-			$db = new Database();
-			$this->_db = $db->getDB();
+			$this->db = new Database();
+			$this->_conn = $this->db->getDB();
 		}
 
 		// Login check
 		public function loginCheck()
 		{
-			$db = new Database();
 			if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
 			{
 				$sth = $db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
@@ -37,8 +37,7 @@
 		// Login user
 		public function login($username, $password)
 		{
-			$db = new Database();
-			$sth = $db->selectDatabase('users', 'Username', $username, '');
+			$sth = $this->db->selectDatabase('users', 'Username', $username, '');
 			if($row = $sth->fetch())
 			{
 				if(password_verify($password, $row['Password']))
@@ -64,7 +63,6 @@
 
 		public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 		{
-			$db = new Database();
 			// Register account
 			if(isset($_POST['register']))
 			{
@@ -100,7 +98,7 @@
 					$arrayValues['Lastname'] = $lastname;
 					$arrayValues['Password'] = password_hash($password);
 					$arrayValues['Email'] = $email;
-					insertDatabase($tableName, $arrayValues);
+					insertDatabase('users', $arrayValues);
 					echo 'Your account has been successfully registered';
 				}
 			}
