@@ -28,25 +28,20 @@ class Database
 	}
 
 	// Select from database
-	public function selectDatabase($db, $tableName, $whereValue, $whereKey, $addon)
+	public function selectDatabase($tableName, $whereValue, $whereKey, $addon)
 	{
 		$query = 'SELECT * FROM '.$tableName;
 		if(!empty($whereValue))
 		{
 			$query .= ' WHERE '.$whereValue.' = "'.$whereKey.'" ';
 		}
-		$sth = $db->prepare($query.$addon);
+		$sth = $this->conn->prepare($query.$addon);
 		$sth->execute();
 		return $sth;
 	}
 
-	class selectDatabase
-	{
-		private string $query;
-	}
-
 	// Insert into database
-	public function insertDatabase($db, $tableName, $arrayValues)
+	public function insertDatabase($tableName, $arrayValues)
 	{
 		$query = 'INSERT INTO '.$tableName.' SET ';
 		$i = 0;
@@ -59,12 +54,12 @@ class Database
 			$query .= $key.' = "'.$value.'"';
 			$i++;
 		}
-		$sth = $db->prepare($query);
+		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}
 
 	// Update the database
-	public function updateDatabase($db, $tableName, $whereValue, $whereKey, $arrayValues)
+	public function updateDatabase($tableName, $whereValue, $whereKey, $arrayValues)
 	{
 		$query = 'UPDATE '.$tableName.' SET ';
 		$i = 0;
@@ -78,12 +73,12 @@ class Database
 			$i++;
 		}
 		$query .= 'WHERE '.$whereValue.' = "'.$whereKey.'"';
-		$sth = $db->prepare($query);
+		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}
 
 	// Delete from database
-	public function deleteDatabase($db, $tableName, $whereValue, $whereKey)
+	public function deleteDatabase($tableName, $whereValue, $whereKey)
 	{
 		$prepareParameters = array($parameters);
 		$query = 'DELETE FROM '.$tableName;
@@ -91,7 +86,7 @@ class Database
 		{
 			$query .= ' WHERE '.$whereValue.' = "'.$whereKey.'"';
 		}
-		$sth = $db->prepare($query);
+		$sth = $this->conn->prepare($query);
 		$sth->execute($prepareParameters);
 	}
 }

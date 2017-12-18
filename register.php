@@ -1,6 +1,10 @@
 <?php
-if(isset($_GET['register']))
-{
-	// Roep functie register($username, $firstname, $lastname, $password, $retypePass, $email) aan
-}
+	include_once 'classes/class.Misc.php';
+
+	$misc = new Misc();
+	if($misc->readPostVar('register'))
+	{
+		
+	}
+
 ?>

@@ -1,6 +1,10 @@
 <?php
     include_once 'classes/class.Database.php';
+    include_once 'classes/class.Misc.php';
+    include_once 'classes/class.User.php';
     $db = new Database();
+    $misc = new Misc();
+    $user = new User();
     
 ?>
 
@@ -13,8 +17,20 @@
 
 <body>
 <div class="w3-row">
-	<div class="w3-col w3-third w3-green">Lorem</div>
+	<div class="w3-col w3-third w3-green">
+		<form method="POST">
+			<input type="text" name="username">
+			<input type="text" name="password">
+			<input type="submit" name="sendform">
+		</form>
+	</div>
 </div>
 
 </body>
 </html>
+
+<?php
+$username = $misc->readVar('POST','username');
+var_dump($username);
+
+?>
