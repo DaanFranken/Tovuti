@@ -51,10 +51,11 @@
 				{
 					$arrayValues['Firstname'] = $firstname;
 					$arrayValues['Lastname'] = $lastname;
-					// $arrayValues['Password'] = $;
+					// $arrayValues['Password'] = password_hash();
 					$arrayValues['Email'] = $email;
 					insertDatabase($db, $tableName, $arrayValues);
 				}
+			}
 		}
 	}
 ?>
