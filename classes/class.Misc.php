@@ -1,4 +1,5 @@
 <?php
+    // Helper class used for a variety of support functions
     class Misc {
         public function readVar($type, $var) 
         {
@@ -15,8 +16,7 @@
                 {
                     return $_GET[$var];
                 }
-            }
-         
+            }         
         }
         
         public function readGetVar($fieldname) {

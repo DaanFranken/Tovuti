@@ -15,17 +15,22 @@
 		{
 			$this->db = new Database();
 			$this->_conn = $this->db->getDB();
-			if(!empty($username)) { $this->username = $username; }
+			if(!empty($username)) 
+			{ 
+				$this->username = $username;
+				$this->loadUser(); 
+			}
 		}
 
-		public function loadUser()
+		// Store user data in user object
+		private function loadUser()
 		{
 			$sth = $this->db->selectDatabase('users', 'Username', $this->username,'');
 			if($row = $sth->fetch())
 			{
 				$this->id 			= $row['user_ID'];
 				$this->username 	= $row['Username'];
-				$this->Firstname 	= $row['Firstname'];
+				$this->firstname 	= $row['Firstname'];
 				$this->lastname 	= $row['Lastname'];
 				$this->password 	= $row['Password'];
 				$this->email 		= $row['Email'];
