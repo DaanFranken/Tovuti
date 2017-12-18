@@ -1,5 +1,4 @@
 <?php
-
 	class User
 	{
 		private $db;
@@ -11,10 +10,23 @@
 		private $email;
 
 		// Login check
-		// function __construct()
-		// {
+		public function loginCheck()
+		{
+			if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
+			{
+				$sth = selectDatabase($db, 'users', 'user_ID', $_SESSION['user_ID'], ' AND Username = '.$_SESSION['Username'].' AND Password = '.$_SESSION['Password']);
+				if($sth->fetch())
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
 
-		// }
+		// Login user
 
 		public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 		{
@@ -51,9 +63,10 @@
 				{
 					$arrayValues['Firstname'] = $firstname;
 					$arrayValues['Lastname'] = $lastname;
-					// $arrayValues['Password'] = password_hash();
+					$arrayValues['Password'] = password_hash($password);
 					$arrayValues['Email'] = $email;
 					insertDatabase($db, $tableName, $arrayValues);
+					echo 'Your account has been successfully registered';
 				}
 			}
 		}
