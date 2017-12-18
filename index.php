@@ -47,6 +47,5 @@ switch($pageStr)
 }
 
 $username = $misc->readVar('POST','username');
-var_dump($username);
 
 ?>

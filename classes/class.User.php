@@ -10,8 +10,11 @@
 		private $email;
 
 		// Db connection
-		$db = new Database();
-		$this->_db = $db->getDB();
+		public function __construct()
+		{
+			$db = new Database();
+			$this->_db = $db->getDB();
+		}
 
 		// Login check
 		public function loginCheck()
