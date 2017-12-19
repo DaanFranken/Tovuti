@@ -13,10 +13,19 @@
 		public function __construct($username = NULL)
 		{
 			$this->db = new Database();
-			if(!empty($username)) 
-			{ 
-				$this->username = $username;
-				// $this->loadUser(); 
+			if(!empty($username))
+			{
+				$sth = $this->db->selectDatabase('users', 'Username', $username, '');
+				if($row = $sth->fetch())
+				{
+					$this->id 			= $row['user_ID'];
+					$this->username 	= $row['Username'];
+					$this->firstname 	= $row['Firstname'];
+					$this->lastname 	= $row['Lastname'];
+					$this->password 	= $row['Password'];
+					$this->email 		= $row['Email'];
+					return true;
+				}
 			}
 		}
 
@@ -76,7 +85,7 @@
 		public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 		{
 			// Register account
-			if(isset($_POST['register']))
+			if(!isset($_POST['register']))
 			{
 				$errorCheck = true;
 
@@ -108,9 +117,9 @@
 				{
 					$arrayValues['Firstname'] = $firstname;
 					$arrayValues['Lastname'] = $lastname;
-					$arrayValues['Password'] = password_hash($password);
+					$arrayValues['Password'] = password_hash($password, PASSWORD_DEFAULT);
 					$arrayValues['Email'] = $email;
-					insertDatabase('users', $arrayValues);
+					$this->db->insertDatabase('users', $arrayValues);
 					echo 'Your account has been successfully registered';
 				}
 			}

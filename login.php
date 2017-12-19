@@ -22,15 +22,15 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$user = new User($username);
+	$user = new User();
 
 	if($user->login($username,$password))
 	{
-		var_dump($user);
+		
 	}
 	else
 	{
-		// Login failed
+		
 	}
 } 
 
