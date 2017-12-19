@@ -34,18 +34,35 @@
 
 		public function validateUserRights($thread_ID)
         {
-            $user = new User($_SESSION['Username']); 
-            $user_ID = $user->id;
+        	$sth = $this->db->selectDatabase('thread','thread_id',$thread_ID,'');
+			if($row = $sth->fetch())
+			{
+				$user = new User($_SESSION['Username']); 
+            	$user_ID = $user->id;
+            	// Not yet implemented: 
+            	$userRights = $user->userRights;
 
-            // Not yet implemented
-            $userRights = $user->userRights;
-            
+            	if($row['user_ID'] == $user_ID)
+            	{
+            		// Thread belongs to logged in user
+            		return true;
+            	}
+            	elseif($userRights == '2') // Or whatever 
+            	{
+            		// Logged in user is teacher
+            		return true;
+            	}
+            	else
+            	{
+            		return false;
+            	}
 
+			} 
         }
 
 		public function editThread()
 		{
-			if(validateUserRights())
+			if(validateUserRights($thread_ID))
 			{
 				throw new Exception('Not implemented');	
 			}
