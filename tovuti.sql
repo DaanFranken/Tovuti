@@ -47,11 +47,9 @@ INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`,
 
 CREATE TABLE `class` (
   `class_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
   `Name` int NOT NULL,
   `Leerjaar` int NOT NULL,
-  PRIMARY KEY (`class_ID`),
-  FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
+  PRIMARY KEY (`class_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -99,6 +97,7 @@ CREATE TABLE `upload` (
   `upload_ID` int NOT NULL,
   `user_ID` int NOT NULL,
   `uploadContent` MEDIUMBLOB NOT NULL,
+  `uploadDate` varchar(30) NOT NULL,
   PRIMARY KEY (`upload_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -112,6 +111,8 @@ CREATE TABLE `upload` (
 CREATE TABLE `thread` (
   `thread_ID` int NOT NULL,
   `user_ID` int NOT NULL,
+  `Thread` text NOT NULL,
+  `threadDate` varchar(30) NOT NULL,
   PRIMARY KEY (`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -119,14 +120,15 @@ CREATE TABLE `thread` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `notes`
+-- Tabelstructuur voor tabel `reaction`
 --
 
-CREATE TABLE `notes` (
+CREATE TABLE `reaction` (
   `note_ID` int NOT NULL,
   `thread_ID` int NOT NULL,
   `user_ID` int NOT NULL,
   `Note` text NOT NULL,
+  `noteDate` varchar(30) NOT NULL,
   PRIMARY KEY (`note_ID`),
   FOREIGN KEY (`thread_ID`) REFERENCES `thread`(`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
