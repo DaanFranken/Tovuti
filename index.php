@@ -21,9 +21,6 @@
 	</div>
 </div>
 
-</body>
-</html>
-
 <?php
 
 if($misc->readVar('GET', 'pageStr'))
@@ -49,3 +46,6 @@ switch($pageStr)
 $username = $misc->readVar('POST','username');
 
 ?>
+
+</body>
+</html>

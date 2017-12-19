@@ -20,16 +20,6 @@
 			}
 		}
 
-		// Store user data in user object
-		// private function loadUser()
-		// {
-		// 	$sth = $this->db->selectDatabase('users', 'Username', $this->username,'');
-		// 	if($row = $sth->fetch())
-		// 	{
-				
-		// 	}
-		// }
-
 		// Login check
 		public function loginCheck()
 		{
