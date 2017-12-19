@@ -26,7 +26,7 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 
 	if($user->login($username,$password))
 	{
-		
+		var_dump($user);
 	}
 	else
 	{

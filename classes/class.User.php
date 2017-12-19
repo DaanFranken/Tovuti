@@ -2,7 +2,6 @@
 	class User
 	{
 		protected $db;
-		private $_conn;
 		private $id;
 		private $username;
 		private $firstname;
@@ -14,28 +13,22 @@
 		public function __construct($username = NULL)
 		{
 			$this->db = new Database();
-			$this->_conn = $this->db->getDB();
 			if(!empty($username)) 
 			{ 
 				$this->username = $username;
-				$this->loadUser(); 
+				// $this->loadUser(); 
 			}
 		}
 
 		// Store user data in user object
-		private function loadUser()
-		{
-			$sth = $this->db->selectDatabase('users', 'Username', $this->username,'');
-			if($row = $sth->fetch())
-			{
-				$this->id 			= $row['user_ID'];
-				$this->username 	= $row['Username'];
-				$this->firstname 	= $row['Firstname'];
-				$this->lastname 	= $row['Lastname'];
-				$this->password 	= $row['Password'];
-				$this->email 		= $row['Email'];
-			}
-		}
+		// private function loadUser()
+		// {
+		// 	$sth = $this->db->selectDatabase('users', 'Username', $this->username,'');
+		// 	if($row = $sth->fetch())
+		// 	{
+				
+		// 	}
+		// }
 
 		// Login check
 		public function loginCheck()
@@ -62,9 +55,18 @@
 			{
 				if(password_verify($password, $row['Password']))
 				{
+					// Session variables
 					$_SESSION['user_ID'] = $row['user_ID'];
 					$_SESSION['Username'] = $row['Username'];
 					$_SESSION['Password'] = $row['Password'];
+
+					// Object variables
+					$this->id 			= $row['user_ID'];
+					$this->username 	= $row['Username'];
+					$this->firstname 	= $row['Firstname'];
+					$this->lastname 	= $row['Lastname'];
+					$this->password 	= $row['Password'];
+					$this->email 		= $row['Email'];
 					echo 'You have successfully logged in';
 					return true;
 				}
