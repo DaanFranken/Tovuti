@@ -55,5 +55,14 @@
 
             } 
         }
+
+        // Highlight menu button of current page
+        public function menuCurrentPage($pageStr, $currentPage)
+        {
+            if($pageStr == $currentPage)
+            {
+                echo 'style="border-bottom: 2px solid #333333;box-shadow: 0px -5px 10px #6aaef5;"';
+            }
+        }
     }
 ?>

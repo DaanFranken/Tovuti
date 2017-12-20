@@ -14,12 +14,6 @@ $user = new User();
 <link rel="stylesheet" href="style/menu.css">
 </head>
 <body>
-<div id="mainMenu">
-	<?php
-	include 'menu.php';
-	?>
-</div>
-<div id="mainContainer">
 	<?php
 
 	if($misc->readVar('GET', 'pageStr'))
@@ -30,6 +24,16 @@ $user = new User();
 	{
 		$pageStr = 'home';
 	}
+
+	?>
+<div id="mainMenu">
+	<?php
+	include 'menu.php';
+	?>
+</div>
+<div id="mainContainer">
+	<?php
+
 	switch($pageStr)
 	{
 		case 'home':

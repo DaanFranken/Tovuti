@@ -9,7 +9,7 @@ if(isset($_POST['logout']))
 </a>
 <div id="mainMenuFullscreen" style="display: inline;">
 	<a href="index.php?pageStr=home" class="mainMenuLink">
-		<div class="mainMenuLinkDiv">
+		<div class="mainMenuLinkDiv" <?php $misc->menuCurrentPage($pageStr, 'home'); ?>>
 			<div class="mainMenuLinkText">
 				Home
 			</div>
@@ -22,7 +22,7 @@ if(isset($_POST['logout']))
 		<form action="" method="post" id="logoutForm" style="display: inline">
 			<input type="hidden" name="logout" value="true">
 			<span class="mainMenuLink" onclick="logout()">
-				<div class="mainMenuLinkPicture">
+				<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
 					<img src="images/logout.png" class="mainMenuImage2">
 				</div>
 			</span>
@@ -33,7 +33,7 @@ if(isset($_POST['logout']))
 	{
 		?>
 		<a href="index.php?pageStr=login" class="mainMenuLink">
-			<div class="mainMenuLinkPicture">
+			<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
 				<img src="images/login.png" class="mainMenuImage2">
 			</div>
 		</a>
