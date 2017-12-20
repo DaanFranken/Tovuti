@@ -15,47 +15,39 @@ $user = new User();
 </head>
 <body>
 <div id="mainMenu">
-	<a href="index.php">
-		<img src="images/deZevensprong.png" alt="de Zevensprong" class="mainMenuImage">
-	</a>
-	<div id="mainMenuFullscreen">
-		<div class="mainMenuLink">
-			Home
-		</div>
-	</div>
-	<div id="mainMenuWindowed">
-
-	</div>
+	<?php
+	include 'menu.php';
+	?>
 </div>
 <div id="mainContainer">
-<?php
+	<?php
 
-if($misc->readVar('GET', 'pageStr'))
-{
-	$pageStr = $_GET['pageStr'];
-}
-else
-{
-	$pageStr = 'home';
-}
-switch($pageStr)
-{
-	case 'home':
-		include 'home.php';
-		break;
-	case 'login':
-		include 'login.php';
-		break;
-	case 'register':
-		include 'register.php';
-		break;
-	default:
-		include 'home.php';
-}
+	if($misc->readVar('GET', 'pageStr'))
+	{
+		$pageStr = $_GET['pageStr'];
+	}
+	else
+	{
+		$pageStr = 'home';
+	}
+	switch($pageStr)
+	{
+		case 'home':
+			include 'home.php';
+			break;
+		case 'login':
+			include 'login.php';
+			break;
+		case 'register':
+			include 'register.php';
+			break;
+		default:
+			include 'home.php';
+	}
 
-$username = $misc->readVar('POST','username');
+	$username = $misc->readVar('POST','username');
 
-?>
+	?>
 </div>
 </body>
 </html>

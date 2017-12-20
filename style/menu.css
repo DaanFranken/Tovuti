@@ -1,14 +1,77 @@
-.mainMenuImage{
+.mainMenuImage1{
 	width: 50px;
 	height: 50px;
 	border-bottom: 2px solid #125F80;
 	transition: border-color 0.3s;
 }
 
-.mainMenuImage:hover{
+.mainMenuImage1:hover{
 	border-color: #90B0BD;
 }
 
 .mainMenuLink{
-	position: absolute;
+	text-decoration: none;
+}
+
+.mainMenuLinkDiv{
+	color: #333333;
+	position: relative;
+	display: inline-block;
+	height: 50px;
+	top: -1px;
+	left: 200px;
+	font-size: 25px;
+	text-align: center;
+	border-bottom: 2px solid #125F80;
+	transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.mainMenuLinkDiv:hover{
+	color: #121212;
+	background-color: #30A6D9;
+	cursor: pointer;
+	border-color: #90B0BD;
+}
+
+.mainMenuLinkText{
+	position: relative;
+	display: inline-block;
+	top: 4px;
+}
+
+.mainMenuLinkPicture{
+	color: #333333;
+	position: relative;
+	display: inline-block;
+	height: 50px;
+	top: -1px;
+	left: calc(100% - 250px);
+	font-size: 25px;
+	text-align: center;
+	border-bottom: 2px solid #125F80;
+	transition: border-color 0.3s;
+}
+
+.mainMenuLinkPicture:hover{
+	cursor: pointer;
+	border-color: #90B0BD;
+}
+
+.mainMenuLinkPicture:hover .mainMenuImage2{
+	background-color: #30A6D9;
+}
+
+.mainMenuImage2{
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	top: 3px;
+	border-radius: 50%;
+	border: 1px solid #333333;
+	transition: background-color 0.3s, border 0.3s;
+}
+
+.mainMenuImage2:hover{
+	border: 1px solid #6B6B6B;
 }
