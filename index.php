@@ -16,6 +16,9 @@ $user = new User();
 <body>
 <div id="mainMenu">
 	<div id="mainMenuFullscreen">
+		<a href="index.php">
+			<img src="images/deZevensprong.png" alt="de Zevensprong" style="width: 100%;height: 100%;">
+		</a>
 		<div class="mainMenuLink">
 			Home
 		</div>
@@ -42,6 +45,9 @@ switch($pageStr)
 		break;
 	case 'login':
 		include 'login.php';
+		break;
+	case 'register':
+		include 'register.php';
 		break;
 	default:
 		include 'home.php';
