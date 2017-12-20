@@ -63,21 +63,28 @@ class User
 		{
 			if(password_verify($password, $row['Password']))
 			{
-				// Session variables
-				$_SESSION['user_ID'] = $row['user_ID'];
-				$_SESSION['Username'] = $row['Username'];
-				$_SESSION['Password'] = $row['Password'];
+				if($row['Status'] == 1)
+				{
+					// Session variables
+					$_SESSION['user_ID'] = $row['user_ID'];
+					$_SESSION['Username'] = $row['Username'];
+					$_SESSION['Password'] = $row['Password'];
 
-				// Object variables
-				$this->id 			= $row['user_ID'];
-				$this->username 	= $row['Username'];
-				$this->firstname 	= $row['Firstname'];
-				$this->lastname 	= $row['Lastname'];
-				$this->password 	= $row['Password'];
-				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];
-				echo 'You have successfully logged in';
-				return true;
+					// Object variables
+					$this->id 			= $row['user_ID'];
+					$this->username 	= $row['Username'];
+					$this->firstname 	= $row['Firstname'];
+					$this->lastname 	= $row['Lastname'];
+					$this->password 	= $row['Password'];
+					$this->email 		= $row['Email'];
+					$this->permission	= $row['Permission'];
+					echo 'You have successfully logged in';
+					return true;
+				}
+				else
+				{
+					echo 'Your account is deactivated.';
+				}				
 			}
 			else
 			{
@@ -125,6 +132,7 @@ class User
 
 			if($errorCheck)
 			{
+				$arrayValues['user_ID'] = trim(com_create_guid(), '{}'); 
 				$arrayValues['Firstname'] = $firstname;
 				$arrayValues['Lastname'] = $lastname;
 				$arrayValues['Password'] = password_hash($password, PASSWORD_DEFAULT);

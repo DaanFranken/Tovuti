@@ -23,13 +23,14 @@ USE `tovuti`;
 --
 
 CREATE TABLE `users` (
-  `user_ID` int NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Firstname` varchar(45) NOT NULL,
   `Lastname` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(100) NOT NULL,
   `Permission` int NOT NULL,
+  `Status` int NOT NULL DEFAULT 1, 
   PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,7 +39,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`) VALUES
-(0, 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
+('0', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -47,8 +48,8 @@ INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`,
 --
 
 CREATE TABLE `class` (
-  `class_ID` int NOT NULL,
-  `Name` int NOT NULL,
+  `class_ID` varchar(255) NOT NULL,
+  `Name` varchar(15) NOT NULL,
   `Leerjaar` int NOT NULL,
   PRIMARY KEY (`class_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -60,9 +61,9 @@ CREATE TABLE `class` (
 --
 
 CREATE TABLE `students` (
-  `student_ID` int NOT NULL,
-  `class_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
+  `student_ID` varchar(255) NOT NULL,
+  `class_ID` varchar(255) NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   PRIMARY KEY (`student_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`),
   FOREIGN KEY (`class_ID`) REFERENCES `class`(`class_ID`)
@@ -82,8 +83,8 @@ CREATE TABLE `students` (
 --
 
 CREATE TABLE `teachers` (
-  `teacher_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
+  `teacher_ID` varchar(255) NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   PRIMARY KEY (`teacher_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -95,10 +96,10 @@ CREATE TABLE `teachers` (
 --
 
 CREATE TABLE `upload` (
-  `upload_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
+  `upload_ID` varchar(255) NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   `uploadContent` MEDIUMBLOB NOT NULL,
-  `uploadDate` varchar(30) NOT NULL,
+  `uploadDate` DATETIME NOT NULL,
   PRIMARY KEY (`upload_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -110,12 +111,12 @@ CREATE TABLE `upload` (
 --
 
 CREATE TABLE `thread` (
-  `thread_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
+  `thread_ID` varchar(255) NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   `Titel` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
-  `threadDate` varchar(30) NOT NULL,
-  `lastChanged` varchar(30),
+  `threadDate` DATETIME NOT NULL,
+  `lastChanged` DATETIME,
   PRIMARY KEY (`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -127,12 +128,12 @@ CREATE TABLE `thread` (
 --
 
 CREATE TABLE `reaction` (
-  `reaction_ID` int NOT NULL,
-  `thread_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
+  `reaction_ID` varchar(255) NOT NULL,
+  `thread_ID` varchar(255) NOT NULL,
+  `user_ID` varchar(255) NOT NULL,
   `Reaction` text NOT NULL,
-  `reactionDate` varchar(30) NOT NULL,
-  `lastChanged` varchar(30),
+  `reactionDate` DATETIME NOT NULL,
+  `lastChanged` DATETIME,
   PRIMARY KEY (`reaction_ID`),
   FOREIGN KEY (`thread_ID`) REFERENCES `thread`(`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)

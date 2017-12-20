@@ -40,14 +40,14 @@
 				$user = new User($_SESSION['Username']); 
             	$user_ID = $user->id;
             	// Not yet implemented: 
-            	$userRights = $user->userRights;
+            	$permission = $user->permission;
 
             	if($row['user_ID'] == $user_ID)
             	{
             		// Thread belongs to logged in user
             		return true;
             	}
-            	elseif($userRights == '2' || $userRights == '3') 
+            	elseif($permission == '2' || $permission == '3') 
             	{
             		// Logged in user is teacher or admin
             		return true;
@@ -66,7 +66,10 @@
 			{
 				throw new Exception('Not implemented');	
 			}
-			
+			else
+			{
+				// No permission to edit thread
+			}
 		}
 	}
 ?>
