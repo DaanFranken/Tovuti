@@ -15,10 +15,10 @@ $user = new User();
 </head>
 <body>
 <div id="mainMenu">
+	<a href="index.php">
+		<img src="images/deZevensprong.png" alt="de Zevensprong" class="mainMenuImage">
+	</a>
 	<div id="mainMenuFullscreen">
-		<a href="index.php">
-			<img src="images/deZevensprong.png" alt="de Zevensprong" style="width: 100%;height: 100%;">
-		</a>
 		<div class="mainMenuLink">
 			Home
 		</div>
