@@ -8,6 +8,7 @@
 		private $lastname;
 		private $password;
 		private $email;
+		private $permission;
 
 		// Db connection
 		public function __construct($username = NULL)
@@ -24,6 +25,7 @@
 					$this->lastname 	= $row['Lastname'];
 					$this->password 	= $row['Password'];
 					$this->email 		= $row['Email'];
+					$this->permission	= $row['Permission'];	
 					return true;
 				}
 			}
@@ -66,6 +68,7 @@
 					$this->lastname 	= $row['Lastname'];
 					$this->password 	= $row['Password'];
 					$this->email 		= $row['Email'];
+					$this->permission	= $row['Permission'];
 					echo 'You have successfully logged in';
 					return true;
 				}
