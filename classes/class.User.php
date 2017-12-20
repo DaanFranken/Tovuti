@@ -9,13 +9,13 @@
 class User
 {
 	protected $db;
-	private $id;
-	private $username;
-	private $firstname;
-	private $lastname;
-	private $password;
-	private $email;
-	private $permission;
+	public $id;
+	public $username;
+	public $firstname;
+	public $lastname;
+	public $password;
+	public $email;
+	public $permission;
 
 	// Db connection
 	public function __construct($username = NULL)

@@ -47,9 +47,9 @@
             		// Thread belongs to logged in user
             		return true;
             	}
-            	elseif($userRights == '2') // Or whatever 
+            	elseif($userRights == '2' || $userRights == '3') 
             	{
-            		// Logged in user is teacher
+            		// Logged in user is teacher or admin
             		return true;
             	}
             	else

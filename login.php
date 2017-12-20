@@ -26,7 +26,8 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 
 	if($user->login($username,$password))
 	{
-		
+		$t = new Thread();
+		var_dump($t->validateUserRights('1'));
 	}
 	else
 	{
