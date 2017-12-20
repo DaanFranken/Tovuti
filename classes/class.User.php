@@ -38,6 +38,22 @@ class User
 		}
 	}
 
+	public function getUserByID($ID)
+	{
+		$sth = $this->db->selectDatabase('users', 'user_ID', $ID, '');
+			if($row = $sth->fetch())
+			{
+				$this->id 			= $row['user_ID'];
+				$this->username 	= $row['Username'];
+				$this->firstname 	= $row['Firstname'];
+				$this->lastname 	= $row['Lastname'];
+				$this->password 	= $row['Password'];
+				$this->email 		= $row['Email'];
+				$this->permission	= $row['Permission'];	
+				return true;
+			}
+	}
+
 	// Login check
 	public function loginCheck()
 	{
@@ -129,6 +145,11 @@ class User
 				if(strlen($_POST['username']) < 6)
 				{
 					echo 'Your username must be atleast 6 characters';
+					$errorCheck = false;
+				}
+				if(is_numeric($_POST['username']))
+				{
+					echo 'Please use letters instead of numbers for your username!';
 					$errorCheck = false;
 				}
 

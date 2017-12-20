@@ -117,14 +117,17 @@ CREATE TABLE `upload` (
 CREATE TABLE `thread` (
   `thread_ID` varchar(255) NOT NULL,
   `user_ID` varchar(255) NOT NULL,
-  `Titel` varchar(100) NOT NULL,
+  `Title` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
   `threadDate` DATETIME NOT NULL,
+  `Urgency` int DEFAULT 0,
   `lastChanged` DATETIME,
   PRIMARY KEY (`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `thread` (`thread_ID`, `user_ID`, `Title`, `Thread`, `threadDate`, `lastChanged`) VALUES
+('1A786488-FA73-444A-B1D8-370697F95F96', 'B2022F48-ED35-43F9-BB61-B97A3019E004', 'Test title', 'Lorem ipsum', '2017-12-20 13:16:10', NULL);
 -- --------------------------------------------------------
 
 --
