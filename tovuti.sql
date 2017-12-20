@@ -117,7 +117,7 @@ CREATE TABLE `upload` (
 CREATE TABLE `thread` (
   `thread_ID` varchar(255) NOT NULL,
   `user_ID` varchar(255) NOT NULL,
-  `Titel` varchar(100) NOT NULL,
+  `Title` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
   `threadDate` DATETIME NOT NULL,
   `lastChanged` DATETIME,
