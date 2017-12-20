@@ -1,0 +1,17 @@
+#mainMenu{
+	background-color: blue;
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	top: 0;
+	left: 0;
+	border-bottom: 2px solid black;
+}
+
+#mainContainer{
+	position: fixed;
+	height: calc(100% - 50px);
+	width: 100%;
+	top: 50px;
+	overflow: auto;
+}

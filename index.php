@@ -1,26 +1,30 @@
 <?php
-	session_start();
-	include_once 'autoloader.php';
-	$db = new Database();
-	$misc = new Misc();
-	$user = new User();
-    
+session_start();
+include_once 'autoloader.php';
+$db = new Database();
+$misc = new Misc();
+$user = new User();
 ?>
-
-<html>
+<!DOCTYPE html>
 <head>
 <link rel="stylesheet" type="text/css" href="style/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="style/index.css">
+<link rel="stylesheet" href="style/menu.css">
 </head>
-
 <body>
-<div class="w3-row">
-	<div class="w3-col w3-third w3-green">
-		
+<div id="mainMenu">
+	<div id="mainMenuFullscreen">
+		<div class="mainMenuLink">
+			Home
+		</div>
+	</div>
+	<div id="mainMenuWindowed">
+
 	</div>
 </div>
-
+<div id="mainContainer">
 <?php
 
 if($misc->readVar('GET', 'pageStr'))
@@ -46,6 +50,6 @@ switch($pageStr)
 $username = $misc->readVar('POST','username');
 
 ?>
-
+</div>
 </body>
 </html>
