@@ -5,28 +5,28 @@
 </head>
 <div class="w3-container w3-teal">
 
-  <h2>Register</h2>
+  <h2>Registreren</h2>
 </div>
 <form class="w3-container" method="POST">
-  <label class="w3-text-teal"><b>Username</b></label>
+  <label class="w3-text-teal"><b>Gebruikersnaam</b></label>
   <input class="w3-input w3-border w3-light-grey" name="username" type="text" required>
 
-  <label class="w3-text-teal"><b>First name</b></label>
+  <label class="w3-text-teal"><b>Voornaam</b></label>
   <input class="w3-input w3-border w3-light-grey" name="fname" type="text" required>
 
-  <label class="w3-text-teal"><b>Last name</b></label>
+  <label class="w3-text-teal"><b>Achternaam</b></label>
   <input class="w3-input w3-border w3-light-grey" name="lname" type="text" required>
 
-  <label class="w3-text-teal"><b>Password</b></label>
+  <label class="w3-text-teal"><b>Wachtwoord</b></label>
   <input class="w3-input w3-border w3-light-grey" name="password" type="Password" required>
 
-   <label class="w3-text-teal"><b>Retype password</b></label>
+   <label class="w3-text-teal"><b>Herhaal wachtwoord</b></label>
   <input class="w3-input w3-border w3-light-grey" name="password2" type="Password" required>
 
    <label class="w3-text-teal"><b>E-mail</b></label>
   <input class="w3-input w3-border w3-light-grey" name="email" type="text" required>
   <br/>
-  <input type="submit" class="w3-btn w3-blue-grey" value="Register" name="registerSubmit">
+  <input type="submit" class="w3-btn w3-blue-grey" value="Registreer" name="registerSubmit">
 </form>
 
 <?php
