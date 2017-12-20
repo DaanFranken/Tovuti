@@ -5,27 +5,49 @@
 </head>
 <div class="w3-container w3-teal">
 
-  <h2>Login</h2>
+  <h2>Register</h2>
 </div>
 <form class="w3-container" method="POST">
   <label class="w3-text-teal"><b>Username</b></label>
   <input class="w3-input w3-border w3-light-grey" name="username" type="text" required>
 
+  <label class="w3-text-teal"><b>First name</b></label>
+  <input class="w3-input w3-border w3-light-grey" name="fname" type="text" required>
+
+  <label class="w3-text-teal"><b>Last name</b></label>
+  <input class="w3-input w3-border w3-light-grey" name="lname" type="text" required>
+
   <label class="w3-text-teal"><b>Password</b></label>
   <input class="w3-input w3-border w3-light-grey" name="password" type="Password" required>
+
+   <label class="w3-text-teal"><b>Retype password</b></label>
+  <input class="w3-input w3-border w3-light-grey" name="password2" type="Password" required>
+
+   <label class="w3-text-teal"><b>E-mail</b></label>
+  <input class="w3-input w3-border w3-light-grey" name="email" type="text" required>
   <br/>
-  <input type="submit" class="w3-btn w3-blue-grey" value="Login" name="loginSubmit">
+  <input type="submit" class="w3-btn w3-blue-grey" value="Register" name="registerSubmit">
 </form>
 
 <?php
-if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
+// Check if all values are set
+if($misc->readVar('POST','username') 
+	&& $misc->readVar('POST','fname')
+	&& $misc->readVar('POST','lname') 
+	&& $misc->readVar('POST','password')
+	&& $misc->readVar('POST','password2')
+	&& $misc->readVar('POST','email'))
 {
 	$username = $_POST['username'];
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
 	$password = $_POST['password'];
-	$user = new User();
+	$password2 = $_POST['password2'];
+	$email = $_POST['email'];
 
-	if($user->login($username,$password))
+	if($user->register($username,$fname,$lname,$password,$password2,$email))
 	{
+		$user = new User($username);
 		?>
 		<script>
 		setTimeout(function(){

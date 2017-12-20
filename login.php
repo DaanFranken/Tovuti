@@ -8,7 +8,7 @@
   <h2>Login</h2>
 </div>
 <form class="w3-container" method="POST">
-  <label class="w3-text-teal"><b>Username</b></label>
+  <label class="w3-text-teal"><b>Username or student number</b></label>
   <input class="w3-input w3-border w3-light-grey" name="username" type="text" required>
 
   <label class="w3-text-teal"><b>Password</b></label>

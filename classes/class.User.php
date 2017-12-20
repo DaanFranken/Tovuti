@@ -58,9 +58,25 @@ class User
 	// Login user
 	public function login($username, $password)
 	{
-		$sth = $this->db->selectDatabase('users', 'Username', $username, '');
+		// Check if signin option was username or student number
+		if(!is_numeric($username))
+		{
+			$sth = $this->db->selectDatabase('users', 'Username', $username, '');
+			$studentNumberSignin = false;
+		}
+		else
+		{
+			$sth = $this->db->selectDatabase('students', 'studentNumber', $username, '');
+			$studentNumberSignin = true;
+		}
+
 		if($row = $sth->fetch())
 		{
+			if($studentNumberSignin)
+			{
+				$sth = $this->db->selectDatabase('users', 'user_ID', $row['user_ID'], '');
+				$row = $sth->fetch();
+			}
 			if(password_verify($password, $row['Password']))
 			{
 				if($row['Status'] == 1)
@@ -102,43 +118,53 @@ class User
 	public function register($username, $firstname, $lastname, $password, $retypePass, $email)
 	{
 		// Register account
-		if(!isset($_POST['register']))
+		if(isset($_POST['registerSubmit']))
 		{
-			$errorCheck = true;
-
-			// Check username
-			if(strlen($_POST['username']) < 6)
+			$sth = $this->db->selectDatabase('users', 'Username', $username, '');
+			if(!$row = $sth->fetch())
 			{
-				echo 'Your username must be atleast 6 characters';
-				$errorCheck = false;
-			}
+				$errorCheck = true;
 
-			// Check email
-			if(!empty($_POST['email']))
-			{
-				if(strlen($_POST['email']) < 10)
+				// Check username
+				if(strlen($_POST['username']) < 6)
 				{
-					echo 'Your email is incorrect';
+					echo 'Your username must be atleast 6 characters';
 					$errorCheck = false;
 				}
-			}
 
-			// Check password
-			if($password != $retypePass)
-			{
-				echo 'Your passwords do not match';
-				$errorCheck = false;
-			}
+				// Check email
+				if(!empty($_POST['email']))
+				{
+					if(strlen($_POST['email']) < 10)
+					{
+						echo 'Your email is incorrect';
+						$errorCheck = false;
+					}
+				}
 
-			if($errorCheck)
+				// Check password
+				if($password != $retypePass)
+				{
+					echo 'Your passwords do not match';
+					$errorCheck = false;
+				}
+
+				if($errorCheck)
+				{
+					$arrayValues['user_ID'] = trim(com_create_guid(), '{}');
+					$arrayValues['Username'] = $username; 
+					$arrayValues['Firstname'] = $firstname;
+					$arrayValues['Lastname'] = $lastname;
+					$arrayValues['Password'] = password_hash($password, PASSWORD_DEFAULT);
+					$arrayValues['Email'] = $email;
+					$arrayValues['Permission'] = 0;
+					$this->db->insertDatabase('users', $arrayValues);
+					echo 'Your account has been successfully registered';
+				}
+			}
+			else
 			{
-				$arrayValues['user_ID'] = trim(com_create_guid(), '{}'); 
-				$arrayValues['Firstname'] = $firstname;
-				$arrayValues['Lastname'] = $lastname;
-				$arrayValues['Password'] = password_hash($password, PASSWORD_DEFAULT);
-				$arrayValues['Email'] = $email;
-				$this->db->insertDatabase('users', $arrayValues);
-				echo 'Your account has been successfully registered';
+				echo 'Username already exists.';
 			}
 		}
 	}

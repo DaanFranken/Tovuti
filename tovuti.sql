@@ -12,7 +12,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `tovuti`
 --
-
+DROP DATABASE IF EXISTS `tovuti`;
 CREATE SCHEMA IF NOT EXISTS `tovuti` DEFAULT CHARACTER SET utf8;
 USE `tovuti`;
 
@@ -39,7 +39,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`) VALUES
-('0', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
+('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -50,10 +50,12 @@ INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`,
 CREATE TABLE `class` (
   `class_ID` varchar(255) NOT NULL,
   `Name` varchar(15) NOT NULL,
-  `Leerjaar` int NOT NULL,
+  `Year` int NOT NULL,
   PRIMARY KEY (`class_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `class` (`class_ID`, `Name`, `Year`) VALUES
+('741AD801-EA2B-4585-BD30-5EB97F75C00C', 'TCOC42A', 2);
 -- --------------------------------------------------------
 
 --
@@ -64,6 +66,7 @@ CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
   `class_ID` varchar(255) NOT NULL,
   `user_ID` varchar(255) NOT NULL,
+  `studentNumber` int NOT NULL,
   PRIMARY KEY (`student_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`),
   FOREIGN KEY (`class_ID`) REFERENCES `class`(`class_ID`)
@@ -73,8 +76,9 @@ CREATE TABLE `students` (
 -- Standard data for table `students`
 -- 
 
--- INSERT INTO `students` (`student_ID`, `user_ID`) VALUES
--- (0, 0);
+INSERT INTO `students` (`student_ID`, `class_ID`, `user_ID`, `studentNumber`) VALUES
+('00000000-0000-0000-0000-0000000000000', '741AD801-EA2B-4585-BD30-5EB97F75C00C', 'B2022F48-ED35-43F9-BB61-B97A3019E004', 1337);
+
 
 -- --------------------------------------------------------
 
