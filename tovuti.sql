@@ -29,6 +29,7 @@ CREATE TABLE `users` (
   `Lastname` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(100) NOT NULL,
+  `Permission` int NOT NULL,
   PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -111,8 +112,10 @@ CREATE TABLE `upload` (
 CREATE TABLE `thread` (
   `thread_ID` int NOT NULL,
   `user_ID` int NOT NULL,
+  `Titel` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
   `threadDate` varchar(30) NOT NULL,
+  `lastChanged` varchar(30),
   PRIMARY KEY (`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -124,12 +127,13 @@ CREATE TABLE `thread` (
 --
 
 CREATE TABLE `reaction` (
-  `note_ID` int NOT NULL,
+  `reaction_ID` int NOT NULL,
   `thread_ID` int NOT NULL,
   `user_ID` int NOT NULL,
-  `Note` text NOT NULL,
-  `noteDate` varchar(30) NOT NULL,
-  PRIMARY KEY (`note_ID`),
+  `Reaction` text NOT NULL,
+  `reactionDate` varchar(30) NOT NULL,
+  `lastChanged` varchar(30),
+  PRIMARY KEY (`reaction_ID`),
   FOREIGN KEY (`thread_ID`) REFERENCES `thread`(`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
