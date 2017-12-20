@@ -47,39 +47,12 @@ date_default_timezone_set('Europe/Amsterdam');
 			}
 		}
 
-		public function validateUserRights($thread_ID)
-        {
-        	$sth = $this->db->selectDatabase('thread','thread_id',$thread_ID,'');
-			if($row = $sth->fetch())
-			{
-				$user = new User($_SESSION['Username']); 
-            	$user_ID = $user->id;
-            	// Not yet implemented: 
-            	$permission = $user->permission;
-
-            	if($row['user_ID'] == $user_ID)
-            	{
-            		// Thread belongs to logged in user
-            		return true;
-            	}
-            	elseif($permission == '2' || $permission == '3') 
-            	{
-            		// Logged in user is teacher or admin
-            		return true;
-            	}
-            	else
-            	{
-            		return false;
-            	}
-
-			} 
-        }
-
 		public function editThread()
 		{
-			if(validateUserRights($thread_ID))
+			$misc = new Misc();
+			if($misc->validateUserRights($thread_ID))
 			{
-				throw new Exception('Not implemented');	
+				// Permission to edit thread
 			}
 			else
 			{
