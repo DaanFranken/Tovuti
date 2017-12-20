@@ -26,14 +26,13 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 
 	if($user->login($username,$password))
 	{
-		$t = new Thread();
-		var_dump($t->validateUserRights('1'));
+		?>
+		<script>
+		setTimeout(function(){
+			window.location.href = 'index.php';
+		}, 2000);
+		</script>
+		<?php
 	}
-	else
-	{
-		
-	}
-} 
-
+}
 ?>
-
