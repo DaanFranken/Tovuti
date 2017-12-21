@@ -115,18 +115,18 @@ class User
 				}
 				else
 				{
-					echo 'Your account is deactivated.';
+					echo 'Uw account is gedeactiveerd';
 				}				
 			}
 			else
 			{
-				echo 'Your username and/or password is incorrect';
+				echo 'Uw gebruikersnaam en/of wachtwoord is incorrect';
 				return false;
 			}
 		}
 		else
 		{
-			echo 'Your username and/or password is incorrect';
+			echo 'Uw gebruikersnaam en/of wachtwoord is incorrect';
 			return false;
 		}
 	}
@@ -144,12 +144,12 @@ class User
 				// Check username
 				if(strlen($_POST['username']) < 6)
 				{
-					echo 'Your username must be atleast 6 characters';
+					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten';
 					$errorCheck = false;
 				}
 				if(is_numeric($_POST['username']))
 				{
-					echo 'Please use letters instead of numbers for your username!';
+					echo 'Uw gebruikersnaam moet letters bevatten';
 					$errorCheck = false;
 				}
 
@@ -158,7 +158,7 @@ class User
 				{
 					if(strlen($_POST['email']) < 10)
 					{
-						echo 'Your email is incorrect';
+						echo 'Uw email klopt niet';
 						$errorCheck = false;
 					}
 				}
@@ -166,7 +166,7 @@ class User
 				// Check password
 				if($password != $retypePass)
 				{
-					echo 'Your passwords do not match';
+					echo 'Uw wachtwoorden komen niet overeen';
 					$errorCheck = false;
 				}
 
@@ -180,12 +180,12 @@ class User
 					$arrayValues['Email'] = $email;
 					$arrayValues['Permission'] = 0;
 					$this->db->insertDatabase('users', $arrayValues);
-					echo 'Your account has been successfully registered';
+					echo 'Uw account is succesvol geregistreerd';
 				}
 			}
 			else
 			{
-				echo 'Username already exists.';
+				echo 'Gebruikersnaam bestaat al';
 			}
 		}
 	}

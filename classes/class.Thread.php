@@ -43,7 +43,7 @@ date_default_timezone_set('Europe/Amsterdam');
 				$arrayValues['threadDate']	= date("Y-m-d H:i:s");
 
 				$this->db->insertDatabase('thread', $arrayValues);
-				echo 'Your thread has been posted.';
+				echo 'Uw thread is aangemaakt';
 			}
 		}
 
