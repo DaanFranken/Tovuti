@@ -38,6 +38,22 @@ class User
 		}
 	}
 
+	public function getUserByID($ID)
+	{
+		$sth = $this->db->selectDatabase('users', 'user_ID', $ID, '');
+			if($row = $sth->fetch())
+			{
+				$this->id 			= $row['user_ID'];
+				$this->username 	= $row['Username'];
+				$this->firstname 	= $row['Firstname'];
+				$this->lastname 	= $row['Lastname'];
+				$this->password 	= $row['Password'];
+				$this->email 		= $row['Email'];
+				$this->permission	= $row['Permission'];	
+				return true;
+			}
+	}
+
 	// Login check
 	public function loginCheck()
 	{
@@ -46,13 +62,6 @@ class User
 			$sth = $this->db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
 			if($sth->fetch())
 			{
-				$this->id 			= $row['user_ID'];
-				$this->username 	= $row['Username'];
-				$this->firstname 	= $row['Firstname'];
-				$this->lastname 	= $row['Lastname'];
-				$this->password 	= $row['Password'];
-				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];
 				return true;
 			}
 			else
