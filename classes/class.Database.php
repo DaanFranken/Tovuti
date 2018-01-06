@@ -81,14 +81,13 @@ class Database
 	// Delete from database
 	public function deleteDatabase($tableName, $whereValue, $whereKey)
 	{
-		$prepareParameters = array($parameters);
 		$query = 'DELETE FROM '.$tableName;
 		if(!empty($whereValue))
 		{
 			$query .= ' WHERE '.$whereValue.' = "'.$whereKey.'"';
 		}
 		$sth = $this->conn->prepare($query);
-		$sth->execute($prepareParameters);
+		$sth->execute();
 	}
 }
 ?>
