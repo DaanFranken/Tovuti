@@ -4,7 +4,11 @@ include_once 'autoloader.php';
 $db = new Database();
 $misc = new Misc();
 $user = new User();
-$user->getUserByID($_SESSION['user_ID']);
+
+if($user->loginCheck())
+{
+	$user->getUserByID($_SESSION['user_ID']);
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -60,7 +64,7 @@ $user->getUserByID($_SESSION['user_ID']);
 	}
 
 	$username = $misc->readVar('POST','username');
-
+	
 	?>
 </div>
 </body>
