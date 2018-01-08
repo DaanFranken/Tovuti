@@ -7,6 +7,7 @@ date_default_timezone_set('Europe/Amsterdam');
 		public $thread_id;
 		protected $db;
 		public $user_id;
+		public $title;
 		public $thread;
 		public $threadDate;
 
@@ -23,6 +24,7 @@ date_default_timezone_set('Europe/Amsterdam');
 				{
 					$this->thread_id 	=	$row['thread_ID'];
 					$this->user_id 		=	$row['user_ID'];
+					$this->title 		= 	$row['Title'];
 					$this->thread 		=	$row['Thread'];
 					$this->threadDate 	=	$row['threadDate'];
 				}
@@ -41,7 +43,43 @@ date_default_timezone_set('Europe/Amsterdam');
 
 		public function getAllThreads()
 		{
-			throw new Exception('Not implemented');
+			$addon = ' ORDER BY Urgency DESC';
+			$sth = $this->db->selectDatabase('thread','','',$addon);
+			$result = $sth->fetchAll();
+			echo '<ul class="w3-ul w3-card-4">';
+			foreach($result as $res)
+			{
+				$urgency = $res['Urgency'];
+				?>
+				    <li class="w3-bar">
+				    <?php
+				    	switch ($urgency) {
+				    		case '0':
+				    			echo '<i class="fa fa-sticky-note fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000000;"></i>';
+				    			break;
+
+			    			case '1':
+			    			echo '<i class="fa fa-exclamation-triangle fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#cc0000;"></i>';
+			    			break;
+				    		
+				    		default:
+				    			# code...
+				    			break;
+				    	}
+
+				    ?>
+					    
+
+					      
+					      <div class="w3-bar-item">
+					        <span class="w3-large"><?php echo '<a href="?pageStr=thread&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
+					        <span><?php echo $res['Thread'];?></span>
+					      </div>
+					    </li>
+
+
+				<?php
+			}
 		}
 
 		public function createThread($user_ID, $title, $thread)

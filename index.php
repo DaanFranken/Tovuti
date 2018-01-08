@@ -17,6 +17,7 @@ if($user->loginCheck())
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="style/index.css">
 <link rel="stylesheet" href="style/menu.css">
+<script src="https://use.fontawesome.com/1ae0501f24.js"></script>
 </head>
 <body>
 	<?php
@@ -59,12 +60,15 @@ if($user->loginCheck())
 		case 'passwordConfirm':
 			include 'passConfirm.php';
 			break;
+			case 'thread':
+			include 'thread.php';
+			break;
 		default:
 			include 'home.php';
 	}
 
 	$username = $misc->readVar('POST','username');
-	
+
 	?>
 </div>
 </body>

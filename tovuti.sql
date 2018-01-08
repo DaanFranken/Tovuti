@@ -29,7 +29,7 @@ CREATE TABLE `users` (
   `Lastname` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Permission` int NOT NULL,
+  `Permission` int DEFAULT 0,
   `Status` int NOT NULL DEFAULT 1, 
   PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
