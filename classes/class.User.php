@@ -101,15 +101,6 @@ class User
 					$_SESSION['user_ID'] = $row['user_ID'];
 					$_SESSION['Username'] = $row['Username'];
 					$_SESSION['Password'] = $row['Password'];
-
-					// Object variables
-					$this->id 			= $row['user_ID'];
-					$this->username 	= $row['Username'];
-					$this->firstname 	= $row['Firstname'];
-					$this->lastname 	= $row['Lastname'];
-					$this->password 	= $row['Password'];
-					$this->email 		= $row['Email'];
-					$this->permission	= $row['Permission'];
 					echo 'You have successfully logged in';
 					return true;
 				}
@@ -190,6 +181,87 @@ class User
 		}
 	}
 
+	// Change user
+	public function update($username, $email)
+	{
+		if(isset($_POST['accSubmit']))
+		{
+			if($username == $this->username)
+			{
+				goto skip;
+			}
+			$sth = $this->db->selectDatabase('users', 'Username', $username, '');
+			if(!$row = $sth->fetch())
+			{
+				skip:
+				$errorCheck = true;
+
+				// Check username
+				if(strlen($username) < 6)
+				{
+					echo 'Your username must contain atleast 6 characters';
+					$errorCheck = false;
+				}
+				if(is_numeric($username))
+				{
+					echo 'Your username must contain letters';
+					$errorCheck = false;
+				}
+
+				// Check email
+				if(!empty($email))
+				{
+					if(strlen($email) < 10)
+					{
+						echo 'Your email is incorrect';
+						$errorCheck = false;
+					}
+				}
+
+				if($errorCheck)
+				{
+					// Email confirm
+					if($email != $this->email)
+					{
+						// Put mail in db
+						$randNmb = rand(100000, 99999999);
+						$arrayValues['user_ID'] = $this->id;
+						$arrayValues['email'] = $email;
+						$arrayValues['randNmb'] = $randNmb;
+						$arrayValues['insertDate'] = time();
+						$sth = $this->db->selectDatabase('email_confirm', 'email', $email, '');
+						if($sth->fetch())
+						{
+							$this->db->updateDatabase('email_confirm', 'user_ID', $this->id, $arrayValues);
+						}
+						else
+						{
+							$this->db->insertDatabase('email_confirm', $arrayValues);
+						}
+
+						// Send mail
+						$msg = "Visit this link to confirm your mail.\nindex.php?pageStr=accountConfirm&randNmb=".$randNmb;
+						$msg = wordwrap($msg,70);
+						mail($email,"De Zevensprong | Mail confirmation",$msg);
+						echo 'An email has been sent to the filled out email.<br/>Please confirm your email by clicking on the contained link.<br/><br/>';
+					}
+
+					// Basic info
+					$arrayValues = array();
+					$arrayValues['Username'] = $username;
+					$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
+
+					echo 'Your account has been successfully updated';
+					return true;
+				}
+			}
+			else
+			{
+				echo 'Username already exists';
+			}
+		}
+	}
+
 	// Logout
 	public function logout()
 	{
@@ -209,6 +281,47 @@ class User
 
 		// Destroy session
 		session_destroy();
+	}
+
+	// Password confirm
+	public function passConfirm()
+	{
+		$randNmb = rand(100000, 99999999);
+		$arrayValues['user_ID'] = $this->id;
+		$arrayValues['randNmb'] = $randNmb;
+		$arrayValues['insertDate'] = time();
+		$sth = $this->db->selectDatabase('password_confirm', 'user_ID', $this->id, '');
+		if($sth->fetch())
+		{
+			$this->db->updateDatabase('password_confirm', 'user_ID', $this->id, $arrayValues);
+		}
+		else
+		{
+			$this->db->insertDatabase('password_confirm', $arrayValues);
+		}
+
+		// Send mail
+		$msg = "Visit this link to create your new password.\nindex.php?pageStr=passwordConfirm&randNmb=".$randNmb;
+		$msg = wordwrap($msg,70);
+		mail($this->email,"Vault-Tec | Password change",$msg);
+		echo 'An email has been sent to the filled out email.<br/>Change your account by clicking on the contained link.<br/>';
+	}
+
+	// Change password
+	public function changePassword($password, $passwordConfirm)
+	{
+		if($password != $passwordConfirm)
+		{
+			echo 'Your passwords do not match.';
+			return false;
+		}
+		else
+		{
+			$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+			$arrayValues['Password'] = $hashedPassword;
+			$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
+			return true;
+		}
 	}
 }
 ?>

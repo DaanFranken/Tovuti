@@ -44,6 +44,35 @@ INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `email_confirm` (
+  `user_ID` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `randNmb` int(8) NOT NULL,
+  `insertDate` varchar(20) NOT NULL,
+  PRIMARY KEY (`user_ID`),
+  FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_confirm`
+--
+
+CREATE TABLE `password_confirm` (
+  `user_ID` varchar(255) NOT NULL,
+  `randNmb` int(8) NOT NULL,
+  `insertDate` varchar(20) NOT NULL,
+  PRIMARY KEY (`user_ID`),
+  FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `class`
 --
 
