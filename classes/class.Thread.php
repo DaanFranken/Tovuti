@@ -4,15 +4,30 @@ date_default_timezone_set('Europe/Amsterdam');
 
 	class Thread
 	{
+		public $thread_id;
 		protected $db;
-		private $thread_id;
-		private $user_id;
+		public $user_id;
+		public $thread;
+		public $threadDate;
 
 		// Db connection
-		public function __construct()
+		public function __construct($thread_id = NULL)
 		{
 			$this->db = new Database();
 			$this->user_id = $_SESSION['user_ID'];
+
+			if(!empty($thread_id))
+			{
+				$sth = $this->db->selectDatabase('thread', 'thread_ID', $thread_id, '');
+				if($row = $sth->fetch())
+				{
+					$this->thread_id 	=	$row['thread_ID'];
+					$this->user_id 		=	$row['user_ID'];
+					$this->thread 		=	$row['Thread'];
+					$this->threadDate 	=	$row['threadDate'];
+				}
+			}
+
 		}
 
 		public function getThread($thread_ID)
