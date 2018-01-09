@@ -60,7 +60,7 @@ if($user->loginCheck())
 		case 'passwordConfirm':
 			include 'passConfirm.php';
 			break;
-			case 'thread':
+		case 'thread':
 			include 'thread.php';
 			break;
 		default:

@@ -54,10 +54,10 @@ if($user->loginCheck())
 			<input type="submit" name="logout" value="Logout">
 		</form>
 		<form action="" method="POST" autocomplete="off">
-			<input type="text" name="username" value="<?php if(!isset($_POST['accSubmit'])){echo $user->username;}else{echo $_POST['username'];} ?>" class="inputField" title="Username" required>
-			<input type="text" name="email" value="<?php if(!isset($_POST['accSubmit'])){echo $user->email;}else{echo $_POST['email'];} ?>" class="inputfield" title="Email | You will receive a confirmation mail if you enter a new email" required>
+			<input type="text" name="username" value="<?php if(!isset($_POST['accSubmit'])){echo $user->username;}else{echo $_POST['username'];} ?>" class="inputField" title="Gebruikersnaam" required>
+			<input type="text" name="email" value="<?php if(!isset($_POST['accSubmit'])){echo $user->email;}else{echo $_POST['email'];} ?>" class="inputfield" title="Email | U krijgt een validatie mail om uw ingevoerde email goed te keuren" required>
 
-			<input type="submit" name="accSubmit" value="Apply all changes">
+			<input type="submit" name="accSubmit" value="Sla alles op">
 		</form>
 		<form action="" method="POST">
 			<input type="submit" name="chgPass" value="Change password">
@@ -67,7 +67,7 @@ if($user->loginCheck())
 }
 else
 {
-	echo 'You need to be logged in to view your account';
+	echo 'U dient in te loggen om deze pagina te bekijken';
 }
 ?>
 <style>

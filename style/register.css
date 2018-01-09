@@ -1,0 +1,11 @@
+#login{
+	position: relative;top: -33px;
+	left: 135px;
+	font-size: 18px;
+	transition: color 0.3s, text-shadow 0.3s;
+}
+
+#login:hover{
+	color: #262626;
+	text-shadow: 0 0 3px #262626;
+}

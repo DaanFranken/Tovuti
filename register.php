@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" type="text/css" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/register.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 </head>
@@ -28,6 +28,9 @@
   <br/>
   <input type="submit" class="w3-btn w3-blue-grey" value="Registreer" name="registerSubmit">
 </form>
+<a href="index.php?pageStr=login" id="login">
+	Login
+</a>
 
 <?php
 // Check if all values are set

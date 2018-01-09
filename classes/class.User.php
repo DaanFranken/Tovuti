@@ -101,7 +101,7 @@ class User
 					$_SESSION['user_ID'] = $row['user_ID'];
 					$_SESSION['Username'] = $row['Username'];
 					$_SESSION['Password'] = $row['Password'];
-					echo 'You have successfully logged in';
+					echo 'U bent succesvol ingelogd';
 					return true;
 				}
 				else
@@ -199,12 +199,12 @@ class User
 				// Check username
 				if(strlen($username) < 6)
 				{
-					echo 'Your username must contain atleast 6 characters';
+					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten';
 					$errorCheck = false;
 				}
 				if(is_numeric($username))
 				{
-					echo 'Your username must contain letters';
+					echo 'Uw gebruikersnaam moet letters bevatten';
 					$errorCheck = false;
 				}
 
@@ -213,7 +213,7 @@ class User
 				{
 					if(strlen($email) < 10)
 					{
-						echo 'Your email is incorrect';
+						echo 'Uw email klopt niet';
 						$errorCheck = false;
 					}
 				}
@@ -240,10 +240,10 @@ class User
 						}
 
 						// Send mail
-						$msg = "Visit this link to confirm your mail.\nindex.php?pageStr=accountConfirm&randNmb=".$randNmb;
+						$msg = "Klik op deze link om uw email te activeren.\nindex.php?pageStr=accountConfirm&randNmb=".$randNmb;
 						$msg = wordwrap($msg,70);
 						mail($email,"De Zevensprong | Mail confirmation",$msg);
-						echo 'An email has been sent to the filled out email.<br/>Please confirm your email by clicking on the contained link.<br/><br/>';
+						echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Valideer uw email door deze link te bezoeken.<br/><br/>';
 					}
 
 					// Basic info
@@ -251,13 +251,13 @@ class User
 					$arrayValues['Username'] = $username;
 					$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
 
-					echo 'Your account has been successfully updated';
+					echo 'Uw account is succesvol gewijzigd';
 					return true;
 				}
 			}
 			else
 			{
-				echo 'Username already exists';
+				echo 'Gebruikersnaam bestaat al';
 			}
 		}
 	}
@@ -301,10 +301,10 @@ class User
 		}
 
 		// Send mail
-		$msg = "Visit this link to create your new password.\nindex.php?pageStr=passwordConfirm&randNmb=".$randNmb;
+		$msg = "Klik op deze link om uw wachtwoord te wijzigen.\nindex.php?pageStr=passwordConfirm&randNmb=".$randNmb;
 		$msg = wordwrap($msg,70);
 		mail($this->email,"Vault-Tec | Password change",$msg);
-		echo 'An email has been sent to the filled out email.<br/>Change your account by clicking on the contained link.<br/>';
+		echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Verander uw account door deze link te bezoeken.<br/><br/>';
 	}
 
 	// Change password
@@ -312,7 +312,7 @@ class User
 	{
 		if($password != $passwordConfirm)
 		{
-			echo 'Your passwords do not match.';
+			echo 'Uw wachtwoorden komen niet overeen';
 			return false;
 		}
 		else
