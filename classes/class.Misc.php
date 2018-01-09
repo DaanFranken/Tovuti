@@ -35,7 +35,6 @@
             {
                 $user = new User($_SESSION['Username']); 
                 $user_ID = $user->id;
-                // Not yet implemented: 
                 $permission = $user->permission;
 
                 if($row['user_ID'] == $user_ID)

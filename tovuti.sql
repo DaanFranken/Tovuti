@@ -151,6 +151,7 @@ CREATE TABLE `thread` (
   `threadDate` DATETIME NOT NULL,
   `Urgency` int DEFAULT 0,
   `lastChanged` DATETIME,
+  `Status` int NOT NULL DEFAULT 1, 
   PRIMARY KEY (`thread_ID`),
   FOREIGN KEY (`user_ID`) REFERENCES `users`(`user_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
