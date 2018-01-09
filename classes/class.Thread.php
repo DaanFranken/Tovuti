@@ -48,9 +48,16 @@ class Thread
 		
 	}
 
-	public function getAllThreads()
+	public function getAllThreads($ID = NULL)
 	{
-		$addon = ' ORDER BY Urgency DESC';
+		if(!empty($ID))
+		{
+			$addon = ' AND user_id = "'.$ID .'"';
+		}
+		else
+		{
+			$addon = '  ORDER BY Urgency DESC';
+		}
 		$sth = $this->db->selectDatabase('thread','Status','1',$addon);
 		$result = $sth->fetchAll();
 		echo '<ul class="w3-ul w3-card-4">';

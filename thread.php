@@ -1,6 +1,7 @@
 <div class="w3-margin">
 	<?php
 
+	// Alleen docenten en admins kunnen posts verwijderen
 	if($misc->readVar('GET','deleteThread') && $user->permission > 1)
 	{
 		echo '<script>alert("Weet u zeker dat u deze post wil verwijderen?");</script>';
@@ -26,7 +27,14 @@
 		if(empty($misc->readVar('GET','thread_id')))
 		{
 			$thread = new Thread();
-			$thread->getAllThreads();
+			if(!isset($_GET['user_id']))
+			{
+				$thread->getAllThreads();	
+			}
+			elseif($misc->readVar('GET','user_id'))
+			{
+				$thread->getAllThreads($_GET['user_id']);
+			}			
 		}
 		else
 		{

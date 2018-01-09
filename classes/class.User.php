@@ -343,5 +343,18 @@ class User
 			return true;
 		}
 	}
+
+	public function getStudentClass($ID)
+	{
+		$sth = $this->db->selectDatabase('students','user_ID',$ID,'');
+		if($row = $sth->fetch())
+		{
+			$classSth = $this->db->selectDatabase('class','class_ID',$row['class_ID'],'');
+			if($row = $classSth->fetch())
+			{
+				return $row['Name'];
+			}
+		}
+	}
 }
 ?>
