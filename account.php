@@ -14,9 +14,11 @@ if($user->loginCheck())
 	&& $misc->readVar('POST','email'))
 	{
 		$username = $_POST['username'];
+		$voornaam = $_POST['firstname'];
+		$achternaam = $_POST['lastname'];
 		$email = $_POST['email'];
 
-		if($user->update($username, $email))
+		if($user->update($username, $voornaam, $achternaam, $email))
 		{
 			?>
 			<script>
@@ -51,11 +53,13 @@ if($user->loginCheck())
 	{
 		?>
 		<form action="" method="POST" id="logout">
-			<input type="submit" name="logout" value="Logout">
+			<input type="submit" name="logout" value="Uitloggen">
 		</form>
 		<form action="" method="POST" autocomplete="off">
-			<input type="text" name="username" value="<?php if(!isset($_POST['accSubmit'])){echo $user->username;}else{echo $_POST['username'];} ?>" class="inputField" title="Gebruikersnaam" required>
+			<input type="text" name="username" value="<?php if(!isset($_POST['accSubmit'])){echo $user->username;}else{echo $_POST['username'];} ?>" class="inputField" placeholder="Gebruikersnaam" title="Gebruikersnaam" required>
 			<input type="text" name="email" value="<?php if(!isset($_POST['accSubmit'])){echo $user->email;}else{echo $_POST['email'];} ?>" class="inputfield" title="Email | U krijgt een validatie mail om uw ingevoerde email goed te keuren" required>
+			<input type="text" name="firstname" value="<?php if(!isset($_POST['accSubmit'])){echo $user->firstname;}else{echo $_POST['firstname'];} ?>" class="inputfield" placeholder="Voornaam" title="Voornaam" required>
+			<input type="text" name="lastname" value="<?php if(!isset($_POST['accSubmit'])){echo $user->lastname;}else{echo $_POST['lastname'];} ?>" class="inputfield" placeholder="Achternaam" title="Achternaam" required>
 
 			<input type="submit" name="accSubmit" value="Sla alles op">
 		</form>

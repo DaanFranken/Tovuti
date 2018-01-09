@@ -32,7 +32,9 @@ class User
 				$this->lastname 	= $row['Lastname'];
 				$this->password 	= $row['Password'];
 				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];	
+				$this->permission	= $row['Permission'];
+				$this->firstname	= $row['Firstname'];
+				$this->lastname		= $row['Lastname'];
 				return true;
 			}
 		}
@@ -49,7 +51,9 @@ class User
 				$this->lastname 	= $row['Lastname'];
 				$this->password 	= $row['Password'];
 				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];	
+				$this->permission	= $row['Permission'];
+				$this->firstname	= $row['Firstname'];
+				$this->lastname		= $row['Lastname'];
 				return true;
 			}
 	}
@@ -135,12 +139,12 @@ class User
 				// Check username
 				if(strlen($_POST['username']) < 6)
 				{
-					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten';
+					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten<br/>';
 					$errorCheck = false;
 				}
 				if(is_numeric($_POST['username']))
 				{
-					echo 'Uw gebruikersnaam moet letters bevatten';
+					echo 'Uw gebruikersnaam moet letters bevatten<br/>';
 					$errorCheck = false;
 				}
 
@@ -149,7 +153,7 @@ class User
 				{
 					if(strlen($_POST['email']) < 10)
 					{
-						echo 'Uw email klopt niet';
+						echo 'Uw email klopt niet<br/>';
 						$errorCheck = false;
 					}
 				}
@@ -157,7 +161,7 @@ class User
 				// Check password
 				if($password != $retypePass)
 				{
-					echo 'Uw wachtwoorden komen niet overeen';
+					echo 'Uw wachtwoorden komen niet overeen<br/>';
 					$errorCheck = false;
 				}
 
@@ -182,7 +186,7 @@ class User
 	}
 
 	// Change user
-	public function update($username, $email)
+	public function update($username, $voornaam, $achternaam, $email)
 	{
 		if(isset($_POST['accSubmit']))
 		{
@@ -199,12 +203,12 @@ class User
 				// Check username
 				if(strlen($username) < 6)
 				{
-					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten';
+					echo 'Uw gebruikersnaam moet minimaal 6 karakters bevatten<br/>';
 					$errorCheck = false;
 				}
 				if(is_numeric($username))
 				{
-					echo 'Uw gebruikersnaam moet letters bevatten';
+					echo 'Uw gebruikersnaam moet letters bevatten<br/>';
 					$errorCheck = false;
 				}
 
@@ -213,9 +217,23 @@ class User
 				{
 					if(strlen($email) < 10)
 					{
-						echo 'Uw email klopt niet';
+						echo 'Uw email klopt niet<br/>';
 						$errorCheck = false;
 					}
+				}
+
+				// Check firstname
+				if(is_numeric($voornaam))
+				{
+					echo 'Uw voornaam mogen alleen letters zijn<br/>';
+					$errorCheck = false;
+				}
+
+				// Check lastname
+				if(is_numeric($achternaam))
+				{
+					echo 'Uw achternaam mogen alleen letters zijn<br/>';
+					$errorCheck = false;
 				}
 
 				if($errorCheck)
@@ -249,6 +267,8 @@ class User
 					// Basic info
 					$arrayValues = array();
 					$arrayValues['Username'] = $username;
+					$arrayValues['Firstname'] = $voornaam;
+					$arrayValues['Lastname'] = $achternaam;
 					$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
 
 					echo 'Uw account is succesvol gewijzigd';
