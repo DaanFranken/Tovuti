@@ -8,19 +8,19 @@ if(isset($_POST['logout']))
 	<img src="images/deZevensprong.png" alt="de Zevensprong" class="mainMenuImage1">
 </a>
 <div id="mainMenuFullscreen" style="display: inline;">
-	<a href="index.php?pageStr=home" class="mainMenuLink">
-		<div class="mainMenuLinkDiv" <?php $misc->menuCurrentPage($pageStr, 'home'); ?>>
+<a href="index.php?pageStr=thread" class="mainMenuLink">
+		<div class="mainMenuLinkDiv" <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
 			<div class="mainMenuLinkText">
-				Home
+				Thread
 			</div>
 		</div>
-	</a>  
+	</a> 
 	<?php
 	if($user->loginCheck())
 	{
 		?>
-		<a href="index.php?pageStr=account" class="mainMenuLink">
-			<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
+		<a href="index.php?pageStr=account" class="mainMenuLink mainMenuLinkPicture">
+			<div class="" <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
 				<img src="images/account.png" class="mainMenuImage2">
 			</div>
 		</a>
@@ -50,7 +50,7 @@ if(isset($_POST['logout']))
 
 </div>
 <script>
-function logout(){
-	document.getElementById('logoutForm').submit();
-}
+	function logout(){
+		document.getElementById('logoutForm').submit();
+	}
 </script>
