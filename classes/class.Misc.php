@@ -60,7 +60,7 @@
         {
             if($pageStr == $currentPage)
             {
-                echo 'style="border-bottom: 2px solid #333333;box-shadow: 0px -5px 10px #6aaef5;"';
+                echo 'style="height: calc(100% + 2px);border-bottom: 2px solid #333333;box-shadow: 0px -5px 10px #6aaef5;"';
             }
         }
     }

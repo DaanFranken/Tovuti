@@ -20,7 +20,7 @@ if(isset($_POST['logout']))
 	{
 		?>
 		<a href="index.php?pageStr=account" class="mainMenuLink mainMenuLinkPicture">
-			<div class="" <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
+			<div <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
 				<img src="images/account.png" class="mainMenuImage2">
 			</div>
 		</a>
