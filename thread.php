@@ -1,7 +1,7 @@
 <div class="w3-margin">
-
 	<?php
-	if($misc->readVar('GET','deleteThread'))
+
+	if($misc->readVar('GET','deleteThread') && $user->permission > 1)
 	{
 		echo '<script>alert("Weet u zeker dat u deze post wil verwijderen?");</script>';
 		$thread_id = $_GET['deleteThread'];
@@ -30,7 +30,7 @@
 		}
 		else
 		{
-			echo '<a href="?pageStr=thread">Terug naar forum</a>';
+			echo '<a class="thread" href="?pageStr=thread">Terug naar forum</a>';
 			$thread = new Thread($misc->readVar('GET','thread_id'));
 			echo '<h3>'.$thread->title.'</h3>';
 			echo $thread->thread;

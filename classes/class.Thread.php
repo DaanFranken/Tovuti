@@ -54,80 +54,102 @@ class Thread
 		$sth = $this->db->selectDatabase('thread','Status','1',$addon);
 		$result = $sth->fetchAll();
 		echo '<ul class="w3-ul w3-card-4">';
-		foreach($result as $res)
+		if(!$result)
 		{
-			$urgency = $res['Urgency'];
-			?>
-			<li class="w3-bar">
-				<!--  Functies -->
-				<?php
-				$user = new User($_SESSION['Username']);
-				if($user->permission == 2 || $user->permission == 3)
-				{
-					echo '<a href="?pageStr=thread&deleteThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
-
-					echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
-				}
-				?>
-				<?php
-				switch ($urgency) {
-					case '0':
-					echo '<i class="fa fa-sticky-note fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000000;"></i>';
-					break;
-
-					case '1':
-					echo '<i class="fa fa-exclamation-triangle fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#cc0000;"></i>';
-					break;
-
-					default:
-				    			# code...
-					break;
-				}
-
-				?>
-
-
-
-				<div class="w3-bar-item">
-					<span class="w3-large"><?php echo '<a href="?pageStr=thread&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
-					<span><?php echo $res['Thread'];?></span>
-				</div>
-			</li>
-
-
-			<?php
-		}
-	}
-
-	public function createThread($user_ID, $title, $thread)
-	{
-		$user = new User();
-		$user->getUserByID($this->user_id);
-
-		if($user->permission != 0)
-		{
-			$arrayValues['thread_ID'] 	= trim(com_create_guid(), '{}');
-			$arrayValues['user_ID']		= $user_ID;
-			$arrayValues['Title'] 		= $title;
-			$arrayValues['Thread']		= $thread;
-			$arrayValues['threadDate']	= date("Y-m-d H:i:s");
-
-			$this->db->insertDatabase('thread', $arrayValues);
-			echo 'Uw bericht is geplaatst';
-		}
-	}
-
-	public function editThread()
-	{
-		$misc = new Misc();
-		if($misc->validateUserRights($thread_ID))
-		{
-				// Permission to edit thread
+			echo 'Er zijn geen posts beschikbaar.';
 		}
 		else
 		{
+			foreach($result as $res)
+			{
+				// Required attributes
+				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $res['threadDate']);
+				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+				$urgency = $res['Urgency'];
+				$sth = $this->db->selectDatabase('users','user_ID',$res['user_ID'],'');
+				$author = $sth->fetch();
+
+				?>
+				<li class="w3-bar">
+					<?php
+					$user = new User($_SESSION['Username']);
+					if($user->permission == 2 || $user->permission == 3)
+					{
+						echo '<a href="?pageStr=thread&deleteThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
+
+						echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
+					}
+					?>
+					<?php
+					switch ($urgency) {
+						case '0':
+						echo '<i class="fa fa-sticky-note fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000000;"></i>';
+						break;
+
+						case '1':
+						echo '<i class="fa fa-exclamation-triangle fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#cc0000;"></i>';
+						break;
+
+						default:
+				    			# code...
+						break;
+					}
+
+					?>
+					<div class="w3-bar-item" style="min-width: 20%;">
+						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=thread&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
+						<span><?php 
+							$thread = substr($res['Thread'],0,20).'...';
+							echo $thread;?></span>
+						</div>
+						<div class="w3-bar-item">
+							<span><i class="fa fa-user-o" aria-hidden="true"></i>
+								<?php
+								echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
+								echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
+								echo '</a>';?>
+							</span><br/>
+							<span class="w3-margin-top"><i class="fa fa-clock-o" aria-hidden="true"></i>
+								<?php echo $formattedDate; ?>
+							</span>
+						</div>
+					</li>
+
+
+					<?php
+				}
+			}
+		}
+
+		public function createThread($user_ID, $title, $thread)
+		{
+			$user = new User();
+			$user->getUserByID($this->user_id);
+
+			if($user->permission != 0)
+			{
+				$arrayValues['thread_ID'] 	= trim(com_create_guid(), '{}');
+				$arrayValues['user_ID']		= $user_ID;
+				$arrayValues['Title'] 		= $title;
+				$arrayValues['Thread']		= $thread;
+				$arrayValues['threadDate']	= date("Y-m-d H:i:s");
+
+				$this->db->insertDatabase('thread', $arrayValues);
+				echo 'Uw bericht is geplaatst';
+			}
+		}
+
+		public function editThread()
+		{
+			$misc = new Misc();
+			if($misc->validateUserRights($thread_ID))
+			{
+				// Permission to edit thread
+			}
+			else
+			{
 				// No permission to edit thread
+			}
 		}
 	}
-}
-?>
+	?>

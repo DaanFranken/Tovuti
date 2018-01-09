@@ -39,7 +39,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`,`Permission`) VALUES
-('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com',3);
+('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'Admin', 'von Adminson', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com',3);
+
+INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`,`Permission`) VALUES
+('2ac50383-23d0-444c-84c7-6c26d2960609', 'daan', 'Daan', 'Franken', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'dgmfranken@gmail.com',1);
 
 -- --------------------------------------------------------
 
@@ -158,6 +161,9 @@ CREATE TABLE `thread` (
 
 INSERT INTO `thread` (`thread_ID`, `user_ID`, `Title`, `Thread`, `threadDate`, `lastChanged`) VALUES
 ('1A786488-FA73-444A-B1D8-370697F95F96', 'B2022F48-ED35-43F9-BB61-B97A3019E004', 'Test title', 'Lorem ipsum', '2017-12-20 13:16:10', NULL);
+
+INSERT INTO `thread` (`thread_ID`, `user_ID`, `Title`, `Thread`, `threadDate`, `lastChanged`) VALUES
+('dda57eed-2731-4315-ba67-fab1160cae7d', '2ac50383-23d0-444c-84c7-6c26d2960609', 'Huiswerk vraag', 'Wat moesten we af hebben voor Engels volgende week?', '2018-01-01 15:28:10', NULL);
 -- --------------------------------------------------------
 
 --
