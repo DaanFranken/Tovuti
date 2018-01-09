@@ -19,6 +19,11 @@ if(isset($_POST['logout']))
 	if($user->loginCheck())
 	{
 		?>
+		<a href="index.php?pageStr=account" class="mainMenuLink">
+			<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
+				<img src="images/account.png" class="mainMenuImage2">
+			</div>
+		</a>
 		<form action="" method="post" id="logoutForm" style="display: inline">
 			<input type="hidden" name="logout" value="true">
 			<span class="mainMenuLink" onclick="logout()">
