@@ -38,8 +38,8 @@ CREATE TABLE `users` (
 -- Standard data for table `users`
 --
 
-INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`) VALUES
-('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com');
+INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`,`Permission`) VALUES
+('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'test', 'test', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'test@hotmail.com',3);
 
 -- --------------------------------------------------------
 

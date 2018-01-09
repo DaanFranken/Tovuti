@@ -3,6 +3,7 @@
 	<?php
 	if($misc->readVar('GET','deleteThread'))
 	{
+		echo '<script>alert("Weet u zeker dat u deze post wil verwijderen?");</script>';
 		$thread_id = $_GET['deleteThread'];
 		$updateArray['Status'] = 0;
 		echo 'De thread is verwijderd. U keert automatisch terug.';
@@ -29,7 +30,7 @@
 		}
 		else
 		{
-			echo '<a href="?pageStr=thread">Back to topic list</a>';
+			echo '<a href="?pageStr=thread">Terug naar forum</a>';
 			$thread = new Thread($misc->readVar('GET','thread_id'));
 			echo '<h3>'.$thread->title.'</h3>';
 			echo $thread->thread;
