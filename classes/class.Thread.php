@@ -1,4 +1,12 @@
 <?php
+
+// Urgency
+// 0  | Overig
+// 1  | Algemeen
+// 2  | Huiswerk
+// 3  | Activiteit
+// 4  | Belangrijk
+
 // Specify timezone for correct time insertion in database
 date_default_timezone_set('Europe/Amsterdam');
 
