@@ -90,7 +90,7 @@
                 .substr($charid,16, 4).$hyphen
                 .substr($charid,20,12)
                 .chr(125);// "}"
-                return $uuid;
+                return trim($uuid, '{}');
             }
         }
     }

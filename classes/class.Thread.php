@@ -12,6 +12,7 @@ date_default_timezone_set('Europe/Amsterdam');
 
 class Thread
 {
+	private $user;
 	public $thread_id;
 	protected $db;
 	public $user_id;
@@ -23,8 +24,8 @@ class Thread
 						// Db connection
 	public function __construct($thread_id = NULL)
 	{
+		$this->user = new User($_SESSION['Username']);
 		$this->db = new Database();
-		$this->user_id = $_SESSION['user_ID'];
 		$this->misc = new Misc();
 
 		if(!empty($thread_id))
@@ -33,7 +34,6 @@ class Thread
 			if($row = $sth->fetch())
 			{
 				$this->thread_id 	=	$row['thread_ID'];
-				$this->user_id 		=	$row['user_ID'];
 				$this->title 		= 	$row['Title'];
 				$this->thread 		=	$row['Thread'];
 				$this->threadDate 	=	$row['threadDate'];
@@ -73,10 +73,9 @@ class Thread
 				?>
 				<li class="w3-bar">
 					<?php
-					$user = new User($_SESSION['Username']);
-					if($user->permission == 2 || $user->permission == 3)
+					if($this->user->permission == 2 || $this->user->permission == 3)
 					{
-						echo '<a href="?pageStr=thread&deleteThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
+						echo '<a href="?pageStr=forum&deleteThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
 
 						echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
 					}
@@ -132,10 +131,9 @@ class Thread
 
 	public function createThread($user_ID, $title, $thread, $urgency)
 	{
-		$user = new User();
-		$user->getUserByID($this->user_id);
+		$this->user->getUserByID($this->user_id);
 
-		if($user->permission != 0)
+		if($this->user->permission != 0)
 		{
 			$arrayValues['thread_ID'] 	= $this->misc->getGUID();
 			$arrayValues['user_ID']		= $user_ID;
@@ -151,8 +149,7 @@ class Thread
 
 	public function editThread()
 	{
-		$misc = new Misc();
-		if($misc->validateUserRights($thread_ID))
+		if($this->misc->validateUserRights($thread_ID))
 		{
 			// Permission to edit thread
 		}

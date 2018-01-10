@@ -4,19 +4,13 @@
 	// Alleen docenten en admins kunnen posts verwijderen
 	if($misc->readVar('GET','deleteThread') && $user->permission > 1)
 	{
-		echo '<script>alert("Weet u zeker dat u deze post wil verwijderen?");</script>';
+		echo '<script>if(!confirm("Weet u zeker dat u deze post wil verwijderen?")){index.php?pageStr=forum};</script>';
 		$thread_id = $_GET['deleteThread'];
 		$updateArray['Status'] = 0;
-		echo 'De thread is verwijderd. U keert automatisch terug.';
-		if($db->updateDatabase('thread','thread_ID',$thread_id,$updateArray))
-		{		
-			
-		}
+		$db->updateDatabase('thread','thread_ID',$thread_id,$updateArray);
 		?>
 		<script>
-			setTimeout(function(){
-				window.location.href = 'index.php?pageStr=thread';
-			}, 2000);
+		window.location.href = 'index.php?pageStr=forum';
 		</script>
 		<?php
 
@@ -33,6 +27,13 @@
 			$threadPost = str_replace("<","&lt;",$_POST['thread']);
 			$urgency = str_replace("<","&lt;",$_POST['urgency']);
 			$thread->createThread($user->id, $title, $threadPost, $urgency);
+			?>
+			<script>
+				setTimeout(function(){
+					window.location.href = 'index.php?pageStr=forum';
+				}, 2000);
+			</script>
+			<?php
 		}
 		else
 		{
