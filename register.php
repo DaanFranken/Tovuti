@@ -9,22 +9,22 @@
 </div>
 <form class="w3-container" method="POST">
   <label class="w3-text-teal"><b>Gebruikersnaam</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="username" type="text" required>
+  <input class="w3-input w3-border w3-light-grey" name="username" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['username'].'"';} ?> type="text" required>
 
   <label class="w3-text-teal"><b>Voornaam</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="fname" type="text" required>
+  <input class="w3-input w3-border w3-light-grey" name="fname" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['fname'].'"';} ?> type="text" required>
 
   <label class="w3-text-teal"><b>Achternaam</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="lname" type="text" required>
+  <input class="w3-input w3-border w3-light-grey" name="lname" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['lname'].'"';} ?> type="text" required>
 
   <label class="w3-text-teal"><b>Wachtwoord</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="password" type="Password" required>
+  <input class="w3-input w3-border w3-light-grey" name="password" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['password'].'"';} ?> type="Password" required>
 
    <label class="w3-text-teal"><b>Herhaal wachtwoord</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="password2" type="Password" required>
+  <input class="w3-input w3-border w3-light-grey" name="password2" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['password2'].'"';} ?> type="Password" required>
 
    <label class="w3-text-teal"><b>E-mail</b></label>
-  <input class="w3-input w3-border w3-light-grey" name="email" type="text" required>
+  <input class="w3-input w3-border w3-light-grey" name="email" <?php if(isset($_POST['registerSubmit'])){echo 'value="'.$_POST['email'].'"';} ?> type="text" required>
   <br/>
   <input type="submit" class="w3-btn w3-blue-grey" value="Registreer" name="registerSubmit">
 </form>

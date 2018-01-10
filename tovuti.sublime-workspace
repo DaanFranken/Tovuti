@@ -35,7 +35,7 @@
 			"file": "tovuti.sql",
 			"settings":
 			{
-				"buffer_size": 4581,
+				"buffer_size": 5347,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -44,7 +44,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 962,
+				"buffer_size": 1336,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -53,7 +53,7 @@
 			"file": "menu.php",
 			"settings":
 			{
-				"buffer_size": 1246,
+				"buffer_size": 1474,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -71,7 +71,7 @@
 			"file": "classes/class.Database.php",
 			"settings":
 			{
-				"buffer_size": 2019,
+				"buffer_size": 1958,
 				"line_ending": "Windows"
 			}
 		},
@@ -79,7 +79,7 @@
 			"file": "classes/class.Thread.php",
 			"settings":
 			{
-				"buffer_size": 1289,
+				"buffer_size": 2778,
 				"line_ending": "Windows"
 			}
 		},
@@ -96,7 +96,25 @@
 			"file": "classes/class.User.php",
 			"settings":
 			{
-				"buffer_size": 4977,
+				"buffer_size": 8520,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "account.php",
+			"settings":
+			{
+				"buffer_size": 3108,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "newPasswordForm.php",
+			"settings":
+			{
+				"buffer_size": 556,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -136,6 +154,24 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "style/register.css",
+			"settings":
+			{
+				"buffer_size": 181,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style/account.css",
+			"settings":
+			{
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -170,8 +206,10 @@
 	},
 	"file_history":
 	[
-		"/D/Xampp/htdocs/Tovuti/register.php",
+		"/D/Xampp/htdocs/Tovuti/thread.php",
+		"/D/Xampp/htdocs/Tovuti/account.php",
 		"/D/Xampp/htdocs/Tovuti/login.php",
+		"/D/Xampp/htdocs/Tovuti/register.php",
 		"/D/Xampp/htdocs/Tovuti/style/style.css",
 		"/D/Xampp/htdocs/Tovuti/index.php",
 		"/D/Xampp/htdocs/U.R.S/urs.sql",
@@ -282,6 +320,35 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Wachtwoordd",
+			"Gebruikersnaam",
+			"D69A9A",
+			"\">\n",
+			"68F261",
+			"25ED1A",
+			"black",
+			"right",
+			"Wachtwoord",
+			"class=\"inputfield\"",
+			"class=\"inputField\"",
+			"achternaam",
+			"voornaam",
+			"Username",
+			"username",
+			"voornaam",
+			"achternaam",
+			"voornaam",
+			"Username",
+			"Email",
+			"firstname",
+			"username",
+			"Username",
+			"email",
+			"Logout",
+			"register",
+			"registDer",
+			"register",
+			"style",
 			"Login",
 			"Register",
 			"g",
@@ -380,36 +447,7 @@
 			"whereKey",
 			"whereValue",
 			"db",
-			"Password",
-			"lastname",
-			"Lastname",
-			"firstname",
-			"Firstname",
-			"pdo",
-			"functio",
-			"_GET",
-			"piemel",
-			"retypePass",
-			"userErr",
-			"empty",
-			"}\n",
-			"MEDIUMBLOB",
-			"mediumblob",
-			"int",
-			"user_ID",
-			"users",
-			"user_ID",
-			"thread_ID",
-			"user_ID",
-			"class_ID",
-			"class",
-			"user_ID",
-			"users",
-			"teachers",
-			"students",
-			"student_ID",
-			"users",
-			"urs"
+			"Password"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -437,15 +475,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4581,
+						"buffer_size": 5347,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								806,
-								806
+								0,
+								0
 							]
 						],
 						"settings":
@@ -455,10 +493,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -467,15 +505,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 962,
+						"buffer_size": 1336,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								576,
-								576
+								1173,
+								1173
 							]
 						],
 						"settings":
@@ -487,7 +525,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -496,20 +534,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1246,
+						"buffer_size": 1474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								434,
-								434
+								5,
+								5
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -543,13 +582,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 15,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -558,15 +597,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2019,
+						"buffer_size": 1958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								564,
-								564
+								0,
+								0
 							]
 						],
 						"settings":
@@ -578,7 +617,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -587,26 +626,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1289,
+						"buffer_size": 2778,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								524,
-								524
+								1202,
+								1202
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 400.0,
+						"translation.y": 868.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -636,7 +676,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -645,15 +685,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4977,
+						"buffer_size": 8520,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1631,
-								1631
+								93,
+								93
 							]
 						],
 						"settings":
@@ -662,20 +702,77 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3200.0,
+						"translation.y": 2610.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "account.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3108,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								779,
+								779
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "newPasswordForm.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								548,
+								548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "style/index.css",
 					"semi_transient": false,
 					"settings":
@@ -693,17 +790,18 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "style/home.css",
 					"semi_transient": false,
 					"settings":
@@ -727,11 +825,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "style/menu.css",
 					"semi_transient": false,
 					"settings":
@@ -749,17 +847,18 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "style/login.css",
 					"semi_transient": false,
 					"settings":
@@ -771,8 +870,8 @@
 						"selection":
 						[
 							[
-								212,
-								212
+								215,
+								215
 							]
 						],
 						"settings":
@@ -783,7 +882,63 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "style/register.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "style/account.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -823,8 +978,8 @@
 		"cols":
 		[
 			0.0,
-			0.494895833333,
-			0.973958333333,
+			0.711979166667,
+			0.738020833333,
 			1.0
 		],
 		"rows":

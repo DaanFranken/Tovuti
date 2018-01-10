@@ -16,10 +16,10 @@ else
 	?>
 	<form class="w3-container" method="POST">
 	  <label class="w3-text-teal"><b>Gebruikersnaam of student nummer</b></label>
-	  <input class="w3-input w3-border w3-light-grey" name="username" type="text" required>
+	  <input class="w3-input w3-border w3-light-grey" name="username" <?php if(isset($_POST['loginSubmit'])){echo 'value="'.$_POST['username'].'"';} ?> type="text" required>
 
 	  <label class="w3-text-teal"><b>Wachtwoord</b></label>
-	  <input class="w3-input w3-border w3-light-grey" name="password" type="Password" required>
+	  <input class="w3-input w3-border w3-light-grey" name="password" <?php if(isset($_POST['loginSubmit'])){echo 'value="'.$_POST['password'].'"';} ?> type="Password" required>
 	  <br/>
 	  <input type="submit" class="w3-btn w3-blue-grey" value="Login" name="loginSubmit">
 	</form>
