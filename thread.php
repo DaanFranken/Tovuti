@@ -88,7 +88,7 @@ if($user->loginCheck())
 					<div class="w3-row w3-section">
 						<div class="w3-col" style="width:50px; color:#2C9AC9!important;"><i class="w3-xxlarge fa fa-pencil"></i></div>
 						<div class="w3-rest">
-							<textarea class="w3-input w3-border" name="comment" form="reply" placeholder="Schrijf hier uw reactie"></textarea>
+							<textarea class="w3-input w3-border" style="width: 98%;" name="comment" form="reply" placeholder="Schrijf hier uw reactie"></textarea>
 						</div>
 					</div>
 

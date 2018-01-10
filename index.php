@@ -64,6 +64,9 @@ if($user->loginCheck())
 		case 'forum':
 			include 'thread.php';
 			break;
+		case 'class':
+			include 'classlist.php';
+			break;
 		default:
 			include 'home.php';
 	}

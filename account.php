@@ -107,14 +107,15 @@ if($user->loginCheck())
 					{
 						case '1':
 						echo '<i class="fa fa-3x fa-graduation-cap w3-left w3-circle w3-margin-right" aria-hidden="true" style="width: 60px;"></i>
-						<p>Student in klas '.$user->getStudentClass($_GET['user_id']) .'</p>
+						<p>'.$user->getPermissionName($permission).' in klas 
+						<a class="thread" href="?pageStr=class&class_id='.$user->getStudentClassID($_GET['user_id']).'">'.$user->getStudentClass($_GET['user_id']) .'</a></p>
 						<p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
 							</p><br>';
 							break;
 
 							case '3':
 							echo '<img src="images/admin.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-							<p>Admin account</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
+							<p>'.$user->getPermissionName($permission) .'</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
 							</p><br>';
 							break;
 

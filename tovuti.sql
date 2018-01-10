@@ -78,7 +78,8 @@ CREATE TABLE `reaction` (
   `user_ID` varchar(255) NOT NULL,
   `Reaction` text NOT NULL,
   `reactionDate` datetime NOT NULL,
-  `lastChanged` datetime DEFAULT NULL
+  `lastChanged` datetime DEFAULT NULL,
+  `Status` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

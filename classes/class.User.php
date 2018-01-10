@@ -356,5 +356,39 @@ class User
 			}
 		}
 	}
+
+	public function getStudentClassID($ID)
+	{
+		$sth = $this->db->selectDatabase('students','user_ID',$ID,'');
+		if($row = $sth->fetch())
+		{
+			$classSth = $this->db->selectDatabase('class','class_ID',$row['class_ID'],'');
+			if($row = $classSth->fetch())
+			{
+				return $row['class_ID'];
+			}
+		}
+	}
+
+	public function getPermissionName($permissionLvl)
+	{
+		switch($permissionLvl)
+		{
+			case '1':
+			return 'Student';
+			break;
+
+			case '2':
+			return '<span class="w3-text-green">Docent</span>';
+			break;
+
+			case '3':
+			return '<span class="w3-text-red">Administrator</span>';
+			break;
+
+			default:
+			return 'Gastaccount';
+		}
+	}
 }
 ?>

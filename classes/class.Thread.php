@@ -136,12 +136,12 @@ class Thread
 
 		public function getThreadReplies($ID)
 		{
-			$addon = ' ORDER BY reactionDate ASC';
+			$addon = 'AND Status = 1 ORDER BY reactionDate ASC';
 			$sth = $this->db->selectDatabase('reaction','thread_ID',$ID,$addon);
 			$result = $sth->fetchAll();
 			if(!$result)
 			{
-				echo 'Er zijn nog geen reacties op deze post!';
+				echo '<div class="w3-small">Er zijn nog geen reacties op deze post!</div>';
 			}
 			else
 			{
@@ -153,17 +153,26 @@ class Thread
 					$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $res['reactionDate']);
 					$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
 					$authorURL = '?pageStr=account&user_id='.$user->id;
-
+					$loggedInUser = new User($_SESSION['Username']);
 					?>
 					<div class="w3-margin">
 						<div class="w3-card-4" >
 							<header class="w3-container w3-light-grey">
-								Reactie van <a class="thread" href="<?php echo $authorURL; ?>"><?php echo $name; ?></a>
+								Reactie van <a class="thread" href="<?php echo $authorURL; ?>"><?php echo $name; ?></a> (<?php echo $user->getPermissionName($user->permission); ?>)
 								<div class="w3-right w3-small"><?php echo $formattedDate; ?></div>
 							</header>
 							<div class="w3-container">
 								<p><?php echo $res['Reaction'];?></p>
 								<hr>
+								<?php 
+								if($loggedInUser->permission > 1 || $res['user_ID'] == $loggedInUser->id)
+								{
+									echo '<div class="w3-right">';
+									echo '<a href="#"><span class="w3-bar-item w3-xlarge w3-right w3-margin-left"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
+									echo '<a href="#"><span class="w3-bar-item w3-xlarge"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
+									echo '</div>';									
+								}
+								?>
 							</div>
 						</div>
 					</div>

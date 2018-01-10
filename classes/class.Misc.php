@@ -3,11 +3,13 @@
     class Misc 
     {
         protected $db;
+        protected $user;
 
         // Db connection
         public function __construct()
         {
             $this->db = new Database();
+            $this->user = new User();
         }
 
         public function readVar($type, $var) 
@@ -75,7 +77,8 @@
         }
 
         // Create rand ID
-        function getGUID(){
+        public function getGUID()
+        {
             if (function_exists('com_create_guid')){
                 return trim(com_create_guid(), '{}');
             }
@@ -91,6 +94,31 @@
                 .substr($charid,20,12)
                 .chr(125);// "}"
                 return trim($uuid, '{}');
+            }
+        }
+
+        public function getAllClassesAsList()
+        {
+            $sth = $this->db->selectDatabase('class', '','','');
+            $result = $sth->fetchAll();
+
+            foreach($result as $res)
+            {
+                echo '<a class="thread" href="?pageStr=class&class_id='.$res['class_ID'].'">'.$res['Name'].'</a>';
+            }
+        }
+
+        public function getAllStudentsInClass($ID)
+        {
+            $sth = $this->db->selectDatabase('students', 'class_ID',$ID,'');
+            $result = $sth->fetchAll();
+
+            foreach($result as $res)
+            {
+                $user = new User();
+                $user->getUserByID($res['user_ID']);
+
+                echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
             }
         }
     }
