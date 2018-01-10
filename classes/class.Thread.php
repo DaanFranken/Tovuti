@@ -75,8 +75,9 @@ class Thread
 					<?php
 					if($this->user->permission == 2 || $this->user->permission == 3)
 					{
-						echo '<a href="?pageStr=forum&deleteThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
-
+						echo '<form action="" method="POST" id="deleteForm'.$res['thread_ID'].'"><input type="hidden" name="threadID" value="'.$res['thread_ID'].'"></form>';
+						$threadID = "'".$res['thread_ID']."'";
+						echo '<div onclick="deleteThread('.$threadID.')"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></div>';
 						echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
 					}
 					switch ($urgency) {
@@ -129,6 +130,7 @@ class Thread
 		}
 	}
 
+	// Create thread
 	public function createThread($user_ID, $title, $thread, $urgency)
 	{
 		$this->user->getUserByID($this->user_id);
@@ -145,6 +147,13 @@ class Thread
 			$this->db->insertDatabase('thread', $arrayValues);
 			echo 'Uw bericht is geplaatst';
 		}
+	}
+
+	// Delete thread
+	public function deleteThread($threadID)
+	{
+		$updateArray['Status'] = 0;
+		$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray);
 	}
 
 	public function editThread()

@@ -1,19 +1,15 @@
 <div class="w3-margin">
 	<?php
 
-	// Alleen docenten en admins kunnen posts verwijderen
-	if($misc->readVar('GET','deleteThread') && $user->permission > 1)
+	// Delete thread | Alleen docenten en admins kunnen posts verwijderen
+	if($misc->readVar('POST','threadID') && $user->permission > 1)
 	{
-		echo '<script>if(!confirm("Weet u zeker dat u deze post wil verwijderen?")){index.php?pageStr=forum};</script>';
-		$thread_id = $_GET['deleteThread'];
-		$updateArray['Status'] = 0;
-		$db->updateDatabase('thread','thread_ID',$thread_id,$updateArray);
+		$thread->deleteThread($_POST['threadID']);
 		?>
 		<script>
 		window.location.href = 'index.php?pageStr=forum';
 		</script>
 		<?php
-
 	}
 
 	// Creat new thread
@@ -60,7 +56,7 @@
 			}
 			else
 			{
-				echo '<a class="thread" href="?pageStr=thread">Terug naar forum</a>';
+				echo '<a class="thread" href="?pageStr=forum">Terug naar forum</a>';
 				$thread = new Thread($misc->readVar('GET','thread_id'));
 				echo '<h3>'.$thread->title.'</h3>';
 				echo $thread->thread;
@@ -81,3 +77,10 @@ if(!$check)
 	<?php
 }
 ?>
+<script>
+function deleteThread(threadID){
+	if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
+		document.getElementById('deleteForm'+threadID).submit();
+	}
+}
+</script>
