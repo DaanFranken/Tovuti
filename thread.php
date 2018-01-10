@@ -6,17 +6,6 @@ if($user->loginCheck())
 	<div class="w3-margin">
 		<?php
 
-		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
-		if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
-		{
-			$thread->deleteThread($_POST['threadID']);
-			?>
-			<script>
-			window.location.href = 'index.php?pageStr=forum';
-			</script>
-			<?php
-		}
-
 		// Creat new thread
 		if(isset($_POST['createNewThread']))
 		{
@@ -53,6 +42,7 @@ if($user->loginCheck())
 				$arrayValues['lastChanged']	= date("Y-m-d H:i:s");
 
 				$db->updateDatabase('thread', 'thread_ID', $_POST['threadID'], $arrayValues);
+				echo 'Uw post is succesvol aangepast';
 				?>
 				<script>
 					setTimeout(function(){
@@ -90,6 +80,17 @@ if($user->loginCheck())
 				echo '<h3>'.$thread->title.'</h3>';
 				echo $thread->thread;
 			}
+		}
+
+		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
+		if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
+		{
+			$thread->deleteThread($_POST['threadID']);
+			?>
+			<script>
+			window.location.href = 'index.php?pageStr=forum';
+			</script>
+			<?php
 		}
 
 		?>
