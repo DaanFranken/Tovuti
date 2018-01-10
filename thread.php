@@ -79,7 +79,35 @@ if($user->loginCheck())
 				$thread = new Thread($misc->readVar('GET','thread_id'));
 				echo '<h3>'.$thread->title.'</h3>';
 				echo $thread->thread;
+				echo '<hr/>';
+				$thread->getThreadReplies($thread->thread_id);
+				?>
+
+
+				<form method="POST" id="reply">
+					<div class="w3-row w3-section">
+						<div class="w3-col" style="width:50px; color:#2C9AC9!important;"><i class="w3-xxlarge fa fa-pencil"></i></div>
+						<div class="w3-rest">
+							<textarea class="w3-input w3-border" name="comment" form="reply" placeholder="Schrijf hier uw reactie"></textarea>
+						</div>
+					</div>
+
+					<input type="submit" name="sendReply" value="Reageer" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+				</form>
+				<?php
 			}
+		}
+
+		if($misc->readVar('POST','sendReply'))
+		{
+			$arrayValues['reaction_ID'] 	= $misc->getGUID();
+			$arrayValues['thread_ID'] 		= $thread->thread_id;
+			$arrayValues['user_ID'] 		= $user->id;
+			$arrayValues['Reaction'] 		= $_POST['comment'];
+			$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
+			$db->insertDatabase('reaction',$arrayValues);
+			
+				header("Refresh:0");
 		}
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
@@ -88,7 +116,7 @@ if($user->loginCheck())
 			$thread->deleteThread($_POST['threadID']);
 			?>
 			<script>
-			window.location.href = 'index.php?pageStr=forum';
+				window.location.href = 'index.php?pageStr=forum';
 			</script>
 			<?php
 		}
@@ -96,7 +124,7 @@ if($user->loginCheck())
 		?>
 	</div>
 	<?php
-	if(!$check)
+	if(!$check && !isset($_GET['thread_id']))
 	{
 		?>
 		<form action="" method="POST">
@@ -106,11 +134,11 @@ if($user->loginCheck())
 	}
 	?>
 	<script>
-	function deleteThread(threadID){
-		if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
-			document.getElementById('deleteForm'+threadID).submit();
+		function deleteThread(threadID){
+			if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
+				document.getElementById('deleteForm'+threadID).submit();
+			}
 		}
-	}
 	</script>
 	<?php
 }

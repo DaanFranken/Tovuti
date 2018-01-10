@@ -43,19 +43,19 @@ class User
 	public function getUserByID($ID)
 	{
 		$sth = $this->db->selectDatabase('users', 'user_ID', $ID, '');
-			if($row = $sth->fetch())
-			{
-				$this->id 			= $row['user_ID'];
-				$this->username 	= $row['Username'];
-				$this->firstname 	= $row['Firstname'];
-				$this->lastname 	= $row['Lastname'];
-				$this->password 	= $row['Password'];
-				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];
-				$this->firstname	= $row['Firstname'];
-				$this->lastname		= $row['Lastname'];
-				return true;
-			}
+		if($row = $sth->fetch())
+		{
+			$this->id 			= $row['user_ID'];
+			$this->username 	= $row['Username'];
+			$this->firstname 	= $row['Firstname'];
+			$this->lastname 	= $row['Lastname'];
+			$this->password 	= $row['Password'];
+			$this->email 		= $row['Email'];
+			$this->permission	= $row['Permission'];
+			$this->firstname	= $row['Firstname'];
+			$this->lastname		= $row['Lastname'];
+			return true;
+		}
 	}
 
 	// Login check
@@ -293,11 +293,11 @@ class User
 
 		// Delete session cookie
 		setcookie(session_name(),
-				'', time() - 42000, 
-				$params["path"], 
-				$params["domain"], 
-				$params["secure"], 
-				$params["httponly"]);
+			'', time() - 42000, 
+			$params["path"], 
+			$params["domain"], 
+			$params["secure"], 
+			$params["httponly"]);
 
 		// Destroy session
 		session_destroy();

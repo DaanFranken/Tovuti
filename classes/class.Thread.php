@@ -116,81 +116,123 @@ class Thread
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
-					</div>
-					<div class="w3-bar-item">
-						<span><i class="fa fa-user-o" aria-hidden="true"></i>
-							<?php
-							echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
-							echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
-							echo '</a>';?>
-						</span><br/>
-						<span class="w3-margin-top"><i class="fa fa-clock-o" aria-hidden="true"></i>
-							<?php echo $formattedDate; ?>
-						</span>
-					</div>
-				</li>
-				<?php
+						</div>
+						<div class="w3-bar-item">
+							<span><i class="fa fa-user-o" aria-hidden="true"></i>
+								<?php
+								echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
+								echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
+								echo '</a>';?>
+							</span><br/>
+							<span class="w3-margin-top"><i class="fa fa-clock-o" aria-hidden="true"></i>
+								<?php echo $formattedDate; ?>
+							</span>
+						</div>
+					</li>
+					<?php
+				}
 			}
 		}
-	}
 
-	// Create thread
-	public function createThread($user_ID, $title, $thread, $urgency)
-	{
-		$this->user->getUserByID($this->user_id);
-
-		if($this->user->permission != 0)
+		public function getThreadReplies($ID)
 		{
-			$arrayValues['thread_ID'] 	= $this->misc->getGUID();
-			$arrayValues['user_ID']		= $user_ID;
-			$arrayValues['Title'] 		= $title;
-			$arrayValues['Thread']		= $thread;
-			$arrayValues['Urgency']		= $urgency;
-			$arrayValues['threadDate']	= date("Y-m-d H:i:s");
-
-			$this->db->insertDatabase('thread', $arrayValues);
-			echo 'Uw bericht is geplaatst';
-		}
-	}
-
-	// Delete thread
-	public function deleteThread($threadID)
-	{
-		$updateArray['Status'] = 0;
-		$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray);
-	}
-
-	// Thread form
-	public function newThreadForm($check)
-	{
-		?>
-		<form action="?pageStr=forum" method="POST">
-			<?php
-			if(!empty($check))
+			$addon = ' ORDER BY reactionDate ASC';
+			$sth = $this->db->selectDatabase('reaction','thread_ID',$ID,$addon);
+			$result = $sth->fetchAll();
+			if(!$result)
 			{
-				$row = $check->fetch();
-				echo '<input type="hidden" name="editThread" value="true"><input type="hidden" name="threadID" value="'.$row['thread_ID'].'">';
+				echo 'Er zijn nog geen reacties op deze post!';
 			}
 			else
 			{
-				echo '<input type="hidden" name="createNewThread" value="true">';
+				foreach($result as $res)
+				{
+					$user = new User();
+					$user->getUserByID($res['user_ID']);
+					$name = $user->firstname . '&nbsp;' . $user->lastname;
+					$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $res['reactionDate']);
+					$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+					$authorURL = '?pageStr=account&user_id='.$user->id;
+
+					?>
+					<div class="w3-margin">
+						<div class="w3-card-4" >
+							<header class="w3-container w3-light-grey">
+								Reactie van <a class="thread" href="<?php echo $authorURL; ?>"><?php echo $name; ?></a>
+								<div class="w3-right w3-small"><?php echo $formattedDate; ?></div>
+							</header>
+							<div class="w3-container">
+								<p><?php echo $res['Reaction'];?></p>
+								<hr>
+							</div>
+						</div>
+					</div>
+
+
+
+					<?php	
+				}			
 			}
+
+		}
+
+	// Create thread
+		public function createThread($user_ID, $title, $thread, $urgency)
+		{
+			$this->user->getUserByID($this->user_id);
+
+			if($this->user->permission != 0)
+			{
+				$arrayValues['thread_ID'] 	= $this->misc->getGUID();
+				$arrayValues['user_ID']		= $user_ID;
+				$arrayValues['Title'] 		= $title;
+				$arrayValues['Thread']		= $thread;
+				$arrayValues['Urgency']		= $urgency;
+				$arrayValues['threadDate']	= date("Y-m-d H:i:s");
+
+				$this->db->insertDatabase('thread', $arrayValues);
+				echo 'Uw bericht is geplaatst';
+			}
+		}
+
+	// Delete thread
+		public function deleteThread($threadID)
+		{
+			$updateArray['Status'] = 0;
+			$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray);
+		}
+
+	// Thread form
+		public function newThreadForm($check)
+		{
 			?>
-			<label class="w3-text-teal"><b>Title</b></label>
-			<input type="text" name="title" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; }else{echo 'value="'.$row['Title'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
-			<label class="w3-text-teal"><b>Thread</b></label>
-			<input type="text" name="thread" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; }else{echo 'value="'.$row['Thread'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
-			<label class="w3-text-teal"><b>Urgency</b></label><br/>
-			<select name="urgency">
-				<option value="0" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 0){echo 'selected';}elseif(!isset($_POST['newThread'])){echo 'selected';} ?>>Overig</option>
-				<option value="1" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 1) echo 'selected'; ?>>Algemeen</option>
-				<option value="2" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 2) echo 'selected'; ?>>Huiswerk</option>
-				<option value="3" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 3) echo 'selected'; ?>>Activiteit</option>
-				<option value="4" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 4) echo 'selected'; ?>>Belangrijk</option>
-			</select><br/>
-			<input type="submit" name="newThread" value="Save" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
-		</form>
-		<?php
+			<form action="?pageStr=forum" method="POST">
+				<?php
+				if(!empty($check))
+				{
+					$row = $check->fetch();
+					echo '<input type="hidden" name="editThread" value="true"><input type="hidden" name="threadID" value="'.$row['thread_ID'].'">';
+				}
+				else
+				{
+					echo '<input type="hidden" name="createNewThread" value="true">';
+				}
+				?>
+				<label class="w3-text-teal"><b>Title</b></label>
+				<input type="text" name="title" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; }else{echo 'value="'.$row['Title'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
+				<label class="w3-text-teal"><b>Thread</b></label>
+				<input type="text" name="thread" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; }else{echo 'value="'.$row['Thread'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
+				<label class="w3-text-teal"><b>Urgency</b></label><br/>
+				<select name="urgency">
+					<option value="0" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 0){echo 'selected';}elseif(!isset($_POST['newThread'])){echo 'selected';} ?>>Overig</option>
+					<option value="1" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 1) echo 'selected'; ?>>Algemeen</option>
+					<option value="2" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 2) echo 'selected'; ?>>Huiswerk</option>
+					<option value="3" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 3) echo 'selected'; ?>>Activiteit</option>
+					<option value="4" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 4) echo 'selected'; ?>>Belangrijk</option>
+				</select><br/>
+				<input type="submit" name="newThread" value="Save" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+			</form>
+			<?php
+		}
 	}
-}
-?>
+	?>
