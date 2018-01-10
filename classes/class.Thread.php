@@ -12,7 +12,7 @@ class Thread
 	public $threadDate;
 	private $misc;
 
-		// Db connection
+						// Db connection
 	public function __construct($thread_id = NULL)
 	{
 		$this->db = new Database();
@@ -86,8 +86,6 @@ class Thread
 
 						echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
 					}
-					?>
-					<?php
 					switch ($urgency) {
 						case '0':
 						echo '<i class="fa fa-sticky-note fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000000;"></i>';
@@ -108,55 +106,53 @@ class Thread
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
-						</div>
-						<div class="w3-bar-item">
-							<span><i class="fa fa-user-o" aria-hidden="true"></i>
-								<?php
-								echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
-								echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
-								echo '</a>';?>
-							</span><br/>
-							<span class="w3-margin-top"><i class="fa fa-clock-o" aria-hidden="true"></i>
-								<?php echo $formattedDate; ?>
-							</span>
-						</div>
-					</li>
-
-
-					<?php
-				}
-			}
-		}
-
-		public function createThread($user_ID, $title, $thread)
-		{
-			$user = new User();
-			$user->getUserByID($this->user_id);
-
-			if($user->permission != 0)
-			{
-				$arrayValues['thread_ID'] 	= trim(com_create_guid(), '{}');
-				$arrayValues['user_ID']		= $user_ID;
-				$arrayValues['Title'] 		= $title;
-				$arrayValues['Thread']		= $thread;
-				$arrayValues['threadDate']	= date("Y-m-d H:i:s");
-
-				$this->db->insertDatabase('thread', $arrayValues);
-				echo 'Uw bericht is geplaatst';
-			}
-		}
-
-		public function editThread()
-		{
-			$misc = new Misc();
-			if($misc->validateUserRights($thread_ID))
-			{
-				// Permission to edit thread
-			}
-			else
-			{
-				// No permission to edit thread
+					</div>
+					<div class="w3-bar-item">
+						<span><i class="fa fa-user-o" aria-hidden="true"></i>
+							<?php
+							echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
+							echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
+							echo '</a>';?>
+						</span><br/>
+						<span class="w3-margin-top"><i class="fa fa-clock-o" aria-hidden="true"></i>
+							<?php echo $formattedDate; ?>
+						</span>
+					</div>
+				</li>
+				<?php
 			}
 		}
 	}
-	?>
+
+	public function createThread($user_ID, $title, $thread)
+	{
+		$user = new User();
+		$user->getUserByID($this->user_id);
+
+		if($user->permission != 0)
+		{
+			$arrayValues['thread_ID'] 	= trim(com_create_guid(), '{}');
+			$arrayValues['user_ID']		= $user_ID;
+			$arrayValues['Title'] 		= $title;
+			$arrayValues['Thread']		= $thread;
+			$arrayValues['threadDate']	= date("Y-m-d H:i:s");
+
+			$this->db->insertDatabase('thread', $arrayValues);
+			echo 'Uw bericht is geplaatst';
+		}
+	}
+
+	public function editThread()
+	{
+		$misc = new Misc();
+		if($misc->validateUserRights($thread_ID))
+		{
+			// Permission to edit thread
+		}
+		else
+		{
+			// No permission to edit thread
+		}
+	}
+}
+?>

@@ -35,7 +35,7 @@
 			"file": "tovuti.sql",
 			"settings":
 			{
-				"buffer_size": 5347,
+				"buffer_size": 8019,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -53,7 +53,7 @@
 			"file": "menu.php",
 			"settings":
 			{
-				"buffer_size": 1474,
+				"buffer_size": 1465,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -79,7 +79,7 @@
 			"file": "classes/class.Thread.php",
 			"settings":
 			{
-				"buffer_size": 2778,
+				"buffer_size": 4190,
 				"line_ending": "Windows"
 			}
 		},
@@ -87,7 +87,7 @@
 			"file": "classes/class.Misc.php",
 			"settings":
 			{
-				"buffer_size": 1877,
+				"buffer_size": 1861,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -96,7 +96,7 @@
 			"file": "classes/class.User.php",
 			"settings":
 			{
-				"buffer_size": 8520,
+				"buffer_size": 8815,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -105,7 +105,7 @@
 			"file": "account.php",
 			"settings":
 			{
-				"buffer_size": 3108,
+				"buffer_size": 5058,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -123,7 +123,7 @@
 			"file": "style/index.css",
 			"settings":
 			{
-				"buffer_size": 249,
+				"buffer_size": 353,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -206,10 +206,10 @@
 	},
 	"file_history":
 	[
-		"/D/Xampp/htdocs/Tovuti/thread.php",
-		"/D/Xampp/htdocs/Tovuti/account.php",
 		"/D/Xampp/htdocs/Tovuti/login.php",
 		"/D/Xampp/htdocs/Tovuti/register.php",
+		"/D/Xampp/htdocs/Tovuti/thread.php",
+		"/D/Xampp/htdocs/Tovuti/account.php",
 		"/D/Xampp/htdocs/Tovuti/style/style.css",
 		"/D/Xampp/htdocs/Tovuti/index.php",
 		"/D/Xampp/htdocs/U.R.S/urs.sql",
@@ -320,6 +320,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"username",
 			"Wachtwoordd",
 			"Gebruikersnaam",
 			"D69A9A",
@@ -446,8 +447,7 @@
 			"addon",
 			"whereKey",
 			"whereValue",
-			"db",
-			"Password"
+			"db"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -466,7 +466,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -475,15 +475,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5347,
+						"buffer_size": 8019,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								22,
+								22
 							]
 						],
 						"settings":
@@ -493,10 +493,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -525,7 +525,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -534,15 +534,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1474,
+						"buffer_size": 1465,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								325,
+								325
 							]
 						],
 						"settings":
@@ -554,7 +554,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -582,7 +582,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -617,7 +617,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -626,15 +626,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2778,
+						"buffer_size": 4190,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1202,
-								1202
+								0,
+								0
 							]
 						],
 						"settings":
@@ -646,7 +646,7 @@
 						"translation.y": 868.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -655,15 +655,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1877,
+						"buffer_size": 1861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1615,
-								1615
+								0,
+								0
 							]
 						],
 						"settings":
@@ -676,7 +676,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -685,7 +685,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8520,
+						"buffer_size": 8815,
 						"regions":
 						{
 						},
@@ -705,7 +705,7 @@
 						"translation.y": 2610.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -714,7 +714,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3108,
+						"buffer_size": 5058,
 						"regions":
 						{
 						},
@@ -734,7 +734,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -762,13 +762,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -777,7 +777,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 249,
+						"buffer_size": 353,
 						"regions":
 						{
 						},
@@ -797,7 +797,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -825,7 +825,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -854,7 +854,7 @@
 						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -882,7 +882,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -910,7 +910,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -938,7 +938,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -978,7 +978,7 @@
 		"cols":
 		[
 			0.0,
-			0.711979166667,
+			0.711979166666,
 			0.738020833333,
 			1.0
 		],
