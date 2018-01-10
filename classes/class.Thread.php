@@ -82,11 +82,11 @@ class Thread
 					}
 					switch ($urgency) {
 						case '0':
-						echo '<i class="fa fa-clone fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000000;"></i>';
+						echo '<i class="fa fa-clone fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000;"></i>';
 						break;
 
 						case '1':
-						echo '<i class="fa fa-sticky-note-o fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#cc0000;"></i>';
+						echo '<i class="fa fa-sticky-note-o fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px;"></i>';
 						break;
 
 						case '2':
