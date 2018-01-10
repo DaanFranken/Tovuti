@@ -100,7 +100,7 @@ if($user->loginCheck())
 					<h3><?php echo $name; ?></h3>
 				</header>
 				<div class="w3-container">
-					<p><a class="thread" href="?pageStr=thread&user_id=<?php echo $user->id ?>">Posts van <?php echo $name; ?></a></p>
+					<p><a class="thread" href="?pageStr=forum&user_id=<?php echo $user->id ?>">Posts van <?php echo $name; ?></a></p>
 					<hr>
 					<?php
 					switch ($permission)
