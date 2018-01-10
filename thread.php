@@ -7,7 +7,7 @@ if($user->loginCheck())
 		<?php
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
-		if($misc->readVar('POST','threadID') && $user->permission > 1)
+		if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
 		{
 			$thread->deleteThread($_POST['threadID']);
 			?>
@@ -21,7 +21,7 @@ if($user->loginCheck())
 		if(isset($_POST['createNewThread']))
 		{
 			$check = true;
-			if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
+			if($misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
 			{
 				$title = str_replace("<","&lt;",$_POST['title']);
 				$threadPost = str_replace("<","&lt;",$_POST['thread']);
@@ -45,12 +45,14 @@ if($user->loginCheck())
 		if(isset($_GET['editThread']) || isset($_POST['editThread']))
 		{
 			$check = true;
-			if(isset($_POST['createNewThreadTrue']))
+			if($misc->readVar('POST', 'editThread') && isset($_POST['newThread']))
 			{
-				$title = str_replace("<","&lt;",$_POST['title']);
-				$threadPost = str_replace("<","&lt;",$_POST['thread']);
-				$urgency = str_replace("<","&lt;",$_POST['urgency']);
-				$thread->editThread($_POST['threadID'], $title, $thread, $urgency, date("Y-m-d H:i:s"))
+				$arrayValues['Title'] 		= str_replace("<","&lt;",$_POST['title']);
+				$arrayValues['Thread']		= str_replace("<","&lt;",$_POST['thread']);
+				$arrayValues['Urgency']		= str_replace("<","&lt;",$_POST['urgency']);
+				$arrayValues['lastChanged']	= date("Y-m-d H:i:s");
+
+				$db->updateDatabase('thread', 'thread_ID', $_POST['threadID'], $arrayValues);
 				?>
 				<script>
 					setTimeout(function(){

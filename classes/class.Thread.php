@@ -153,18 +153,6 @@ class Thread
 		}
 	}
 
-	// Edit thread
-	public function editThread($threadID, $title, $thread, $urgency, $lastChanged)
-	{
-		$arrayValues['Title'] 		= $title;
-		$arrayValues['Thread']		= $thread;
-		$arrayValues['Urgency']		= $urgency;
-		$arrayValues['lastChanged']	= $lastChanged;
-
-		$this->db->updateDatabase('thread', 'thread_ID', $threadID, $arrayValues);
-		echo 'Het bericht is gewijzigd';
-	}
-
 	// Delete thread
 	public function deleteThread($threadID)
 	{
@@ -176,12 +164,12 @@ class Thread
 	public function newThreadForm($check)
 	{
 		?>
-		<form action="" method="POST">
+		<form action="?pageStr=forum" method="POST">
 			<?php
 			if(!empty($check))
 			{
 				$row = $check->fetch();
-				echo '<input type="hidden" name="editThread" value="true"><input type="hidden" name="threadID" value="'.$row['thread_ID'].'"><input type="hidden" name="createNewThreadTrue" value="true">';
+				echo '<input type="hidden" name="editThread" value="true"><input type="hidden" name="threadID" value="'.$row['thread_ID'].'">';
 			}
 			else
 			{
