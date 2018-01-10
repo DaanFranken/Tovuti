@@ -34,20 +34,6 @@ class Thread
 
 	}
 
-	public function getThread($thread_ID)
-	{
-		$sth = $this->db->selectDatabase('thread','thread_id',$thread_ID,'');
-		if($row = $sth->fetch())
-		{
-
-		}			
-	}
-
-	public function getThreadFunctionIcons()
-	{
-		
-	}
-
 	public function getAllThreads($ID = NULL)
 	{
 		if(!empty($ID))
