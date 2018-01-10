@@ -29,42 +29,56 @@
 		$check = true;
 		if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
 		{
+			$title = $_POST['title'];
+			$thread = $_POST['thread'];
 			$misc->createThread($user->id, $title, $thread);
 		}
 		else
 		{
-			?>
-			<form action="" method="POST">
-				<input type="submit" name="newThread" value="Save">
-			</form>
-			<?php
+			newThreadForm();
 		}
 	}
 
-	// Display threads
-	if($user->loginCheck() AND !$check)
+	function newThreadForm()
 	{
-		if(empty($misc->readVar('GET','thread_id')))
-		{
-			$thread = new Thread();
-			if(!isset($_GET['user_id']))
-			{
-				$thread->getAllThreads();	
-			}
-			elseif($misc->readVar('GET','user_id'))
-			{
-				$thread->getAllThreads($_GET['user_id']);
-			}			
-		}
-		else
-		{
-			echo '<a class="thread" href="?pageStr=thread">Terug naar forum</a>';
-			$thread = new Thread($misc->readVar('GET','thread_id'));
-			echo '<h3>'.$thread->title.'</h3>';
-			echo $thread->thread;
-		}
+		?>
+		<form action="" method="POST">
+				<label class="w3-text-teal"><b>Title</b></label>
+				<input type="text" name="title" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; ?> class="w3-input w3-border w3-light-grey">
+				<label class="w3-text-teal"><b>Thread</b></label>
+				<input type="text" name="thread" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; ?> class="w3-input w3-border w3-light-grey">
+				<input type="submit" name="newThread" value="Save">
+			</form>
+		<?php
 	}
-	else echo 'U dient in te loggen om deze pagina te bekijken';
+
+	// Display threads
+	if(!$check)
+	{
+		if($user->loginCheck())
+		{
+			if(empty($misc->readVar('GET','thread_id')))
+			{
+				$thread = new Thread();
+				if(!isset($_GET['user_id']))
+				{
+					$thread->getAllThreads();	
+				}
+				elseif($misc->readVar('GET','user_id'))
+				{
+					$thread->getAllThreads($_GET['user_id']);
+				}			
+			}
+			else
+			{
+				echo '<a class="thread" href="?pageStr=thread">Terug naar forum</a>';
+				$thread = new Thread($misc->readVar('GET','thread_id'));
+				echo '<h3>'.$thread->title.'</h3>';
+				echo $thread->thread;
+			}
+		}
+		else echo 'U dient in te loggen om deze pagina te bekijken';
+	}
 
 	?>
 </div>
