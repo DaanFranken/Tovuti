@@ -88,7 +88,7 @@ class Thread
 
 					?>
 					<div class="w3-bar-item" style="min-width: 20%;">
-						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=forum&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
+						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=thread&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
@@ -110,17 +110,18 @@ class Thread
 		}
 	}
 
-	public function createThread($user_ID, $title, $thread)
+	public function createThread($user_ID, $title, $thread, $urgency)
 	{
 		$user = new User();
 		$user->getUserByID($this->user_id);
 
 		if($user->permission != 0)
 		{
-			$arrayValues['thread_ID'] 	= trim(com_create_guid(), '{}');
+			$arrayValues['thread_ID'] 	= $this->misc->getGUID();
 			$arrayValues['user_ID']		= $user_ID;
 			$arrayValues['Title'] 		= $title;
 			$arrayValues['Thread']		= $thread;
+			$arrayValues['Urgency']		= $urgency;
 			$arrayValues['threadDate']	= date("Y-m-d H:i:s");
 
 			$this->db->insertDatabase('thread', $arrayValues);
@@ -139,6 +140,29 @@ class Thread
 		{
 			// No permission to edit thread
 		}
+	}
+
+	// Thread form
+	public function newThreadForm()
+	{
+		?>
+		<form action="" method="POST">
+			<input type="hidden" name="createNewThread" value="true">
+			<label class="w3-text-teal"><b>Title</b></label>
+			<input type="text" name="title" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; ?> class="w3-input w3-border w3-light-grey" required>
+			<label class="w3-text-teal"><b>Thread</b></label>
+			<input type="text" name="thread" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; ?> class="w3-input w3-border w3-light-grey" required>
+			<label class="w3-text-teal"><b>Urgency</b></label><br/>
+			<select name="urgency">
+				<option value="0" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 0){echo 'selected';}elseif(!isset($_POST['newThread'])){echo 'selected';} ?>>Overig</option>
+				<option value="1" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 1) echo 'selected'; ?>>Algemeen</option>
+				<option value="2" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 2) echo 'selected'; ?>>Huiswerk</option>
+				<option value="3" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 3) echo 'selected'; ?>>Activiteit</option>
+				<option value="4" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 4) echo 'selected'; ?>>Belangrijk</option>
+			</select><br/>
+			<input type="submit" name="newThread" value="Save" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+		</form>
+		<?php
 	}
 }
 ?>

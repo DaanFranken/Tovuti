@@ -27,29 +27,17 @@
 	if(isset($_POST['createNewThread']))
 	{
 		$check = true;
-		if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
+		if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
 		{
-			$title = $_POST['title'];
-			$thread = $_POST['thread'];
-			$misc->createThread($user->id, $title, $thread);
+			$title = str_replace("<","&lt;",$_POST['title']);
+			$threadPost = str_replace("<","&lt;",$_POST['thread']);
+			$urgency = str_replace("<","&lt;",$_POST['urgency']);
+			$thread->createThread($user->id, $title, $threadPost, $urgency);
 		}
 		else
 		{
-			newThreadForm();
+			$thread->newThreadForm();
 		}
-	}
-
-	function newThreadForm()
-	{
-		?>
-		<form action="" method="POST">
-				<label class="w3-text-teal"><b>Title</b></label>
-				<input type="text" name="title" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; ?> class="w3-input w3-border w3-light-grey">
-				<label class="w3-text-teal"><b>Thread</b></label>
-				<input type="text" name="thread" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; ?> class="w3-input w3-border w3-light-grey">
-				<input type="submit" name="newThread" value="Save">
-			</form>
-		<?php
 	}
 
 	// Display threads
@@ -82,6 +70,13 @@
 
 	?>
 </div>
-<form action="" method="POST">
-	<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
-</form>
+<?php
+if(!$check)
+{
+	?>
+	<form action="" method="POST">
+		<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
+	</form>
+	<?php
+}
+?>

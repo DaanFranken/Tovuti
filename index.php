@@ -4,6 +4,7 @@ include_once 'autoloader.php';
 $db = new Database();
 $misc = new Misc();
 $user = new User();
+$thread = new Thread();
 
 if($user->loginCheck())
 {
