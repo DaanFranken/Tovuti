@@ -17,6 +17,11 @@
                 if (isset($_POST[$var]) && !empty($_POST[$var]))
                 {
                     return $_POST[$var];
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
             else
@@ -24,6 +29,11 @@
                 if (isset($_GET[$var]) && !empty($_GET[$var]))
                 {
                     return $_GET[$var];
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }         
         }

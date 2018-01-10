@@ -22,7 +22,27 @@
 
 	}
 
-	if($user->loginCheck())
+	// Creat new thread
+	$check = false;
+	if(isset($_POST['createNewThread']))
+	{
+		$check = true;
+		if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
+		{
+			$misc->createThread($user->id, $title, $thread);
+		}
+		else
+		{
+			?>
+			<form action="" method="POST">
+				<input type="submit" name="newThread" value="Save">
+			</form>
+			<?php
+		}
+	}
+
+	// Display threads
+	if($user->loginCheck() AND !$check)
 	{
 		if(empty($misc->readVar('GET','thread_id')))
 		{
@@ -48,3 +68,6 @@
 
 	?>
 </div>
+<form action="" method="POST">
+	<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
+</form>

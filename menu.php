@@ -11,7 +11,7 @@ if(isset($_POST['logout']))
 <a href="index.php?pageStr=thread" class="mainMenuLink mainMenuLinkDiv">
 		<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
 			<div class="mainMenuLinkText">
-				Thread
+				Forum
 			</div>
 		</div>
 	</a> 
