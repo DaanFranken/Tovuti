@@ -88,7 +88,7 @@ class Thread
 
 					?>
 					<div class="w3-bar-item" style="min-width: 20%;">
-						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=thread&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
+						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=forum&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
