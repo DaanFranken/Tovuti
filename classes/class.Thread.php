@@ -24,7 +24,11 @@ class Thread
 						// Db connection
 	public function __construct($thread_id = NULL)
 	{
-		$this->user = new User($_SESSION['Username']);
+		$this->user = new User();
+		if($this->user->loginCheck())
+		{
+			$this->user = new User($_SESSION['Username']);
+		}
 		$this->db = new Database();
 		$this->misc = new Misc();
 
