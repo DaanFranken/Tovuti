@@ -104,7 +104,7 @@
 
             foreach($result as $res)
             {
-                echo '<a class="thread" href="?pageStr=class&class_id='.$res['class_ID'].'">'.$res['Name'].'</a>';
+                echo '<a class="thread" href="?pageStr=class&class_id='.$res['class_ID'].'">'.$res['Name'].'</a><br/>';
             }
         }
 
