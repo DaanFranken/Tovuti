@@ -1,46 +1,48 @@
-<div class="w3-margin">
-	<?php
-
-	// Delete thread | Alleen docenten en admins kunnen posts verwijderen
-	if($misc->readVar('POST','threadID') && $user->permission > 1)
-	{
-		$thread->deleteThread($_POST['threadID']);
-		?>
-		<script>
-		window.location.href = 'index.php?pageStr=forum';
-		</script>
+<?php
+if($user->loginCheck())
+{
+	?>
+	<div class="w3-margin">
 		<?php
-	}
 
-	// Creat new thread
-	$check = false;
-	if(isset($_POST['createNewThread']))
-	{
-		$check = true;
-		if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
+		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
+		if($misc->readVar('POST','threadID') && $user->permission > 1)
 		{
-			$title = str_replace("<","&lt;",$_POST['title']);
-			$threadPost = str_replace("<","&lt;",$_POST['thread']);
-			$urgency = str_replace("<","&lt;",$_POST['urgency']);
-			$thread->createThread($user->id, $title, $threadPost, $urgency);
+			$thread->deleteThread($_POST['threadID']);
 			?>
 			<script>
-				setTimeout(function(){
-					window.location.href = 'index.php?pageStr=forum';
-				}, 2000);
+			window.location.href = 'index.php?pageStr=forum';
 			</script>
 			<?php
 		}
-		else
-		{
-			$thread->newThreadForm();
-		}
-	}
 
-	// Display threads
-	if(!$check)
-	{
-		if($user->loginCheck())
+		// Creat new thread
+		$check = false;
+		if(isset($_POST['createNewThread']))
+		{
+			$check = true;
+			if($misc->readVar('POST', 'createNewThread') && $misc->readVar('POST', 'createNewThread') && isset($_POST['newThread']))
+			{
+				$title = str_replace("<","&lt;",$_POST['title']);
+				$threadPost = str_replace("<","&lt;",$_POST['thread']);
+				$urgency = str_replace("<","&lt;",$_POST['urgency']);
+				$thread->createThread($user->id, $title, $threadPost, $urgency);
+				?>
+				<script>
+					setTimeout(function(){
+						window.location.href = 'index.php?pageStr=forum';
+					}, 2000);
+				</script>
+				<?php
+			}
+			else
+			{
+				$thread->newThreadForm();
+			}
+		}
+
+		// Display threads
+		if(!$check)
 		{
 			if(empty($misc->readVar('GET','thread_id')))
 			{
@@ -62,25 +64,30 @@
 				echo $thread->thread;
 			}
 		}
-		else echo 'U dient in te loggen om deze pagina te bekijken';
-	}
 
+		?>
+	</div>
+	<?php
+	if(!$check)
+	{
+		?>
+		<form action="" method="POST">
+			<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
+		</form>
+		<?php
+	}
 	?>
-</div>
-<?php
-if(!$check)
-{
-	?>
-	<form action="" method="POST">
-		<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
-	</form>
+	<script>
+	function deleteThread(threadID){
+		if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
+			document.getElementById('deleteForm'+threadID).submit();
+		}
+	}
+	</script>
 	<?php
 }
-?>
-<script>
-function deleteThread(threadID){
-	if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
-		document.getElementById('deleteForm'+threadID).submit();
-	}
+else
+{
+	echo 'U dient in te loggen om deze pagina te bekijken';
 }
-</script>
+?>
