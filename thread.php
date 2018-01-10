@@ -1,6 +1,7 @@
 <?php
 if($user->loginCheck())
 {
+	$check = false;
 	?>
 	<div class="w3-margin">
 		<?php
@@ -17,7 +18,6 @@ if($user->loginCheck())
 		}
 
 		// Creat new thread
-		$check = false;
 		if(isset($_POST['createNewThread']))
 		{
 			$check = true;
@@ -37,7 +37,32 @@ if($user->loginCheck())
 			}
 			else
 			{
-				$thread->newThreadForm();
+				$thread->newThreadForm(false);
+			}
+		}
+
+		// Edit thread
+		if(isset($_GET['editThread']) || isset($_POST['editThread']))
+		{
+			$check = true;
+			if(isset($_POST['createNewThreadTrue']))
+			{
+				$title = str_replace("<","&lt;",$_POST['title']);
+				$threadPost = str_replace("<","&lt;",$_POST['thread']);
+				$urgency = str_replace("<","&lt;",$_POST['urgency']);
+				$thread->editThread($_POST['threadID'], $title, $thread, $urgency, date("Y-m-d H:i:s"))
+				?>
+				<script>
+					setTimeout(function(){
+						window.location.href = 'index.php?pageStr=forum';
+					}, 2000);
+				</script>
+				<?php
+			}
+			else
+			{
+				$sth = $db->selectDatabase('thread', 'thread_ID', $_GET['editThread'], '');
+				$thread->newThreadForm($sth);
 			}
 		}
 

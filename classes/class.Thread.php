@@ -82,7 +82,7 @@ class Thread
 						echo '<form action="" method="POST" id="deleteForm'.$res['thread_ID'].'"><input type="hidden" name="threadID" value="'.$res['thread_ID'].'"></form>';
 						$threadID = "'".$res['thread_ID']."'";
 						echo '<div onclick="deleteThread('.$threadID.')"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></div>';
-						echo '<span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span>';
+						echo '<a href="?pageStr=forum&editThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
 					}
 					switch ($urgency) {
 						case '0':
@@ -153,6 +153,18 @@ class Thread
 		}
 	}
 
+	// Edit thread
+	public function editThread($threadID, $title, $thread, $urgency, $lastChanged)
+	{
+		$arrayValues['Title'] 		= $title;
+		$arrayValues['Thread']		= $thread;
+		$arrayValues['Urgency']		= $urgency;
+		$arrayValues['lastChanged']	= $lastChanged;
+
+		$this->db->updateDatabase('thread', 'thread_ID', $threadID, $arrayValues);
+		echo 'Het bericht is gewijzigd';
+	}
+
 	// Delete thread
 	public function deleteThread($threadID)
 	{
@@ -160,28 +172,26 @@ class Thread
 		$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray);
 	}
 
-	public function editThread()
-	{
-		if($this->misc->validateUserRights($thread_ID))
-		{
-			// Permission to edit thread
-		}
-		else
-		{
-			// No permission to edit thread
-		}
-	}
-
 	// Thread form
-	public function newThreadForm()
+	public function newThreadForm($check)
 	{
 		?>
 		<form action="" method="POST">
-			<input type="hidden" name="createNewThread" value="true">
+			<?php
+			if(!empty($check))
+			{
+				$row = $check->fetch();
+				echo '<input type="hidden" name="editThread" value="true"><input type="hidden" name="threadID" value="'.$row['thread_ID'].'"><input type="hidden" name="createNewThreadTrue" value="true">';
+			}
+			else
+			{
+				echo '<input type="hidden" name="createNewThread" value="true">';
+			}
+			?>
 			<label class="w3-text-teal"><b>Title</b></label>
-			<input type="text" name="title" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; ?> class="w3-input w3-border w3-light-grey" required>
+			<input type="text" name="title" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; }else{echo 'value="'.$row['Title'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
 			<label class="w3-text-teal"><b>Thread</b></label>
-			<input type="text" name="thread" <?php echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; ?> class="w3-input w3-border w3-light-grey" required>
+			<input type="text" name="thread" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; }else{echo 'value="'.$row['Thread'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
 			<label class="w3-text-teal"><b>Urgency</b></label><br/>
 			<select name="urgency">
 				<option value="0" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 0){echo 'selected';}elseif(!isset($_POST['newThread'])){echo 'selected';} ?>>Overig</option>
