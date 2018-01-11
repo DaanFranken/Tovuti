@@ -39,4 +39,5 @@ if($user->loginCheck())
 		</div>
 <?php 
 }
+else echo 'U dient in te loggen om deze pagina te bekijken';
 ?>

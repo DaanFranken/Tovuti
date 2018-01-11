@@ -190,7 +190,7 @@ class Thread
 		{
 			$this->user->getUserByID($this->user_id);
 
-			if($this->user->permission != 0)
+			if($this->user->permission != 99)
 			{
 				$arrayValues['thread_ID'] 	= $this->misc->getGUID();
 				$arrayValues['user_ID']		= $user_ID;

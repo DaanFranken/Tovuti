@@ -108,40 +108,43 @@ if($user->loginCheck())
 						case '1':
 						echo '<i class="fa fa-3x fa-graduation-cap w3-left w3-circle w3-margin-right" aria-hidden="true" style="width: 60px;"></i>
 						<p>'.$user->getPermissionName($permission).' in klas 
-						<a class="thread" href="?pageStr=class&class_id='.$user->getStudentClassID($_GET['user_id']).'">'.$user->getStudentClass($_GET['user_id']) .'</a></p>
-						<p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
+							<a class="thread" href="?pageStr=class&class_id='.$user->getStudentClassID($_GET['user_id']).'">'.$user->getStudentClass($_GET['user_id']) .'</a></p>
+							<p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
 							</p><br>';
 							break;
 
 							case '3':
 							echo '<img src="images/admin.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
 							<p>'.$user->getPermissionName($permission) .'</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
-							</p><br>';
-							break;
+						</p><br>';
+						break;
 
-							default:
-							echo '<img src="images/account.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">';
-							break;
-						}
+						default:
+						echo '<img src="images/account.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+						<p>'.$user->getPermissionName($permission) .'</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
+					</p><br>
+					';
+					break;
+				}
 
-						?>
+				?>
 
-					</div>
-					<!-- Misschien hier wat functies of functie icons? -->
-					<!-- <button class="w3-button w3-block w3-dark-grey">+ Connect</button> -->
-				</div>
 			</div>
-			<?php
-		}
+			<!-- Misschien hier wat functies of functie icons? -->
+			<!-- <button class="w3-button w3-block w3-dark-grey">+ Connect</button> -->
+		</div>
+	</div>
+	<?php
+}
+}
+else
+{
+	echo 'U dient in te loggen om deze pagina te bekijken';
+}
+?>
+<style>
+	.langDiv{
+		opacity: 1;
+		transition: opacity 0.3s;
 	}
-	else
-	{
-		echo 'U dient in te loggen om deze pagina te bekijken';
-	}
-	?>
-	<style>
-		.langDiv{
-			opacity: 1;
-			transition: opacity 0.3s;
-		}
-	</style>
+</style>

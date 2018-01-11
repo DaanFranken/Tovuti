@@ -164,16 +164,18 @@ class User
 					echo 'Uw wachtwoorden komen niet overeen<br/>';
 					$errorCheck = false;
 				}
-
+			
 				if($errorCheck)
 				{
-					$arrayValues['user_ID'] = trim(com_create_guid(), '{}');
+					$misc = new Misc();
+					$arrayValues['user_ID'] = $misc->getGUID();
 					$arrayValues['Username'] = $username; 
 					$arrayValues['Firstname'] = $firstname;
 					$arrayValues['Lastname'] = $lastname;
 					$arrayValues['Password'] = password_hash($password, PASSWORD_DEFAULT);
 					$arrayValues['Email'] = $email;
 					$arrayValues['Permission'] = 0;
+					
 					$this->db->insertDatabase('users', $arrayValues);
 					echo 'Uw account is succesvol geregistreerd';
 				}
@@ -321,9 +323,13 @@ class User
 		}
 
 		// Send mail
-		$msg = "Klik op deze link om uw wachtwoord te wijzigen.\nindex.php?pageStr=passwordConfirm&randNmb=".$randNmb;
+		$msg = 'Klik op 
+		<a href="abyss-game.com/index.php?pageStr=passwordConfirm&randNmb='.$randNmb.'">deze link</a> om uw wachtwoord te wijzigen.
+		';
 		$msg = wordwrap($msg,70);
-		mail($this->email,"Vault-Tec | Password change",$msg);
+		$headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
+		$headers .= 'From: admin@tovuti.com'; 
+		mail($this->email,"Password change",$msg,$headers);
 		echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Verander uw account door deze link te bezoeken.<br/><br/>';
 	}
 
