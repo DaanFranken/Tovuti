@@ -9,42 +9,50 @@ if(isset($_POST['logout']))
 </a>
 <div id="mainMenuFullscreen" style="display: inline;">
 <a href="index.php?pageStr=forum" class="mainMenuLink mainMenuLinkDiv">
-		<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
-			<div class="mainMenuLinkText">
-				Forum
-			</div>
+	<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
+		<div class="mainMenuLinkText">
+			Forum
 		</div>
-	</a> 
-	<?php
-	if($user->loginCheck())
-	{
-		?>
-		<a href="index.php?pageStr=account" class="mainMenuLink mainMenuLinkPicture">
-			<div <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
-				<img src="images/account.png" class="mainMenuImage2">
-			</div>
-		</a>
-		<form action="" method="post" id="logoutForm" style="display: inline">
-			<input type="hidden" name="logout" value="true">
-			<span class="mainMenuLink" onclick="logout()">
-				<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
-					<img src="images/logout.png" class="mainMenuImage2">
-				</div>
-			</span>
-		</form>
-		<?php
-	}
-	else
-	{
-		?>
-		<a href="index.php?pageStr=login" class="mainMenuLink">
-			<div class="mainMenuLinkPicture" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
-				<img src="images/login.png" class="mainMenuImage2">
-			</div>
-		</a>
-		<?php
-	}
+	</div>
+</a>
+<a href="index.php?pageStr=class" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
+		<div class="mainMenuLinkText">
+			Klassenlijsten
+		</div>
+	</div>
+</a> 
+<?php
+if($user->loginCheck())
+{
 	?>
+	
+	<form action="" method="post" id="logoutForm" style="display: inline">
+		<input type="hidden" name="logout" value="true">
+		<span class="mainMenuLink" onclick="logout()">
+			<div class="mainMenuLinkPicture w3-right w3-margin-right w3-margin-left" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
+				<img src="images/logout.png" class="mainMenuImage2">
+			</div>
+		</span>
+	</form>
+	<a href="index.php?pageStr=account" class="mainMenuLink mainMenuLinkPicture w3-right">
+		<div <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
+			<img src="images/account.png" class="mainMenuImage2">
+		</div>
+	</a>
+	<?php
+}
+else
+{
+	?>
+	<a href="index.php?pageStr=login" class="mainMenuLink">
+		<div class="mainMenuLinkPicture w3-right w3-margin-right" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
+			<img src="images/login.png" class="mainMenuImage2">
+		</div>
+	</a>
+	<?php
+}
+?>
 </div>
 <div id="mainMenuWindowed">
 

@@ -15,7 +15,8 @@
 
 .mainMenuLinkDiv{
 	color: #333333;
-	position: relative;
+	/*position: relative;*/
+	margin-left: 50px;
 	display: inline-block;
 	height: 50px;
 	top: -1px;
@@ -42,11 +43,11 @@
 
 .mainMenuLinkPicture{
 	color: #333333;
-	position: relative;
+	/*position: relative;*/
 	display: inline-block;
 	height: 50px;
 	top: -1px;
-	left: calc(100% - 250px);
+	left: calc(100% - 350px);
 	font-size: 25px;
 	text-align: center;
 	border-bottom: 2px solid #125F80;
