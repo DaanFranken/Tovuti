@@ -9,14 +9,14 @@ if(isset($_POST['logout']))
 </a>
 <div id="mainMenuFullscreen" style="display: inline;">
 <a href="index.php?pageStr=forum" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
+	<div <?php $misc->menuCurrentPage($pageStr, 'forum'); ?>>
 		<div class="mainMenuLinkText">
 			Forum
 		</div>
 	</div>
 </a>
 <a href="index.php?pageStr=class" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'thread'); ?>>
+	<div <?php $misc->menuCurrentPage($pageStr, 'class'); ?>>
 		<div class="mainMenuLinkText">
 			Klassenlijsten
 		</div>
