@@ -378,7 +378,7 @@ class User
 		switch($permissionLvl)
 		{
 			case '1':
-			return 'Student';
+			return 'Student in klas <a class="thread" href="?pageStr=class&class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
 			break;
 
 			case '2':
@@ -387,6 +387,27 @@ class User
 
 			case '3':
 			return '<span class="w3-text-red">Administrator</span>';
+			break;
+
+			default:
+			return 'Gastaccount';
+		}
+	}
+
+	public function getPermissionIcon($permissionLvl)
+	{
+		switch($permissionLvl)
+		{
+			case '1':
+			return '<i class="fa fa-3x fa-graduation-cap" style="margin-top: 10px;" aria-hidden="true"></i>';
+			break;
+
+			case '2':
+			return '<i class="fa fa-3x fa-book" style="margin-top: 10px;" aria-hidden="true"></i>';
+			break;
+
+			case '3':
+			return '<i class="fa fa-3x fa-cog w3-spin" style="margin-top: 10px;" aria-hidden="true"></i>';
 			break;
 
 			default:

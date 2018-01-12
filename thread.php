@@ -93,72 +93,87 @@ if($user->loginCheck())
 			}
 			else
 			{
+				$sth = $db->selectDatabase('thread','thread_ID',$_GET['thread_id'],'');
+				$threadOwner = $sth->fetch();
+				$user->getUserByID($threadOwner['user_ID']);
+				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $threadOwner['threadDate']);
+				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+
 				echo '<a class="thread" href="?pageStr=forum">Terug naar forum</a>';
 				$thread = new Thread($misc->readVar('GET','thread_id'));
-				echo '<h3>'.$thread->title.'</h3>';
-				echo $thread->thread;
-				echo '<hr/>';
-				$thread->getThreadReplies($thread->thread_id);
 				?>
-
-
-				<form method="POST" id="reply">
-					<div class="w3-row w3-section">
-						<div class="w3-col" style="width:50px; color:#2C9AC9!important;"><i class="w3-xxlarge fa fa-pencil"></i></div>
-						<div class="w3-rest">
-							<textarea class="w3-input w3-border" style="width: 98%;" name="comment" form="reply" placeholder="Schrijf hier uw reactie"></textarea>
-						</div>
+				<div class="w3-container w3-margin-top">
+					<div class="w3-panel w3-light-grey w3-leftbar w3-border-blue w3-margin-right w3-center" style="min-width:10%; height:130px; float: left;">
+						<span class="w3-small">
+						<?php echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'. $user->lastname  .'</a>'; ?></span><br/>
+						<span class="w3-small"><?php echo $user->getPermissionName($user->permission); ?></span><br/>
+						<?php echo $user->getPermissionIcon($user->permission); ?>
+						<div style="margin-top: 10px;" class="w3-small"><?php echo $formattedDate;  ?></div>		
 					</div>
+					<?php
+					echo '<h3>'.$thread->title.'</h3>';
+					echo $thread->thread;
+					echo '</div><hr/>';
+					$thread->getThreadReplies($thread->thread_id);
+					?>
 
-					<input type="submit" name="sendReply" value="Reageer" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
-				</form>
-				<?php
+					<form method="POST" id="reply">
+						<div class="w3-row w3-section">
+							<div class="w3-col" style="width:50px; color:#2C9AC9!important;"><i class="w3-xxlarge fa fa-pencil"></i></div>
+							<div class="w3-rest">
+								<textarea class="w3-input w3-border" style="width: 98%;" name="comment" form="reply" placeholder="Schrijf hier uw reactie"></textarea>
+							</div>
+						</div>
+
+						<input type="submit" name="sendReply" value="Reageer" class="w3-btn w3-margin" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+					</form>
+					<?php
+				}
 			}
-		}
 
 		// New reaction
-		if($misc->readVar('POST','sendReply'))
-		{
-			$Reaction = str_replace('<', '&lt;', $_POST['comment']);
-			$arrayValues['reaction_ID'] 	= $misc->getGUID();
-			$arrayValues['thread_ID'] 		= $thread->thread_id;
-			$arrayValues['user_ID'] 		= $user->id;
-			$arrayValues['Reaction'] 		= $Reaction;
-			$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
-			$db->insertDatabase('reaction',$arrayValues);
-			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$thread->thread_id.'";</script>';
-		}
+			if($misc->readVar('POST','sendReply'))
+			{
+				$Reaction = str_replace('<', '&lt;', $_POST['comment']);
+				$arrayValues['reaction_ID'] 	= $misc->getGUID();
+				$arrayValues['thread_ID'] 		= $thread->thread_id;
+				$arrayValues['user_ID'] 		= $user->id;
+				$arrayValues['Reaction'] 		= $Reaction;
+				$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
+				$db->insertDatabase('reaction',$arrayValues);
+				echo '<script>window.location.href = "?pageStr=forum&thread_id='.$thread->thread_id.'";</script>';
+			}
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
-		if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
-		{
-			$thread->deleteThread($_POST['threadID']);
-			echo '<script>window.location.href = "index.php?pageStr=forum";</script>';
-		}
+			if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
+			{
+				$thread->deleteThread($_POST['threadID']);
+				echo '<script>window.location.href = "index.php?pageStr=forum";</script>';
+			}
 
+			?>
+		</div>
+		<?php
+		if(!$check && !isset($_GET['thread_id']))
+		{
+			?>
+			<form action="" method="POST">
+				<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4" style="padding: 10px 15px;">
+			</form>
+			<?php
+		}
 		?>
-	</div>
-	<?php
-	if(!$check && !isset($_GET['thread_id']))
-	{
-		?>
-		<form action="" method="POST">
-			<input type="submit" name="createNewThread" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4" style="padding: 10px 15px;">
-		</form>
+		<script>
+			function deleteThread(threadID){
+				if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
+					document.getElementById('deleteForm'+threadID).submit();
+				}
+			}
+		</script>
 		<?php
 	}
+	else
+	{
+		echo 'U dient in te loggen om deze pagina te bekijken';
+	}
 	?>
-	<script>
-		function deleteThread(threadID){
-			if(confirm("Weet u zeker dat u deze post wil verwijderen?")){
-				document.getElementById('deleteForm'+threadID).submit();
-			}
-		}
-	</script>
-	<?php
-}
-else
-{
-	echo 'U dient in te loggen om deze pagina te bekijken';
-}
-?>

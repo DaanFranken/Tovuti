@@ -140,7 +140,6 @@
                 else echo '<option value="'.$class['class_ID'].'">'.$class['Name'].'</option>';
             }
             echo '</select>';
-
         }
     }
 ?>
