@@ -55,13 +55,12 @@ class Database
 			$query .= $key.' = "'.$value.'"';
 			$i++;
 		}
-		
 		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}
 
 	// Update the database
-	public function updateDatabase($tableName, $whereValue, $whereKey, $arrayValues)
+	public function updateDatabase($tableName, $whereValue, $whereKey, $arrayValues, $addon)
 	{
 		$query = 'UPDATE '.$tableName.' SET ';
 		$i = 0;
@@ -74,19 +73,20 @@ class Database
 			$query .= $key.' = "'.$value.'"';
 			$i++;
 		}
-		$query .= 'WHERE '.$whereValue.' = "'.$whereKey.'"';
+		$query .= 'WHERE '.$whereValue.' = "'.$whereKey.'"'.$addon;
 		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}
 
 	// Delete from database
-	public function deleteDatabase($tableName, $whereValue, $whereKey)
+	public function deleteDatabase($tableName, $whereValue, $whereKey, $addon)
 	{
 		$query = 'DELETE FROM '.$tableName;
 		if(!empty($whereValue))
 		{
 			$query .= ' WHERE '.$whereValue.' = "'.$whereKey.'"';
 		}
+		$query .= $addon;
 		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}

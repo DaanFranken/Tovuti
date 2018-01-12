@@ -105,7 +105,6 @@ class User
 					$_SESSION['user_ID'] = $row['user_ID'];
 					$_SESSION['Username'] = $row['Username'];
 					$_SESSION['Password'] = $row['Password'];
-					echo 'U bent succesvol ingelogd';
 					return true;
 				}
 				else
@@ -252,7 +251,7 @@ class User
 						$sth = $this->db->selectDatabase('email_confirm', 'email', $email, '');
 						if($sth->fetch())
 						{
-							$this->db->updateDatabase('email_confirm', 'user_ID', $this->id, $arrayValues);
+							$this->db->updateDatabase('email_confirm', 'user_ID', $this->id, $arrayValues, '');
 						}
 						else
 						{
@@ -271,7 +270,7 @@ class User
 					$arrayValues['Username'] = $username;
 					$arrayValues['Firstname'] = $voornaam;
 					$arrayValues['Lastname'] = $achternaam;
-					$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
+					$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues, '');
 
 					echo 'Uw account is succesvol gewijzigd';
 					return true;
@@ -315,7 +314,7 @@ class User
 		$sth = $this->db->selectDatabase('password_confirm', 'user_ID', $this->id, '');
 		if($sth->fetch())
 		{
-			$this->db->updateDatabase('password_confirm', 'user_ID', $this->id, $arrayValues);
+			$this->db->updateDatabase('password_confirm', 'user_ID', $this->id, $arrayValues, '');
 		}
 		else
 		{
@@ -345,7 +344,7 @@ class User
 		{
 			$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 			$arrayValues['Password'] = $hashedPassword;
-			$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues);
+			$this->db->updateDatabase('users', 'user_ID', $this->id, $arrayValues, '');
 			return true;
 		}
 	}

@@ -41,7 +41,7 @@ if($user->loginCheck())
 				$arrayValues['Urgency']		= str_replace("<","&lt;",$_POST['urgency']);
 				$arrayValues['lastChanged']	= date("Y-m-d H:i:s");
 
-				$db->updateDatabase('thread', 'thread_ID', $_POST['threadID'], $arrayValues);
+				$db->updateDatabase('thread', 'thread_ID', $_POST['threadID'], $arrayValues, '');
 				echo 'Uw post is succesvol aangepast';
 				?>
 				<script>
@@ -56,6 +56,23 @@ if($user->loginCheck())
 				$sth = $db->selectDatabase('thread', 'thread_ID', $_GET['editThread'], '');
 				$thread->newThreadForm($sth);
 			}
+		}
+
+		// Edit reaction
+		if(isset($_POST['changeEditedReaction']))
+		{
+			str_replace('<', '&lt;', $_POST['editedReaction']);
+			$arrayValues['Reaction'] = $_POST['editedReaction'];
+			$db->updateDatabase('reaction', 'reaction_ID', $_POST['editedReactionID'], $arrayValues, '');
+			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$_POST['thread_ID'].'";</script>';
+		}
+
+		// Delete reaction
+		if(isset($_POST['deleteReply']))
+		{
+			$arrayValues['Status'] = 0;
+			$db->updateDatabase('reaction', 'reaction_ID', $_POST['reactionID'], $arrayValues, '');
+			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$_POST['thread_ID'].'";</script>';
 		}
 
 		// Display threads
@@ -106,19 +123,14 @@ if($user->loginCheck())
 			$arrayValues['Reaction'] 		= $_POST['comment'];
 			$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
 			$db->insertDatabase('reaction',$arrayValues);
-			
-				header("Refresh:0");
+			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$thread->thread_id.'";</script>';
 		}
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
 		if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
 		{
 			$thread->deleteThread($_POST['threadID']);
-			?>
-			<script>
-				window.location.href = 'index.php?pageStr=forum';
-			</script>
-			<?php
+			echo '<script>window.location.href = "index.php?pageStr=forum";</script>';
 		}
 
 		?>

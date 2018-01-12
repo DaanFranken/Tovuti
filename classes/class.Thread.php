@@ -84,7 +84,8 @@ class Thread
 						echo '<div onclick="deleteThread('.$threadID.')"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></div>';
 						echo '<a href="?pageStr=forum&editThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
 					}
-					switch ($urgency) {
+					switch ($urgency)
+					{
 						case '0':
 						echo '<i class="fa fa-clone fa-3x w3-bar-item w3-circle w3-hide-small" aria-hidden="true" style="width:85px; color:#000;"></i>';
 						break;
@@ -162,23 +163,49 @@ class Thread
 								<div class="w3-right w3-small"><?php echo $formattedDate; ?></div>
 							</header>
 							<div class="w3-container">
-								<p><?php echo $res['Reaction'];?></p>
+								<?php
+								if(isset($_POST['changeReply']) && $_POST['reactionID'] == $res['reaction_ID'])
+								{
+									if($loggedInUser->permission > 1 || $res['user_ID'] == $loggedInUser->id)
+									{
+										?>
+										<form action="?pageStr=forum&thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
+											<input type="hidden" name="thread_ID" value="<?php echo $res['thread_ID']; ?>">
+											<input type="hidden" name="editedReactionID" value="<?php echo $res['reaction_ID']; ?>">
+											<input type="text" name="editedReaction" value="<?php echo $res['Reaction']; ?>">
+											<input type="submit" name="changeEditedReaction" value="Save">
+										</form>
+										<?php
+									}
+									else
+									{
+										echo '<p>'.$res['Reaction'].'</p>';
+									}
+								}
+								else
+								{
+									echo '<p>'.$res['Reaction'].'</p>';
+								}
+								?>
 								<hr>
 								<?php 
 								if($loggedInUser->permission > 1 || $res['user_ID'] == $loggedInUser->id)
 								{
-									echo '<div class="w3-right">';
-									echo '<a href="#"><span class="w3-bar-item w3-xlarge w3-right w3-margin-left"><i class="fa fa-trash" aria-hidden="true"></i> </span></a>';
-									echo '<a href="#"><span class="w3-bar-item w3-xlarge"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
-									echo '</div>';									
+									?>
+									<form action="?pageStr=forum&thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
+										<input type="hidden" name="reactionID" value="<?php echo $res['reaction_ID']; ?>">
+										<input type="hidden" name="thread_ID" value="<?php echo $_GET['thread_id']; ?>">
+										<div class="w3-right">
+											<button type="submit" name="changeReply"><span class="w3-bar-item w3-xlarge"><i class="fa fa-pencil" aria-hidden="true"></i> </span></button>
+											<button type="submit" name="deleteReply"><span class="w3-bar-item w3-xlarge"><i class="fa fa-trash" aria-hidden="true"></i> </span></button>
+										</div>
+									</form>
+									<?php
 								}
 								?>
 							</div>
 						</div>
 					</div>
-
-
-
 					<?php	
 				}			
 			}
@@ -208,7 +235,7 @@ class Thread
 		public function deleteThread($threadID)
 		{
 			$updateArray['Status'] = 0;
-			$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray);
+			$this->db->updateDatabase('thread', 'thread_ID', $threadID, $updateArray, '');
 		}
 
 	// Thread form

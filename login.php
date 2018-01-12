@@ -37,13 +37,7 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 
 	if($user->login($username,$password))
 	{
-		?>
-		<script>
-		setTimeout(function(){
-			window.location.href = 'index.php';
-		}, 2000);
-		</script>
-		<?php
+		echo '<script>window.location.href = "index.php";</script>';
 	}
 }
 ?>
