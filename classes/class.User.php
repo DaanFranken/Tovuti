@@ -372,7 +372,7 @@ class User
 			break;
 
 			case '2':
-			return '<span class="w3-text-green">Docent</span>';
+			return '<span class="w3-text-green">Docent</span> van klas '.$this->getTeacherClass($this->id);
 			break;
 
 			case '3':
@@ -382,6 +382,23 @@ class User
 			default:
 			return 'Gastaccount';
 		}
+	}
+
+	public function getTeacherClass($ID)
+	{
+		$sth = $this->db->selectDatabase('teachers','user_ID',$ID,'');
+		if($row = $sth->fetch())
+		{
+			$class = $row['class_ID'];
+			$sth = $this->db->selectDatabase('class','class_ID',$class,'');
+			if($row = $sth->fetch())
+			{
+				return '<a class="thread" href="?pageStr=class&class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
+			}
+			else return false;
+		}
+		else return false;
+
 	}
 }
 ?>

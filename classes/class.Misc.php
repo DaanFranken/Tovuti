@@ -121,5 +121,19 @@
                 echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
             }
         }
+
+        public function dropdownClassList()
+        {
+            $sth = $this->db->selectDatabase('class', '','','');
+            $result = $sth->fetchAll();
+
+            echo '<select name="classList">';
+            foreach($result as $class)
+            {
+                echo '<option value="'.$class['class_ID'].'">'.$class['Name'].'</option>';
+            }
+            echo '</select>';
+
+        }
     }
 ?>

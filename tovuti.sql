@@ -90,7 +90,7 @@ CREATE TABLE `reaction` (
 
 CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
-  `class_ID` varchar(255) NOT NULL,
+  `class_ID` varchar(255) NOT NULL DEFAULT 0,
   `user_ID` varchar(255) NOT NULL,
   `studentNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -111,7 +111,9 @@ INSERT INTO `students` (`student_ID`, `class_ID`, `user_ID`, `studentNumber`) VA
 
 CREATE TABLE `teachers` (
   `teacher_ID` varchar(255) NOT NULL,
-  `user_ID` varchar(255) NOT NULL
+  `user_ID` varchar(255) NOT NULL,
+  `class_ID` varchar(255)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
