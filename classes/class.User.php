@@ -18,9 +18,13 @@ class User
 	public $permission;
 
 	// Db connection
-	public function __construct($username = NULL)
+	public function __construct($userID = NULL)
 	{
 		$this->db = new Database();
+		if(!empty($userID))
+		{
+			$this->getUserByID($userID);
+		}
 	}
 
 	public function getUserByID($ID)

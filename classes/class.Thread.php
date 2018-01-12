@@ -27,7 +27,7 @@ class Thread
 		$this->user = new User();
 		if($this->user->loginCheck())
 		{
-			$this->user = new User($_SESSION['Username']);
+			$this->user = new User($_SESSION['user_ID']);
 		}
 		$this->db = new Database();
 		$this->misc = new Misc();

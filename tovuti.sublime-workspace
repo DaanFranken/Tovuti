@@ -35,7 +35,7 @@
 			"file": "tovuti.sql",
 			"settings":
 			{
-				"buffer_size": 8019,
+				"buffer_size": 8059,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -44,7 +44,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1359,
+				"buffer_size": 1413,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -53,7 +53,7 @@
 			"file": "menu.php",
 			"settings":
 			{
-				"buffer_size": 1463,
+				"buffer_size": 1706,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -71,7 +71,8 @@
 			"file": "classes/class.Database.php",
 			"settings":
 			{
-				"buffer_size": 1958,
+				"buffer_size": 2001,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -79,7 +80,7 @@
 			"file": "classes/class.Thread.php",
 			"settings":
 			{
-				"buffer_size": 6752,
+				"buffer_size": 9949,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -88,7 +89,7 @@
 			"file": "classes/class.Misc.php",
 			"settings":
 			{
-				"buffer_size": 2848,
+				"buffer_size": 3786,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -97,16 +98,7 @@
 			"file": "classes/class.User.php",
 			"settings":
 			{
-				"buffer_size": 8815,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "account.php",
-			"settings":
-			{
-				"buffer_size": 5057,
+				"buffer_size": 9571,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -115,8 +107,34 @@
 			"file": "thread.php",
 			"settings":
 			{
-				"buffer_size": 2909,
+				"buffer_size": 4870,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "classlist.php",
+			"settings":
+			{
+				"buffer_size": 1923,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "addStudentToClass.php",
+			"settings":
+			{
+				"buffer_size": 371,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Xampp/htdocs/VT-SC/account.php",
+			"settings":
+			{
+				"buffer_size": 13154,
 				"line_ending": "Windows"
 			}
 		},
@@ -142,7 +160,7 @@
 			"file": "style/menu.css",
 			"settings":
 			{
-				"buffer_size": 1368,
+				"buffer_size": 1396,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -207,15 +225,18 @@
 	},
 	"file_history":
 	[
+		"/D/Xampp/htdocs/VT-SC/getCount.php",
+		"/D/Xampp/htdocs/VT-SC/getlang.php",
+		"/D/Xampp/htdocs/VT-SC/account.php",
+		"/D/Xampp/htdocs/Tovuti/account.php",
+		"/D/Xampp/htdocs/Tovuti/login.php",
 		"/D/Xampp/htdocs/VT-SC/classes/class.Database.php",
 		"/D/Xampp/htdocs/VT-SC/classes/class.Misc.php",
 		"/D/Xampp/htdocs/Tovuti/classes/class.Thread.php",
 		"/D/Xampp/htdocs/archive/database/archiveDisplay.php",
-		"/D/Xampp/htdocs/Tovuti/login.php",
 		"/D/Xampp/htdocs/Tovuti/newPasswordForm.php",
 		"/D/Xampp/htdocs/Tovuti/register.php",
 		"/D/Xampp/htdocs/Tovuti/thread.php",
-		"/D/Xampp/htdocs/Tovuti/account.php",
 		"/D/Xampp/htdocs/Tovuti/style/style.css",
 		"/D/Xampp/htdocs/Tovuti/index.php",
 		"/D/Xampp/htdocs/U.R.S/urs.sql",
@@ -325,6 +346,99 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Username",
+			"class_ID",
+			"students",
+			"student_ID",
+			"addon",
+			"whereValue",
+			"whereKey",
+			"tableName",
+			"whereKey",
+			"tableName",
+			"whereValue",
+			"addon",
+			");",
+			"autoloader",
+			"addStudentToClass",
+			"addStudent",
+			"addUser",
+			"addNewStudent",
+			"input",
+			"editReaction",
+			"reageer",
+			"reactionDate",
+			"editedReaction",
+			"_POST",
+			"Reaction",
+			"update",
+			"thread_ID",
+			"_GET",
+			"thread_ID",
+			"reactionID",
+			"_POST",
+			"thread_id",
+			"thread_ID",
+			"arrayValues",
+			"whereKey",
+			"whereValue",
+			"tableName",
+			"whereKey",
+			"arrayValues",
+			"addon",
+			"whereKey",
+			"reaction_ID",
+			"whereValue",
+			"tableName",
+			"addon",
+			"deleteReply",
+			"bottom",
+			"top",
+			"'",
+			"header",
+			"he",
+			"header",
+			"thread",
+			"Reaction",
+			"reaction",
+			"thread_ID",
+			"pageStr",
+			"reactionID",
+			"reply",
+			"changeReply",
+			"reply",
+			"reactio",
+			"reactionID",
+			"reactionForm",
+			"arrayValues",
+			"whereKey",
+			"whereValue",
+			"tableName",
+			"threadID",
+			"reaction",
+			"editedReaction",
+			"editedReactionID",
+			"reactionID",
+			"editedReactionID",
+			"reactionID",
+			"changeReply",
+			"changeEditedReaction",
+			"editedReactionID",
+			"saveEditedReaction",
+			"editedReaction",
+			"saveEditedReaction",
+			"changeReply",
+			"Edit",
+			"thread_ID",
+			"changeReply",
+			"deleteReply",
+			"test",
+			"<a href=\"#\">",
+			"threa",
+			"cho '",
+			"w3-card-4",
+			"thread_ID",
+			"'",
 			"threadID",
 			"update",
 			"editThread",
@@ -359,100 +473,7 @@
 			"whereKey",
 			"tableName",
 			"se{}",
-			"'\"'",
-			"threadID",
-			"deleteForm",
-			"threadID",
-			"threadIF",
-			"formID",
-			"deleteForm",
-			"formID",
-			"a",
-			"w3-bar-item w3-hover-red w3-xlarge w3-right",
-			"thread",
-			"thread&",
-			"$user",
-			"user",
-			"$permission",
-			"validateUserRights",
-			"index.php?pageStr=forum",
-			"validateUserRights",
-			"deleteThread",
-			"alert",
-			"createNewThread",
-			"thread",
-			"deleteThread",
-			"thread",
-			"deleteThread",
-			"w3-bar-item w3-hover-green w3-xlarge w3-right",
-			"Admins",
-			"Teachers",
-			"Huiswerk",
-			"Algemeen",
-			"Students",
-			"Permissions",
-			"getGUID",
-			"thread",
-			"threadPost",
-			"thread",
-			"createThread",
-			"thread",
-			"Peter",
-			"world",
-			"urgency",
-			"newThread",
-			"misc",
-			"))",
-			"\">",
-			"Algemeen",
-			"Overig",
-			"Activiteit",
-			"Huiswerk",
-			"Algemeen",
-			"urgency",
-			"Thread",
-			"urgency",
-			"createNewThread",
-			"thread",
-			"Title",
-			"Gebruikersnaam of student nummer",
-			"title",
-			"thread",
-			"title",
-			"true",
-			"text",
-			"readVar('POST'",
-			"rea",
-			"newThread",
-			"&&",
-			"AND",
-			",",
-			"createNewThread",
-			"var",
-			"type",
-			"createNewThread",
-			"tiny",
-			"small",
-			"createNewThread",
-			"div",
-			"thread",
-			"passwordConfirm",
-			"thread",
-			"Thread",
-			"createThread",
-			"username",
-			"Wachtwoordd",
-			"Gebruikersnaam",
-			"D69A9A",
-			"\">\n",
-			"68F261",
-			"25ED1A",
-			"black",
-			"right",
-			"Wachtwoord",
-			"class=\"inputfield\"",
-			"class=\"inputField\"",
-			"achternaam"
+			"'\"'"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -480,15 +501,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8019,
+						"buffer_size": 8059,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								724,
-								724
+								0,
+								0
 							]
 						],
 						"settings":
@@ -501,7 +522,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -510,15 +531,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1359,
+						"buffer_size": 1413,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								139,
-								139
+								1235,
+								1235
 							]
 						],
 						"settings":
@@ -527,10 +548,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 13500.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -539,15 +560,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1463,
+						"buffer_size": 1706,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								285,
-								285
+								0,
+								0
 							]
 						],
 						"settings":
@@ -559,7 +580,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -587,7 +608,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -602,15 +623,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1958,
+						"buffer_size": 2001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1537,
-								1537
+								674,
+								674
 							]
 						],
 						"settings":
@@ -619,10 +640,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -631,15 +652,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6752,
+						"buffer_size": 9949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5085,
-								5085
+								4411,
+								4411
 							]
 						],
 						"settings":
@@ -648,10 +669,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2706.0,
+						"translation.y": 2426.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -660,15 +681,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2848,
+						"buffer_size": 3786,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2100,
-								2100
+								136,
+								136
 							]
 						],
 						"settings":
@@ -681,7 +702,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -690,15 +711,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8815,
+						"buffer_size": 9571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1450,
-								1450
+								4451,
+								4457
 							]
 						],
 						"settings":
@@ -707,56 +728,113 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 2984.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "thread.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4574,
+								4574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2192.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "account.php",
+					"buffer": 9,
+					"file": "classlist.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5057,
+						"buffer_size": 1923,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								779,
-								779
+								1784,
+								1784
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 823.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "addStudentToClass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								371,
+								371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "thread.php",
+					"buffer": 11,
+					"file": "/D/Xampp/htdocs/VT-SC/account.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2909,
+						"buffer_size": 13154,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1278,
-								1278
+								0,
+								0
 							]
 						],
 						"settings":
@@ -765,10 +843,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 4320.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -778,7 +856,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "style/index.css",
 					"semi_transient": false,
 					"settings":
@@ -803,11 +881,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "style/home.css",
 					"semi_transient": false,
 					"settings":
@@ -831,24 +909,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 14,
 					"file": "style/menu.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1368,
+						"buffer_size": 1396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								714,
-								714
+								0,
+								0
 							]
 						],
 						"settings":
@@ -860,11 +938,11 @@
 						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 15,
 					"file": "style/login.css",
 					"semi_transient": false,
 					"settings":
@@ -888,11 +966,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 16,
 					"file": "style/register.css",
 					"semi_transient": false,
 					"settings":
@@ -916,11 +994,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 17,
 					"file": "style/account.css",
 					"semi_transient": false,
 					"settings":
@@ -944,7 +1022,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]

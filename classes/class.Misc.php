@@ -45,7 +45,7 @@
             $sth = $this->db->selectDatabase('thread','thread_id',$thread_ID,'');
             if($row = $sth->fetch())
             {
-                $user = new User($_SESSION['Username']); 
+                $user = new User($_SESSION['user_ID']); 
                 $user_ID = $user->id;
                 $permission = $user->permission;
 
