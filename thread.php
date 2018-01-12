@@ -135,6 +135,7 @@ if($user->loginCheck())
 		// New reaction
 			if($misc->readVar('POST','sendReply'))
 			{
+				$user = new User($_SESSION['user_ID']);
 				$Reaction = str_replace('<', '&lt;', $_POST['comment']);
 				$arrayValues['reaction_ID'] 	= $misc->getGUID();
 				$arrayValues['thread_ID'] 		= $thread->thread_id;

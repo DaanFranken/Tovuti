@@ -6,14 +6,15 @@ if($user->loginCheck())
 		$sth = $db->selectDatabase('class','class_ID',$_GET['class_id'],'');
 		$result = $sth->fetch();
 	}
-
 	?>
 
 	<div class="w3-container w3-margin">
 		<?php 
 		if($misc->readVar('GET','class_id'))
 		{
-			echo '<a class="thread" href="?pageStr=class">Terug naar klassen overzicht</a>';
+			?>
+			<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 300px;background-color: #2C9AC9;" href="?pageStr=class"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar klassenoverzicht</a><br/>
+			<?php
 		}
 		if(!isset($_POST['addUserToClass']))
 		{
@@ -30,37 +31,43 @@ if($user->loginCheck())
 					<h3><?php echo 'Klassenlijst '. (isset($_GET['class_id']) ? $result['Name'] : '');   ?></h3>
 				</header>
 				<div class="w3-container">
-					<p>
-						<?php
-						if(!$misc->readVar('GET','class_id'))
+					<?php 
+					if($misc->readVar('GET','class_id')) 
+					{ 
+						if($user->getTeacherByClassID($_GET['class_id'])) 
 						{
-							$misc->getAllClassesAsList();	
+							echo 'Docent: '. $user->getTeacherByClassID($_GET['class_id']); 
+							echo '<hr>';
 						}
-						else
-						{
-							$misc->getAllStudentsInClass($_GET['class_id']);
-						}			
+					}
+					if(!$misc->readVar('GET','class_id'))
+					{
+						$misc->getAllClassesAsList();	
+					}
+					else
+					{
+						$misc->getAllStudentsInClass($_GET['class_id']);
+					}			
 
-						?></p>
-						<hr>
-					</div>
+					?>	
 				</div>
 			</div>
+		</div>
 		<div id="addStudent"></div>
 		</div>
-			<?php 
+		<?php 
 		}
 		else
 		{
-			//
+				//
 		}
-	}
-	else echo 'U dient in te loggen om deze pagina te bekijken';
-	?>
+}
+else echo 'U dient in te loggen om deze pagina te bekijken';
+?>
 <script>
-var count = 0;
-function addNewStudent(){
-	if(window.XMLHttpRequest){
+	var count = 0;
+	function addNewStudent(){
+		if(window.XMLHttpRequest){
 		// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
 	}

@@ -429,7 +429,22 @@ class User
 			else return false;
 		}
 		else return false;
+	}
 
+	public function getTeacherByClassID($ID)
+	{
+		$sth = $this->db->selectDatabase('teachers','class_ID',$ID,'');
+		if($row = $sth->fetch())
+		{
+			$teacherID = $row['user_ID'];
+			$sth = $this->db->selectDatabase('users','user_ID',$teacherID,'');
+			if($row = $sth->fetch())
+			{
+				return '<a class="thread" href="?pageStr=account&user_id='.$teacherID.'">'.$row['Firstname'] .'&nbsp;'.$row['Lastname'].'</a>';
+			}
+			else return false;
+		}
+		else return false;
 	}
 }
 ?>

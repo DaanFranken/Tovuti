@@ -110,11 +110,11 @@ if($user->loginCheck())
 
 		?>
 		<div class="w3-container w3-margin">
-			<div class="w3-card-4" style="width:40%;min-width: 350px;">
+			<div class="w3-card-4" style="width:30%;min-width: 350px;">
 				<header class="w3-container w3-light-grey">
 					<h3><?php echo $name; ?></h3>
 				</header>
-				<div class="w3-container w3-margin">					
+				<div class="w3-container w3-margin-top w3-margin-bottom">					
 					<?php
 					echo $user->getPermissionIcon($permission,'style="margin-right:20px;float:left;"');
 					echo '<div class="w3-container w3-left" style="margin-top:-20px;"><h4>'.$user->getPermissionName($permission).'</h4>';

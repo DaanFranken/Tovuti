@@ -73,11 +73,11 @@ class Thread
 				$urgency = $res['Urgency'];
 				$sth = $this->db->selectDatabase('users','user_ID',$res['user_ID'],'');
 				$author = $sth->fetch();
-
+				$user = new User($_SESSION['user_ID']);
 				?>
 				<li class="w3-bar">
 					<?php
-					if($this->user->permission == 2 || $this->user->permission == 3)
+					if($this->user->permission == 2 || $this->user->permission == 3 || $author['user_ID'] == $user->id)
 					{
 						echo '<form action="" method="POST" id="deleteForm'.$res['thread_ID'].'"><input type="hidden" name="threadID" value="'.$res['thread_ID'].'"></form>';
 						$threadID = "'".$res['thread_ID']."'";
@@ -112,8 +112,11 @@ class Thread
 					}
 
 					?>
-					<div class="w3-bar-item" style="min-width: 20%;">
-						<span class="w3-large"><?php echo '<a class="thread" href="?pageStr=forum&thread_id='.$res['thread_ID'] . '">' . $res['Title'] . '</a>'; ?></span><br>
+					<div class="w3-bar-item" style="min-width: 25%;">
+						<span class="w3-large">
+						<?php 
+						$title = substr($res['Title'],0,20).'...';
+						echo '<a class="thread" href="?pageStr=forum&thread_id='.$res['thread_ID'] . '">' . $title . '</a>'; ?></span><br>
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
