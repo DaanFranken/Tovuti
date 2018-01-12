@@ -124,13 +124,20 @@
 
         public function dropdownClassList()
         {
+            $teacherQuery = $this->db->selectDatabase('teachers','user_ID',$_SESSION['user_ID'],'');
+            $teacherResult = $teacherQuery->fetch();
+
             $sth = $this->db->selectDatabase('class', '','','');
             $result = $sth->fetchAll();
 
             echo '<select name="classList">';
             foreach($result as $class)
             {
-                echo '<option value="'.$class['class_ID'].'">'.$class['Name'].'</option>';
+                if($class['class_ID'] == $teacherResult['class_ID'])
+                {
+                    echo '<option selected value="'.$class['class_ID'].'">'.$class['Name'].'</option>';
+                }
+                else echo '<option value="'.$class['class_ID'].'">'.$class['Name'].'</option>';
             }
             echo '</select>';
 

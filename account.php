@@ -84,10 +84,11 @@ if($user->loginCheck())
 					<input type="text" name="firstname" value="<?php if(!isset($_POST['accSubmit'])){echo $user->firstname;}else{echo $_POST['firstname'];} ?>" class="w3-input w3-border w3-light-grey" placeholder="Voornaam" title="Voornaam" required>
 					<label class="w3-text-teal"><b>Achternaam</b></label>
 					<input type="text" name="lastname" value="<?php if(!isset($_POST['accSubmit'])){echo $user->lastname;}else{echo $_POST['lastname'];} ?>" class="w3-input w3-border w3-light-grey" placeholder="Achternaam" title="Achternaam" required>
-					<label class="w3-text-teal"><b>Klas</b></label><br/>
+					
 					<?php 
 					if($user->permission == 2)
 					{
+						echo '<label class="w3-text-teal"><b>Klas</b></label><br/>';
 						$misc->dropdownClassList();
 					}
 					?>
