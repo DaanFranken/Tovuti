@@ -38,7 +38,7 @@ if($user->loginCheck())
 						<hr>
 					</div>
 				</div>
-				<?php if($misc->readVar('GET','class_id'))
+				<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
 				{
 					?>
 					<form action="" method="POST">
@@ -53,7 +53,7 @@ if($user->loginCheck())
 		}
 		else
 		{
-			// Gebruiker aan klas toevoegen
+			//
 		}
 	}
 	else echo 'U dient in te loggen om deze pagina te bekijken';
