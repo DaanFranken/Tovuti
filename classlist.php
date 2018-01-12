@@ -19,6 +19,13 @@ if($user->loginCheck())
 		{
 			?>
 			<div class="w3-card-4 w3-rest">
+				<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
+				{
+					?>
+					<button class="w3-button w3-circle w3-teal w3-right w3-medium w3-card-4" style="position: absolute;top: 24px;right: 50px;padding: 10px 15px;" onclick="addNewStudent()">+</button>
+					<?php
+				}
+				?>
 				<header class="w3-container w3-light-grey">
 					<h3><?php echo 'Klassenlijst '. (isset($_GET['class_id']) ? $result['Name'] : '');   ?></h3>
 				</header>
@@ -38,17 +45,9 @@ if($user->loginCheck())
 						<hr>
 					</div>
 				</div>
-				<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
-				{
-					?>
-					<form action="" method="POST">
-						<input type="submit" name="addUserToClass" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4">
-					</form>	
-					<?php
-				}
-				?>
-
 			</div>
+		<div id="addStudent"></div>
+		</div>
 			<?php 
 		}
 		else
@@ -58,3 +57,25 @@ if($user->loginCheck())
 	}
 	else echo 'U dient in te loggen om deze pagina te bekijken';
 	?>
+<script>
+var count = 0;
+function addNewStudent(){
+	if(window.XMLHttpRequest){
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else{
+		// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function(){
+		if(this.readyState==4 && this.status==200){
+			document.getElementById('addStudent').innerHTML += '<select name="userID'+count+'">'+this.responseText+'</select>';
+		}
+	}
+	xmlhttp.open("GET","addStudentToClass.php");
+	xmlhttp.send();
+	count++;
+}
+</script>
+<!-- <div class="w3-card-4 w3-rest"></div> -->
