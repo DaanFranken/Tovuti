@@ -160,7 +160,7 @@ class Thread
 						<div class="w3-card-4" >
 							<header class="w3-container w3-light-grey">
 								Reactie van <a class="thread" href="<?php echo $authorURL; ?>"><?php echo $name; ?></a> (<?php echo $user->getPermissionName($user->permission); ?>)
-								<div class="w3-right w3-small"><?php echo $formattedDate; ?></div>
+								<div class="w3-right w3-small"><?php if(!empty($res['lastChanged'])){$lastChanged = DateTime::createFromFormat('Y-m-d H:i:s', $res['lastChanged']);echo '(Bewerkt op '.$lastChanged->format('d-m-Y H:i:s').') ';} echo $formattedDate; ?></div>
 							</header>
 							<div class="w3-container">
 								<?php

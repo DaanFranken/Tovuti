@@ -61,8 +61,9 @@ if($user->loginCheck())
 		// Edit reaction
 		if(isset($_POST['changeEditedReaction']))
 		{
-			str_replace('<', '&lt;', $_POST['editedReaction']);
-			$arrayValues['Reaction'] = $_POST['editedReaction'];
+			$editReaction = str_replace('<', '&lt;', $_POST['editedReaction']);
+			$arrayValues['Reaction'] = $editReaction;
+			$arrayValues['lastChanged'] = date('Y-m-d H:i:s');
 			$db->updateDatabase('reaction', 'reaction_ID', $_POST['editedReactionID'], $arrayValues, '');
 			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$_POST['thread_ID'].'";</script>';
 		}
@@ -115,12 +116,14 @@ if($user->loginCheck())
 			}
 		}
 
+		// New reaction
 		if($misc->readVar('POST','sendReply'))
 		{
+			$Reaction = str_replace('<', '&lt;', $_POST['comment']);
 			$arrayValues['reaction_ID'] 	= $misc->getGUID();
 			$arrayValues['thread_ID'] 		= $thread->thread_id;
 			$arrayValues['user_ID'] 		= $user->id;
-			$arrayValues['Reaction'] 		= $_POST['comment'];
+			$arrayValues['Reaction'] 		= $Reaction;
 			$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
 			$db->insertDatabase('reaction',$arrayValues);
 			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$thread->thread_id.'";</script>';
