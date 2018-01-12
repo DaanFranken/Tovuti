@@ -6,10 +6,7 @@ $misc = new Misc();
 $user = new User();
 $thread = new Thread();
 
-if($user->loginCheck())
-{
-	$user->getUserByID($_SESSION['user_ID']);
-}
+$user->loginCheck();
 ?>
 <!DOCTYPE html>
 <head>

@@ -21,23 +21,6 @@ class User
 	public function __construct($username = NULL)
 	{
 		$this->db = new Database();
-		if(!empty($username))
-		{
-			$sth = $this->db->selectDatabase('users', 'Username', $username, '');
-			if($row = $sth->fetch())
-			{
-				$this->id 			= $row['user_ID'];
-				$this->username 	= $row['Username'];
-				$this->firstname 	= $row['Firstname'];
-				$this->lastname 	= $row['Lastname'];
-				$this->password 	= $row['Password'];
-				$this->email 		= $row['Email'];
-				$this->permission	= $row['Permission'];
-				$this->firstname	= $row['Firstname'];
-				$this->lastname		= $row['Lastname'];
-				return true;
-			}
-		}
 	}
 
 	public function getUserByID($ID)
@@ -64,8 +47,9 @@ class User
 		if(isset($_SESSION['user_ID']) AND isset($_SESSION['Username']) AND isset($_SESSION['Password']))
 		{
 			$sth = $this->db->selectDatabase('users', 'user_ID', $_SESSION['user_ID'], ' AND Username = "'.$_SESSION['Username'].'" AND Password = "'.$_SESSION['Password'].'"');
-			if($sth->fetch())
+			if($row = $sth->fetch())
 			{
+				$this->getUserByID($row['user_ID']);
 				return true;
 			}
 			else
