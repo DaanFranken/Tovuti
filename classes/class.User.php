@@ -21,7 +21,7 @@ class User
 	public function __construct($userID = NULL)
 	{
 		$this->db = new Database();
-		if(!empty($userID))
+		if(!empty($userID) && $this->loginCheck())
 		{
 			$this->getUserByID($userID);
 		}
