@@ -175,7 +175,7 @@ class User
 	}
 
 	// Change user
-	public function update($username, $voornaam, $achternaam, $email)
+	public function update($username, $voornaam, $achternaam, $email,$class)
 	{
 		if(isset($_POST['accSubmit']))
 		{
@@ -251,6 +251,16 @@ class User
 						$msg = wordwrap($msg,70);
 						mail($email,"De Zevensprong | Mail confirmation",$msg);
 						echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Valideer uw email door deze link te bezoeken.<br/><br/>';
+					}
+
+					// Aanpassen van een klas (indien van toepassing)
+					if(!empty($class))
+					{
+						$misc = new Misc();
+						$arrayValues['teacher_ID'] = $misc->getGUID();
+						$arrayValues['user_ID'] = $this->id;
+						$arrayValues['class_ID'] = $class;
+						$this->db->updateDatabase('teachers','user_ID',$this->id,$arrayValues,'');
 					}
 
 					// Basic info
