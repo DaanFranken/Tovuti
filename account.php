@@ -65,7 +65,7 @@ if($user->loginCheck())
 		{
 			?>
 			<form method="POST">
-			<input type="submit" name="viewProfile" value="Bekijk mijn profiel" class="w3-btn w3-right" style="color: white;background-color: #89D162;">
+				<input type="submit" name="viewProfile" value="Bekijk mijn profiel" class="w3-btn w3-right" style="color: white;background-color: #89D162;">
 			</form>
 			<form action="" method="POST" id="logout">
 				<input type="submit" name="logout" value="Uitloggen" class="w3-btn" style="color: white;background-color: #D17373;border-bottom: 2px solid #CF3030;">
@@ -110,46 +110,22 @@ if($user->loginCheck())
 
 		?>
 		<div class="w3-container w3-margin">
-			<div class="w3-card-4" style="width:30%;min-width: 350px;">
+			<div class="w3-card-4" style="width:40%;min-width: 350px;">
 				<header class="w3-container w3-light-grey">
 					<h3><?php echo $name; ?></h3>
 				</header>
-				<div class="w3-container">
-					<p><a class="thread" href="?pageStr=forum&user_id=<?php echo $user->id ?>">Posts van <?php echo $name; ?></a></p>
-					<hr>
+				<div class="w3-container w3-margin">					
 					<?php
-					switch ($permission)
-					{
-						case '1':
-						echo '<i class="fa fa-3x fa-graduation-cap w3-left w3-circle w3-margin-right" aria-hidden="true" style="width: 60px;"></i>
-						<p>'.$user->getPermissionName($permission).'</p>
-							<p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
-							</p><br>';
-							break;
-
-							case '3':
-							echo '<img src="images/admin.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-							<p>'.$user->getPermissionName($permission) .'</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
-						</p><br>';
-						break;
-
-						default:
-						echo '<img src="images/account.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-						<p>'.$user->getPermissionName($permission) .'</p><p><i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'
-					</p><br>
-					';
-					break;
-				}
-
-				?>
-
+					echo $user->getPermissionIcon($permission,'style="margin-right:20px;float:left;"');
+					echo '<div class="w3-container w3-left" style="margin-top:-20px;"><h4>'.$user->getPermissionName($permission).'</h4>';
+					echo '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'</div>';
+					?>
+				</div>
+				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="?pageStr=forum&user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts van <?php echo $name; ?></a>
 			</div>
-			<!-- Misschien hier wat functies of functie icons? -->
-			<!-- <button class="w3-button w3-block w3-dark-grey">+ Connect</button> -->
 		</div>
-	</div>
-	<?php
-}
+		<?php
+	}
 }
 else
 {

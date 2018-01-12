@@ -394,20 +394,20 @@ class User
 		}
 	}
 
-	public function getPermissionIcon($permissionLvl)
+	public function getPermissionIcon($permissionLvl,$style)
 	{
 		switch($permissionLvl)
 		{
 			case '1':
-			return '<i class="fa fa-3x fa-graduation-cap" style="margin-top: 10px;" aria-hidden="true"></i>';
+			return '<i class="fa fa-3x fa-graduation-cap" '.$style .' aria-hidden="true"></i>';
 			break;
 
 			case '2':
-			return '<i class="fa fa-3x fa-book" style="margin-top: 10px;" aria-hidden="true"></i>';
+			return '<i class="fa fa-3x fa-book" '.$style .' aria-hidden="true"></i>';
 			break;
 
 			case '3':
-			return '<i class="fa fa-3x fa-cog w3-spin" style="margin-top: 10px;" aria-hidden="true"></i>';
+			return '<i class="fa fa-3x fa-cog w3-spin" '.$style.' aria-hidden="true"></i>';
 			break;
 
 			default:

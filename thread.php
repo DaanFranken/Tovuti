@@ -98,8 +98,9 @@ if($user->loginCheck())
 				$user->getUserByID($threadOwner['user_ID']);
 				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $threadOwner['threadDate']);
 				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
-
-				echo '<a class="thread" href="?pageStr=forum">Terug naar forum</a>';
+				?>
+					<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 200px;background-color: #2C9AC9;" href="?pageStr=forum"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar forum</a>
+				<?php
 				$thread = new Thread($misc->readVar('GET','thread_id'));
 				?>
 				<div class="w3-container w3-margin-top">
@@ -107,7 +108,7 @@ if($user->loginCheck())
 						<span class="w3-small">
 						<?php echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'. $user->lastname  .'</a>'; ?></span><br/>
 						<span class="w3-small"><?php echo $user->getPermissionName($user->permission); ?></span><br/>
-						<?php echo $user->getPermissionIcon($user->permission); ?>
+						<?php echo $user->getPermissionIcon($user->permission,'style="margin-top:10px;"'); ?>
 						<div style="margin-top: 10px;" class="w3-small"><?php echo $formattedDate;  ?></div>		
 					</div>
 					<?php
