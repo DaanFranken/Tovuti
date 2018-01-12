@@ -55,6 +55,7 @@ class Database
 			$query .= $key.' = "'.$value.'"';
 			$i++;
 		}
+		
 		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}

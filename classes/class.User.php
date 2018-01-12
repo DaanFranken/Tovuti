@@ -330,7 +330,7 @@ class User
 		$headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
 		$headers .= 'From: admin@tovuti.com'; 
 		mail($this->email,"Password change",$msg,$headers);
-		echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Verander uw account door deze link te bezoeken.<br/><br/>';
+		echo 'Er is een link gestuurd naar uw e-mail adres.<br/>Verander uw wachtwoord door deze link te bezoeken.<br/><br/>';
 	}
 
 	// Change password
