@@ -22,6 +22,13 @@ if(isset($_POST['logout']))
 		</div>
 	</div>
 </a> 
+<a href="index.php?pageStr=activities" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($pageStr, 'activities'); ?>>
+		<div class="mainMenuLinkText">
+			Activiteiten
+		</div>
+	</div>
+</a> 
 <?php
 if($user->loginCheck())
 {
