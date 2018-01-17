@@ -64,6 +64,9 @@ $user->loginCheck();
 		case 'class':
 			include 'classlist.php';
 			break;
+		case 'activities':
+			include 'activities.php';
+			break;
 		default:
 			include 'home.php';
 	}

@@ -73,7 +73,10 @@ class Database
 			$query .= $key.' = "'.$value.'"';
 			$i++;
 		}
-		$query .= 'WHERE '.$whereValue.' = "'.$whereKey.'"'.$addon;
+		if(!empty($whereValue))
+		{
+			$query .= 'WHERE '.$whereValue.' = "'.$whereKey.'"'.$addon;
+		}
 		$sth = $this->conn->prepare($query);
 		$sth->execute();
 	}

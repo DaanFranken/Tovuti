@@ -157,6 +157,18 @@ CREATE TABLE `upload` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `activities`
+--
+
+CREATE TABLE `activities` (
+  `user_ID` varchar(255) NOT NULL,
+  `Content` longtext NOT NULL,
+  `editDate` datetime 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `users`
 --
 
@@ -239,6 +251,13 @@ ALTER TABLE `upload`
   ADD KEY `user_ID` (`user_ID`);
 
 --
+-- Indexen voor tabel `upload`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`user_ID`),
+  ADD KEY `user_ID` (`user_ID`);
+
+--
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
@@ -291,6 +310,9 @@ ALTER TABLE `thread`
 --
 ALTER TABLE `upload`
   ADD CONSTRAINT `upload_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);
+
+ALTER TABLE `activities`
+  ADD CONSTRAINT `activities_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);  
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
