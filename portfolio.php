@@ -6,16 +6,16 @@ if($user->loginCheck())
 	{
 		if(isset($_POST['submitUpload']))
 		{
-			if($_FILES['uploadFile']['size'] != 0 && $_FILES['uploadFile']['error'] != 0)
+			if($_FILES['uploadFile']['size'] != 0)
 			{
 				$arrayValues['upload_ID'] = $misc->getGUID();
 				$arrayValues['user_ID'] = $user->id;
 				$arrayValues['title'] = $_POST['title'];
-				$arrayValues['type'] = strtolower(pathinfo($_FILES['uploadFile'], PATHINFO_EXTENSION));
+				$arrayValues['type'] = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
 				$arrayValues['uploadContent'] = $_FILES['uploadFile'];
-				$arrayValues['uploadDate'] = date();
-				$sth = insertDatabase('upload', $arrayValues);
-				echo '<script src="?pageStr=portfolio"></script>';
+				$arrayValues['uploadDate'] = date("Y-m-d H:i:s");
+				$db->insertDatabase('upload', $arrayValues);
+				echo '<script>window.location.href = "?pageStr=portfolio";</script>';
 			}
 			else
 			{

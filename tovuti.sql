@@ -255,7 +255,7 @@ ALTER TABLE `upload`
   ADD KEY `user_ID` (`user_ID`);
 
 --
--- Indexen voor tabel `upload`
+-- Indexen voor tabel `acitivities`
 --
 ALTER TABLE `activities`
   ADD PRIMARY KEY (`user_ID`),

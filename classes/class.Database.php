@@ -56,6 +56,7 @@ class Database
 			$i++;
 		}
 		$sth = $this->conn->prepare($query);
+		var_dump($sth);
 		$sth->execute();
 	}
 
