@@ -10,33 +10,29 @@ $type = $result['type'];
 
 header("Content-length: $size");
 header('Content-Type: application/octet-stream');
-if($type == 'xlsx')
+switch($type)
 {
-  header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-}
-elseif($type == 'xls')
-{
-  header('Content-Type: application/vnd.ms-excel');
-}
-elseif($type == 'docx')
-{
-  header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-}
-elseif($type == 'doc')
-{
-  header('Content-Type: application/msword');
-}
-elseif($type == 'pdf')
-{
-  header('Content-Type: application/pdf');
-}
-elseif($type == 'ppt')
-{
-  header('Content-Type: application/vnd.ms-powerpoint');
-}
-elseif($type == 'pptx')
-{
-  header('Content-Type:   application/vnd.openxmlformats-officedocument.presentationml.presentation');
+	case 'xlsx':
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		break;
+	case 'xls':
+		header('Content-Type: application/vnd.ms-excel');
+		break;
+	case 'docx':
+		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+		break;
+	case 'doc':
+		header('Content-Type: application/msword');
+		break;
+	case 'pdf':
+		header('Content-Type: application/pdf');
+		break;
+	case 'ppt':
+		header('Content-Type: application/vnd.ms-powerpoint');
+		break;
+	case 'pptx':
+		header('Content-Type:   application/vnd.openxmlformats-officedocument.presentationml.presentation');
+		break;
 }
 header("Content-Disposition: attachment; filename=$file");
 ob_clean();
