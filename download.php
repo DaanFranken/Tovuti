@@ -9,7 +9,7 @@ $file = $result['uploadContent'];
 $type = $result['type'];
 
 header("Content-length: $size");
-header('Content-Type: application/octet-stream');
+// header('Content-Type: application/octet-stream');
 switch($type)
 {
 	case 'xlsx':

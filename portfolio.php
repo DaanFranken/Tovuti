@@ -12,7 +12,7 @@ if($user->loginCheck())
 				$arrayValues['user_ID'] = $user->id;
 				$arrayValues['title'] = $_POST['title'];
 				$arrayValues['type'] = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
-				$arrayValues['uploadContent'] = $_FILES['uploadFile'];
+				$arrayValues['uploadContent'] = $_FILES['uploadFile']['name'];
 				$arrayValues['uploadDate'] = date("Y-m-d H:i:s");
 				$db->insertDatabase('upload', $arrayValues);
 				echo '<script>window.location.href = "?pageStr=portfolio";</script>';
