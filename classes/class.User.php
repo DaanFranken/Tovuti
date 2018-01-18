@@ -376,7 +376,7 @@ class User
 	public function getPermissionName($permissionLvl)
 	{
 		switch($permissionLvl)
-		{
+		{			
 			case '1':
 			return 'Student in klas <a class="thread" href="?pageStr=class&class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
 			break;
@@ -411,7 +411,7 @@ class User
 			break;
 
 			default:
-			return 'Gastaccount';
+			return '<i class="fa fa-3x fa-user-times w3-left" aria-hidden="true"></i>';
 		}
 	}
 
@@ -445,6 +445,38 @@ class User
 			else return false;
 		}
 		else return false;
+	}
+
+	public function getUploadedFiles($ID)
+	{
+		$sth = $this->db->selectDatabase('upload','user_ID',$ID,'');
+		$result = $sth->fetchAll();
+
+		if(!$result)
+		{
+			echo 'Je hebt nog geen bestanden toegevoegd aan je persoonlijke portfolio.';
+		}
+		else
+		{
+			echo 'Klik op een link om het bestand te downloaden';
+			echo '<ul class="w3-ul w3-card-4">';
+			foreach($result as $file)
+			{
+				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $file['uploadDate']);
+				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+				?>
+				
+					<li>
+						<?php 
+							echo '<a class="thread" href="download.php?file_id='.$file['upload_ID'].'">'.$file['title'].'.'.$file['type'].'</a>';
+						?>
+						<span class="w3-right"><?php echo $formattedDate; ?></span>	
+					</li>
+				<?php
+			}
+			echo '</ul>';
+		}
+
 	}
 }
 ?>

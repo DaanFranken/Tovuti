@@ -11,8 +11,6 @@
 <?php
 $sth = $db->selectDatabase('activities','','','');
 $result = $sth->fetch();
-
-
 if($user->loginCheck())
 {
 	?>

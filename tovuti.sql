@@ -150,6 +150,8 @@ INSERT INTO `thread` (`thread_ID`, `user_ID`, `Title`, `Thread`, `threadDate`, `
 CREATE TABLE `upload` (
   `upload_ID` varchar(255) NOT NULL,
   `user_ID` varchar(255) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `type` varchar(25) NOT NULL,
   `uploadContent` mediumblob NOT NULL,
   `uploadDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

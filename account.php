@@ -18,8 +18,7 @@ if($user->loginCheck())
 		{
 			echo '<script>window.location.href = "index.php?pageStr=account&user_id='.$user->id.'";</script>';	
 		}
-
-	// Change user information
+		// Change user information
 		if($misc->readVar('POST','username') 
 			&& $misc->readVar('POST','email'))
 		{
@@ -27,9 +26,11 @@ if($user->loginCheck())
 			$voornaam = $_POST['firstname'];
 			$achternaam = $_POST['lastname'];
 			$email = $_POST['email'];
-			$class = $_POST['classList'];
-
-
+			$class = null;
+			if($user->permission == 2)
+			{
+				$class = $_POST['classList'];
+			}
 			if($user->update($username, $voornaam, $achternaam, $email,$class))
 			{
 				?>
@@ -94,7 +95,7 @@ if($user->loginCheck())
 					?>
 					<br/>
 
-					<input type="submit" name="accSubmit" value="Sla alles op" class="w3-btn" style="color: white;background-color: #89D162;position: absolute;top: 0;left: 282px;border-bottom: 2px solid #58B327;">
+					<input type="submit" name="accSubmit" value="Sla wijzigingen op" class="w3-btn" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
 				</form>
 			</div>
 			<?php
@@ -117,7 +118,7 @@ if($user->loginCheck())
 				<div class="w3-container w3-margin-top w3-margin-bottom">					
 					<?php
 					echo $user->getPermissionIcon($permission,'style="margin-right:20px;float:left;"');
-					echo '<div class="w3-container w3-left" style="margin-top:-20px;"><h4>'.$user->getPermissionName($permission).'</h4>';
+					echo '<div class="w3-container w3-left" style="margin-top:-20px;"><h5>'.$user->getPermissionName($permission).'</h5>';
 					echo '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'</div>';
 					?>
 				</div>

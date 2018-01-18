@@ -29,7 +29,20 @@ if(isset($_POST['logout']))
 		</div>
 	</div>
 </a> 
+<?php 
+if($user->permission == 1)
+{
+	?>
+	<a href="index.php?pageStr=portfolio" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($pageStr, 'portfolio'); ?>>
+		<div class="mainMenuLinkText">
+			Mijn portfolio
+		</div>
+	</div>
+	</a> 
 <?php
+}
+
 if($user->loginCheck())
 {
 	?>
