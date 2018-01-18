@@ -31,7 +31,7 @@ USE `tovuti`;
 CREATE TABLE `class` (
   `class_ID` varchar(255) NOT NULL,
   `Name` varchar(15) NOT NULL,
-  `Year` int(11) NOT NULL
+  `Year` int() NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
   `class_ID` varchar(255) NOT NULL DEFAULT 0,
   `user_ID` varchar(255) NOT NULL,
-  `studentNumber` int(11) NOT NULL
+  `studentNumber` int() NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -128,9 +128,9 @@ CREATE TABLE `thread` (
   `Title` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
   `threadDate` datetime NOT NULL,
-  `Urgency` int(11) DEFAULT '0',
+  `Urgency` int() DEFAULT '0',
   `lastChanged` datetime DEFAULT NULL,
-  `Status` int(11) NOT NULL DEFAULT '1'
+  `Status` int() NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -152,6 +152,8 @@ CREATE TABLE `upload` (
   `user_ID` varchar(255) NOT NULL,
   `title` varchar(100) NOT NULL,
   `type` varchar(25) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT 0,
+  `grade` int(2),
   `uploadContent` mediumblob NOT NULL,
   `uploadDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -181,8 +183,8 @@ CREATE TABLE `users` (
   `Lastname` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Permission` int(11) DEFAULT '0',
-  `Status` int(11) NOT NULL DEFAULT '1'
+  `Permission` int() DEFAULT '0',
+  `Status` int() NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
