@@ -62,7 +62,7 @@ if($user->loginCheck())
 				//
 		}
 }
-else echo 'U dient in te loggen om deze pagina te bekijken';
+else $user->showLoginMessage();
 ?>
 <script>
 	var count = 0;
@@ -71,7 +71,8 @@ else echo 'U dient in te loggen om deze pagina te bekijken';
 		// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
 	}
-	else{
+	else
+	{
 		// code for IE6, IE5
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
