@@ -54,7 +54,7 @@ if($misc->readVar('POST','username')
 		?>
 		<script>
 			setTimeout(function(){
-				window.location.href = 'index.php';
+				window.location.href = '?pageStr=home';
 			}, 2000);
 		</script>
 		<?php

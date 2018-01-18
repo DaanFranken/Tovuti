@@ -476,7 +476,11 @@ class User
 			}
 			echo '</ul>';
 		}
+	}
 
+	public function uploadFile()
+	{
+		
 	}
 }
 ?>
