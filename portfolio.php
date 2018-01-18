@@ -6,8 +6,6 @@ if($user->loginCheck())
 	{
 		if(isset($_POST['submitUpload']))
 		{
-			var_dump($_FILES['uploadFiles']);
-			die();
 			if($_FILES['uploadFile']['size'] != 0 && $_FILES['uploadFile']['error'] != 0)
 			{
 				$arrayValues['upload_ID'] = $misc->getGUID();
