@@ -482,5 +482,10 @@ class User
 	{
 		
 	}
+
+	public function showLoginMessage()
+	{
+		echo '<span class="w3-margin">U dient <a class="thread" href="?pageStr=login">in te loggen</a> om deze pagina te bekijken.</span>';
+	}
 }
 ?>

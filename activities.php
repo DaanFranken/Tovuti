@@ -46,7 +46,7 @@ if($user->loginCheck())
 				else
 				{
 					?>
-					<div style="width: 100%; height:400px;">
+					<div style="width: 100%; min-height:400px;">
        					<?php echo html_entity_decode($result['Content']); ?>
 		        	</div>	
 					<?php
@@ -57,5 +57,5 @@ if($user->loginCheck())
 	</div>
 <?php
 }
-else echo 'U dient in te loggen om deze pagina te bekijken';
+else $user->showLoginMessage();
 ?>
