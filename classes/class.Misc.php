@@ -12,16 +12,6 @@
             $this->user = new User();
         }
 
-        // Page router
-        public $routes = array(
-            '' => 'home.php',
-            'login' => 'login.php',
-            'register' => 'register.php',
-            'account' => 'account.php',
-            'accountConfirm' => 'accConfirm.php',
-            'passwordConfirm' => 'passConfirm.php',
-            'admin' => 'admin/admin.php');
-
         public function readVar($type, $var) 
         {
             if($type == 'POST')
