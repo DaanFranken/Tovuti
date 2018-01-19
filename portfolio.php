@@ -6,19 +6,36 @@ if($user->loginCheck())
 	{
 		if(isset($_POST['submitUpload']))
 		{
-			if($_FILES['uploadFile']['size'] != 0)
+			if($_FILES['uploadFile']['size'] != 0 && $_FILES['uploadFile']['size'] < 10485760)
 			{
-				$arrayValues['upload_ID'] = $misc->getGUID();
-				$arrayValues['user_ID'] = $user->id;
-				$arrayValues['title'] = $_FILES['uploadFile']['name'];
-				$arrayValues['type'] = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
-				$arrayValues['uploadContent'] = addslashes(file_get_contents($_FILES['uploadFile']['tmp_name']));
-				$arrayValues['uploadDate'] = date("Y-m-d H:i:s");
-				$db->insertDatabase('upload', $arrayValues);
-				echo '<script>window.location.href = "?pageStr=portfolio";</script>';
+				$fileType = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
+				if($fileType == 'xlsx' || $fileType == 'xls' || $fileType == 'docx' || $fileType == 'doc' || $fileType == 'pdf' || $fileType == 'ppt' || $fileType == 'pptx' || $fileType == 'zip' || $fileType == 'txt')
+				{
+					$arrayValues['upload_ID'] = $misc->getGUID();
+					$arrayValues['user_ID'] = $user->id;
+					$arrayValues['title'] = $_FILES['uploadFile']['name'];
+					$arrayValues['type'] = $fileType;
+					$arrayValues['uploadContent'] = addslashes(file_get_contents($_FILES['uploadFile']['tmp_name']));
+					$arrayValues['uploadDate'] = date("Y-m-d H:i:s");
+					$db->insertDatabase('upload', $arrayValues);
+					echo '<script>window.location.href = "?pageStr=portfolio";</script>';
+				}
+				else
+				{
+					echo 'U kunt alleen deze vorm bestanden uploaden: "xlsx - xls - docx - doc - pdf - ppt - pptx - zip - txt"<br/>';
+					include 'uploadForm.php';
+				}
 			}
 			else
 			{
+				if($_FILES['uploadFile']['size'] > 10485760)
+				{
+					echo 'Uw bestand kan niet groter zijn dan 10 Megabytes<br/>';
+				}
+				elseif($_FILES['uploadFile']['size'] == 0)
+				{
+					echo 'U kunt geen lege bestanden uploaden<br/>';
+				}
 				include 'uploadForm.php';
 			}
 		}
