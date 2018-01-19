@@ -9,7 +9,7 @@ if($user->loginCheck())
 			if($_FILES['uploadFile']['size'] != 0 && $_FILES['uploadFile']['size'] < 10485760)
 			{
 				$fileType = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
-				if($fileType == 'xlsx' || $fileType == 'xls' || $fileType == 'docx' || $fileType == 'doc' || $fileType == 'pdf' || $fileType == 'ppt' || $fileType == 'pptx' || $fileType == 'zip' || $fileType == 'txt')
+				if($fileType == 'xlsx' || $fileType == 'xls' || $fileType == 'docx' || $fileType == 'doc' || $fileType == 'pdf' || $fileType == 'ppt' || $fileType == 'pptx' || $fileType == 'zip')
 				{
 					$arrayValues['upload_ID'] = $misc->getGUID();
 					$arrayValues['user_ID'] = $user->id;
@@ -22,7 +22,7 @@ if($user->loginCheck())
 				}
 				else
 				{
-					echo 'U kunt alleen deze vorm bestanden uploaden: "xlsx - xls - docx - doc - pdf - ppt - pptx - zip - txt"<br/>';
+					echo 'U kunt alleen deze vorm bestanden uploaden: "xlsx - xls - docx - doc - pdf - ppt - pptx - zip "<br/>';
 					include 'uploadForm.php';
 				}
 			}
