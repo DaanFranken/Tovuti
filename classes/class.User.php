@@ -247,7 +247,7 @@ class User
 						}
 
 						// Send mail
-						$msg = "Klik op deze link om uw email te activeren.\nindex.php?pageStr=accountConfirm&randNmb=".$randNmb;
+						$msg = "Klik op deze link om uw email te activeren.\naccountConfirm?randNmb=".$randNmb;
 						$msg = wordwrap($msg,70);
 						mail($email,"De Zevensprong | Mail confirmation",$msg);
 						echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Valideer uw email door deze link te bezoeken.<br/><br/>';
@@ -321,7 +321,7 @@ class User
 
 		// Send mail
 		$msg = 'Klik op 
-		<a href="abyss-game.com/index.php?pageStr=passwordConfirm&randNmb='.$randNmb.'">deze link</a> om uw wachtwoord te wijzigen.
+		<a href="abyss-game.com/passwordConfirm?randNmb='.$randNmb.'">deze link</a> om uw wachtwoord te wijzigen.
 		';
 		$msg = wordwrap($msg,70);
 		$headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
@@ -378,7 +378,7 @@ class User
 		switch($permissionLvl)
 		{			
 			case '1':
-			return 'Student in klas <a class="thread" href="?pageStr=class&class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
+			return 'Student in klas <a class="thread" href="class?class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
 			break;
 
 			case '2':
@@ -424,7 +424,7 @@ class User
 			$sth = $this->db->selectDatabase('class','class_ID',$class,'');
 			if($row = $sth->fetch())
 			{
-				return '<a class="thread" href="?pageStr=class&class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
+				return '<a class="thread" href="class?class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
 			}
 			else return false;
 		}
@@ -440,7 +440,7 @@ class User
 			$sth = $this->db->selectDatabase('users','user_ID',$teacherID,'');
 			if($row = $sth->fetch())
 			{
-				return '<a class="thread" href="?pageStr=account&user_id='.$teacherID.'">'.$row['Firstname'] .'&nbsp;'.$row['Lastname'].'</a>';
+				return '<a class="thread" href="account?user_id='.$teacherID.'">'.$row['Firstname'] .'&nbsp;'.$row['Lastname'].'</a>';
 			}
 			else return false;
 		}
@@ -485,7 +485,7 @@ class User
 
 	public function showLoginMessage()
 	{
-		echo '<span class="w3-margin">U dient <a class="thread" href="?pageStr=login">in te loggen</a> om deze pagina te bekijken.</span>';
+		echo '<span class="w3-margin">U dient <a class="thread" href="login">in te loggen</a> om deze pagina te bekijken.</span>';
 	}
 }
 ?>

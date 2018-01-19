@@ -13,7 +13,7 @@ if($user->loginCheck())
 		if($misc->readVar('GET','class_id'))
 		{
 			?>
-			<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 300px;background-color: #2C9AC9;" href="?pageStr=class"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar klassenoverzicht</a><br/>
+			<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 300px;background-color: #2C9AC9;" href="class"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar klassenoverzicht</a><br/>
 			<?php
 		}
 		if(!isset($_POST['addUserToClass']))

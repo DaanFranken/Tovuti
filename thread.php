@@ -19,7 +19,7 @@ if($user->loginCheck())
 				?>
 				<script>
 					setTimeout(function(){
-						window.location.href = 'index.php?pageStr=forum';
+						window.location.href = 'forum';
 					}, 2000);
 				</script>
 				<?php
@@ -46,7 +46,7 @@ if($user->loginCheck())
 				?>
 				<script>
 					setTimeout(function(){
-						window.location.href = 'index.php?pageStr=forum';
+						window.location.href = 'forum';
 					}, 2000);
 				</script>
 				<?php
@@ -65,7 +65,7 @@ if($user->loginCheck())
 			$arrayValues['Reaction'] = $editReaction;
 			$arrayValues['lastChanged'] = date('Y-m-d H:i:s');
 			$db->updateDatabase('reaction', 'reaction_ID', $_POST['editedReactionID'], $arrayValues, '');
-			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$_POST['thread_ID'].'";</script>';
+			echo '<script>window.location.href = "forum?thread_id='.$_POST['thread_ID'].'";</script>';
 		}
 
 		// Delete reaction
@@ -73,7 +73,7 @@ if($user->loginCheck())
 		{
 			$arrayValues['Status'] = 0;
 			$db->updateDatabase('reaction', 'reaction_ID', $_POST['reactionID'], $arrayValues, '');
-			echo '<script>window.location.href = "?pageStr=forum&thread_id='.$_POST['thread_ID'].'";</script>';
+			echo '<script>window.location.href = "forum?thread_id='.$_POST['thread_ID'].'";</script>';
 		}
 
 		// Display threads
@@ -99,14 +99,14 @@ if($user->loginCheck())
 				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $threadOwner['threadDate']);
 				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
 				?>
-					<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 200px;background-color: #2C9AC9;" href="?pageStr=forum"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar forum</a>
+					<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 200px;background-color: #2C9AC9;" href="forum"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar forum</a>
 				<?php
 				$thread = new Thread($misc->readVar('GET','thread_id'));
 				?>
 				<div class="w3-container w3-margin-top">
 					<div class="w3-panel w3-light-grey w3-leftbar w3-border-blue w3-margin-right w3-center" style="min-width:10%; height:130px; float: left;">
 						<span class="w3-small">
-						<?php echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'. $user->lastname  .'</a>'; ?></span><br/>
+						<?php echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'. $user->lastname  .'</a>'; ?></span><br/>
 						<span class="w3-small"><?php echo $user->getPermissionName($user->permission); ?></span><br/>
 						<?php echo $user->getPermissionIcon($user->permission,'style="margin-top:10px;"'); ?>
 						<div style="margin-top: 10px;" class="w3-small"><?php echo $formattedDate;  ?></div>		
@@ -143,14 +143,14 @@ if($user->loginCheck())
 				$arrayValues['Reaction'] 		= $Reaction;
 				$arrayValues['reactionDate'] 	= date("Y-m-d H:i:s");
 				$db->insertDatabase('reaction',$arrayValues);
-				echo '<script>window.location.href = "?pageStr=forum&thread_id='.$thread->thread_id.'";</script>';
+				echo '<script>window.location.href = "forum?thread_id='.$thread->thread_id.'";</script>';
 			}
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
 			if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
 			{
 				$thread->deleteThread($_POST['threadID']);
-				echo '<script>window.location.href = "index.php?pageStr=forum";</script>';
+				echo '<script>window.location.href = "forum";</script>';
 			}
 
 			?>

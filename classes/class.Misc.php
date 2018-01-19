@@ -12,6 +12,16 @@
             $this->user = new User();
         }
 
+        // Page router
+        public $routes = array(
+            '' => 'home.php',
+            'login' => 'login.php',
+            'register' => 'register.php',
+            'account' => 'account.php',
+            'accountConfirm' => 'accConfirm.php',
+            'passwordConfirm' => 'passConfirm.php',
+            'admin' => 'admin/admin.php');
+
         public function readVar($type, $var) 
         {
             if($type == 'POST')
@@ -104,7 +114,7 @@
 
             foreach($result as $res)
             {
-                echo '<a class="thread" href="?pageStr=class&class_id='.$res['class_ID'].'">'.$res['Name'].'</a><br/>';
+                echo '<a class="thread" href="class?class_id='.$res['class_ID'].'">'.$res['Name'].'</a><br/>';
             }
         }
 
@@ -118,7 +128,7 @@
                 $user = new User();
                 $user->getUserByID($res['user_ID']);
 
-                echo '<a class="thread" href="?pageStr=account&user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
+                echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
             }
         }
 

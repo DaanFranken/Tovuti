@@ -11,12 +11,12 @@ if($user->loginCheck())
 		if(isset($_POST['logout']))
 		{
 			$user->logout();
-			echo '<script>window.location.href = "index.php?pageStr=home";</script>';
+			echo '<script>window.location.href = "home";</script>';
 		}
 
 		if(isset($_POST['viewProfile']))
 		{
-			echo '<script>window.location.href = "index.php?pageStr=account&user_id='.$user->id.'";</script>';	
+			echo '<script>window.location.href = "account?user_id='.$user->id.'";</script>';	
 		}
 		// Change user information
 		if($misc->readVar('POST','username') 
@@ -36,7 +36,7 @@ if($user->loginCheck())
 				?>
 				<script>
 					setTimeout(function(){
-						window.location.href = 'index.php?pageStr=account';
+						window.location.href = 'account';
 					}, 1500);
 				</script>
 				<?php
@@ -51,7 +51,7 @@ if($user->loginCheck())
 			?>
 			<script>
 				setTimeout(function(){
-					window.location.href = 'index.php?pageStr=account';
+					window.location.href = 'account';
 				}, 3500);
 			</script>
 			<?php
@@ -122,7 +122,7 @@ if($user->loginCheck())
 					echo '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'</div>';
 					?>
 				</div>
-				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="?pageStr=forum&user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts van <?php echo $name; ?></a>
+				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts van <?php echo $name; ?></a>
 			</div>
 		</div>
 		<?php

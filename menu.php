@@ -4,26 +4,26 @@ if(isset($_POST['logout']))
 	$user->logout();
 }
 ?>
-<a href="index.php" style="text-decoration: none;">
+<a href="home" style="text-decoration: none;">
 	<img src="images/deZevensprong.png" alt="de Zevensprong" class="mainMenuImage1">
 </a>
 <div id="mainMenuFullscreen" style="display: inline;">
-<a href="index.php?pageStr=forum" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'forum'); ?>>
+<a href="forum" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'forum'); ?>>
 		<div class="mainMenuLinkText">
 			Forum
 		</div>
 	</div>
 </a>
-<a href="index.php?pageStr=class" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'class'); ?>>
+<a href="class" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'class'); ?>>
 		<div class="mainMenuLinkText">
 			Klassenlijsten
 		</div>
 	</div>
 </a> 
-<a href="index.php?pageStr=activities" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'activities'); ?>>
+<a href="activities" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'activities'); ?>>
 		<div class="mainMenuLinkText">
 			Activiteiten
 		</div>
@@ -33,8 +33,8 @@ if(isset($_POST['logout']))
 if($user->permission == 1)
 {
 	?>
-	<a href="index.php?pageStr=portfolio" class="mainMenuLink mainMenuLinkDiv">
-	<div <?php $misc->menuCurrentPage($pageStr, 'portfolio'); ?>>
+	<a href="portfolio" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'portfolio'); ?>>
 		<div class="mainMenuLinkText">
 			Mijn portfolio
 		</div>
@@ -50,13 +50,13 @@ if($user->loginCheck())
 	<form action="" method="post" id="logoutForm" style="display: inline">
 		<input type="hidden" name="logout" value="true">
 		<span class="mainMenuLink" onclick="logout()">
-			<div class="mainMenuLinkPicture w3-right w3-margin-right w3-margin-left" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
+			<div class="mainMenuLinkPicture w3-right w3-margin-right w3-margin-left" <?php $misc->menuCurrentPage($uri, 'login'); ?>>
 				<img src="images/logout.png" class="mainMenuImage2">
 			</div>
 		</span>
 	</form>
-	<a href="index.php?pageStr=account" class="mainMenuLink mainMenuLinkPicture w3-right">
-		<div <?php $misc->menuCurrentPage($pageStr, 'account'); ?>>
+	<a href="account" class="mainMenuLink mainMenuLinkPicture w3-right">
+		<div <?php $misc->menuCurrentPage($uri, 'account'); ?>>
 			<img src="images/account.png" class="mainMenuImage2">
 		</div>
 	</a>
@@ -65,8 +65,8 @@ if($user->loginCheck())
 else
 {
 	?>
-	<a href="index.php?pageStr=login" class="mainMenuLink">
-		<div class="mainMenuLinkPicture w3-right w3-margin-right" <?php $misc->menuCurrentPage($pageStr, 'login'); ?>>
+	<a href="login" class="mainMenuLink">
+		<div class="mainMenuLinkPicture w3-right w3-margin-right" <?php $misc->menuCurrentPage($uri, 'login'); ?>>
 			<img src="images/login.png" class="mainMenuImage2">
 		</div>
 	</a>

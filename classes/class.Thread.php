@@ -82,7 +82,7 @@ class Thread
 						echo '<form action="" method="POST" id="deleteForm'.$res['thread_ID'].'"><input type="hidden" name="threadID" value="'.$res['thread_ID'].'"></form>';
 						$threadID = "'".$res['thread_ID']."'";
 						echo '<div onclick="deleteThread('.$threadID.')"><span class="w3-bar-item w3-hover-red w3-xlarge w3-right"><i class="fa fa-trash" aria-hidden="true"></i> </span></div>';
-						echo '<a href="?pageStr=forum&editThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
+						echo '<a href="forum?editThread='.$res['thread_ID'].'"><span class="w3-bar-item w3-hover-green w3-xlarge w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> </span></a>';
 					}
 					switch ($urgency)
 					{
@@ -116,7 +116,7 @@ class Thread
 						<span class="w3-large">
 						<?php 
 						$title = substr($res['Title'],0,20).'...';
-						echo '<a class="thread" href="?pageStr=forum&thread_id='.$res['thread_ID'] . '">' . $title . '</a>'; ?></span><br>
+						echo '<a class="thread" href="forum?thread_id='.$res['thread_ID'] . '">' . $title . '</a>'; ?></span><br>
 						<span><?php 
 							$thread = substr($res['Thread'],0,20).'...';
 							echo $thread;?></span>
@@ -124,7 +124,7 @@ class Thread
 						<div class="w3-bar-item">
 							<span><i class="fa fa-user-o" aria-hidden="true"></i>
 								<?php
-								echo '<a class="thread" href="?pageStr=account&user_id='.$author['user_ID'].'">';
+								echo '<a class="thread" href="account?user_id='.$author['user_ID'].'">';
 								echo $author['Firstname'].'&nbsp;'.$author['Lastname'];
 								echo '</a>';?>
 							</span><br/>
@@ -156,7 +156,7 @@ class Thread
 					$name = $user->firstname . '&nbsp;' . $user->lastname;
 					$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $res['reactionDate']);
 					$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
-					$authorURL = '?pageStr=account&user_id='.$user->id;
+					$authorURL = 'account?user_id='.$user->id;
 					$loggedInUser = new User($_SESSION['Username']);
 					?>
 					<div class="w3-margin">
@@ -172,7 +172,7 @@ class Thread
 									if($loggedInUser->permission > 1 || $res['user_ID'] == $loggedInUser->id)
 									{
 										?>
-										<form action="?pageStr=forum&thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
+										<form action="forum?thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
 											<input type="hidden" name="thread_ID" value="<?php echo $res['thread_ID']; ?>">
 											<input type="hidden" name="editedReactionID" value="<?php echo $res['reaction_ID']; ?>">
 											<input type="text" name="editedReaction" value="<?php echo $res['Reaction']; ?>">
@@ -195,7 +195,7 @@ class Thread
 								if($loggedInUser->permission > 1 || $res['user_ID'] == $loggedInUser->id)
 								{
 									?>
-									<form action="?pageStr=forum&thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
+									<form action="forum?thread_id=<?php echo $_GET['thread_id']; ?>" method="POST">
 										<input type="hidden" name="reactionID" value="<?php echo $res['reaction_ID']; ?>">
 										<input type="hidden" name="thread_ID" value="<?php echo $_GET['thread_id']; ?>">
 										<div class="w3-right">
@@ -245,7 +245,7 @@ class Thread
 		public function newThreadForm($check)
 		{
 			?>
-			<form action="?pageStr=forum" method="POST">
+			<form action="forum" method="POST">
 				<?php
 				if(!empty($check))
 				{

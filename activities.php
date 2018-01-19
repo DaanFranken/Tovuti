@@ -39,7 +39,7 @@ if($user->loginCheck())
 						$arrayValues['editDate'] = date("Y-m-d H:i:s");
 
 						$db->updateDatabase('activities', '', '', $arrayValues, '');
-						echo '<script>window.location.href = "?pageStr=activities";</script>';
+						echo '<script>window.location.href = "activities";</script>';
 					}
 				}
 				// No edit rights:

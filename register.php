@@ -28,7 +28,7 @@
 	<br/>
 	<input type="submit" class="w3-btn w3-blue-grey" value="Registreer" name="registerSubmit">
 </form>
-<a href="index.php?pageStr=login" id="login">
+<a href="login" id="login">
 	Login
 </a>
 
@@ -54,7 +54,7 @@ if($misc->readVar('POST','username')
 		?>
 		<script>
 			setTimeout(function(){
-				window.location.href = '?pageStr=home';
+				window.location.href = 'home';
 			}, 2000);
 		</script>
 		<?php

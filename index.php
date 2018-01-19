@@ -18,27 +18,24 @@ $user->loginCheck();
 <script src="https://use.fontawesome.com/1ae0501f24.js"></script>
 </head>
 <body>
-	<?php
-
-	if($misc->readVar('GET', 'pageStr'))
-	{
-		$pageStr = $_GET['pageStr'];
-	}
-	else
-	{
-		$pageStr = 'home';
-	}
-
-	?>
 <div id="mainMenu">
 	<?php
+	$uri = str_replace('/Tovuti/', '', $_SERVER['REQUEST_URI']);
+	$uri = rtrim($uri, '/');
+	if(strpos($uri, '?'))
+	{
+		$uri = substr($uri, 0, strpos($uri, '?'));
+	}
+	// if(!array_key_exists($uri, $misc->routes)) {
+	// 	$uri = '';
+	// }
+echo '<script>alert('.$uri.');</script>';
 	include 'menu.php';
 	?>
 </div>
 <div id="mainContainer">
 	<?php
-
-	switch($pageStr)
+	switch($uri)
 	{
 		case 'home':
 			include 'home.php';
