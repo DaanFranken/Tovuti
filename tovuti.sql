@@ -31,7 +31,7 @@ USE `tovuti`;
 CREATE TABLE `class` (
   `class_ID` varchar(255) NOT NULL,
   `Name` varchar(15) NOT NULL,
-  `Year` int() NOT NULL
+  `Year` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -50,7 +50,7 @@ INSERT INTO `class` (`class_ID`, `Name`, `Year`) VALUES
 CREATE TABLE `email_confirm` (
   `user_ID` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `randNmb` int(8) NOT NULL,
+  `randNmb` int NOT NULL,
   `insertDate` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -62,7 +62,7 @@ CREATE TABLE `email_confirm` (
 
 CREATE TABLE `password_confirm` (
   `user_ID` varchar(255) NOT NULL,
-  `randNmb` int(8) NOT NULL,
+  `randNmb` int NOT NULL,
   `insertDate` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -79,7 +79,7 @@ CREATE TABLE `reaction` (
   `Reaction` text NOT NULL,
   `reactionDate` datetime NOT NULL,
   `lastChanged` datetime DEFAULT NULL,
-  `Status` int(1) NOT NULL DEFAULT '1'
+  `Status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
   `class_ID` varchar(255) NOT NULL DEFAULT 0,
   `user_ID` varchar(255) NOT NULL,
-  `studentNumber` int() NOT NULL
+  `studentNumber` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -128,9 +128,9 @@ CREATE TABLE `thread` (
   `Title` varchar(100) NOT NULL,
   `Thread` text NOT NULL,
   `threadDate` datetime NOT NULL,
-  `Urgency` int() DEFAULT '0',
+  `Urgency` int DEFAULT '0',
   `lastChanged` datetime DEFAULT NULL,
-  `Status` int() NOT NULL DEFAULT '1'
+  `Status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -152,8 +152,8 @@ CREATE TABLE `upload` (
   `user_ID` varchar(255) NOT NULL,
   `title` varchar(100) NOT NULL,
   `type` varchar(25) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 0,
-  `grade` int(2),
+  `status` int NOT NULL DEFAULT 0,
+  `grade` int,
   `uploadContent` mediumblob NOT NULL,
   `uploadDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -183,8 +183,8 @@ CREATE TABLE `users` (
   `Lastname` varchar(45) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Permission` int() DEFAULT '0',
-  `Status` int() NOT NULL DEFAULT '1'
+  `Permission` int DEFAULT '0',
+  `Status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
