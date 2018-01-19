@@ -33,6 +33,12 @@ switch($type)
 	case 'pptx':
 		header('Content-Type:   application/vnd.openxmlformats-officedocument.presentationml.presentation');
 		break;
+	case 'zip':
+		header('Content-Type:   application/zip');
+		break;
+	case 'txt':
+		header('Content-Type:   text/plain');
+		break;
 }
 header("Content-Disposition: attachment; filename=$file");
 ob_clean();
