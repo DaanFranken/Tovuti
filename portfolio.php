@@ -10,9 +10,9 @@ if($user->loginCheck())
 			{
 				$arrayValues['upload_ID'] = $misc->getGUID();
 				$arrayValues['user_ID'] = $user->id;
-				$arrayValues['title'] = $_POST['title'];
+				$arrayValues['title'] = $_FILES['uploadFile']['name'];
 				$arrayValues['type'] = pathinfo($_FILES['uploadFile']['name'], PATHINFO_EXTENSION);
-				$arrayValues['uploadContent'] = $_FILES['uploadFile']['name'];
+				$arrayValues['uploadContent'] = addslashes(file_get_contents($_FILES['uploadFile']['tmp_name']));
 				$arrayValues['uploadDate'] = date("Y-m-d H:i:s");
 				$db->insertDatabase('upload', $arrayValues);
 				echo '<script>window.location.href = "?pageStr=portfolio";</script>';

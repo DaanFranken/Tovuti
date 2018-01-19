@@ -468,7 +468,7 @@ class User
 				
 					<li>
 						<?php 
-							echo '<a class="thread" href="download.php?file_id='.$file['upload_ID'].'">'.$file['title'].'.'.$file['type'].'</a>';
+							echo '<a class="thread" href="download.php?file_id='.$file['upload_ID'].'">'.$file['title'].'</a>';
 						?>
 						<span class="w3-right"><?php echo $formattedDate; ?></span>	
 					</li>
