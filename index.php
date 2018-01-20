@@ -29,7 +29,7 @@ $user->loginCheck();
 	// if(!array_key_exists($uri, $misc->routes)) {
 	// 	$uri = '';
 	// }
-echo '<script>alert('.$uri.');</script>';
+// echo '<script>alert("'.$uri.'");</script>';
 	include 'menu.php';
 	?>
 </div>

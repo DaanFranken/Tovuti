@@ -24,7 +24,7 @@ else
 	  <input type="submit" class="w3-btn w3-blue-grey" value="Login" name="loginSubmit">
 	</form>
 
-	<a href="index.php?pageStr=register" id="register">
+	<a href="register" id="register">
 		Registreer
 	</a>
 	<?php
@@ -37,7 +37,7 @@ if($misc->readVar('POST','username') && $misc->readVar('POST','password'))
 
 	if($user->login($username,$password))
 	{
-		echo '<script>window.location.href = "index.php";</script>';
+		echo '<script>window.location.href = "home";</script>';
 	}
 }
 ?>
