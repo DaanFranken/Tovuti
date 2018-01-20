@@ -170,6 +170,10 @@ CREATE TABLE `activities` (
   `editDate` datetime 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `activities` (`user_ID`, `Content`, `editDate`) VALUES
+('B2022F48-ED35-43F9-BB61-B97A3019E004', '&nbsp;', '2018-01-19 11:13:26');
+
+
 -- --------------------------------------------------------
 
 --

@@ -20,7 +20,7 @@ $user->loginCheck();
 <body>
 <div id="mainMenu">
 	<?php
-	$uri = str_replace('/Tovuti/', '', $_SERVER['REQUEST_URI']);
+	$uri = str_replace('/tovuti/', '', $_SERVER['REQUEST_URI']);
 	$uri = rtrim($uri, '/');
 	if(strpos($uri, '?'))
 	{

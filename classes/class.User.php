@@ -478,6 +478,24 @@ class User
 		}
 	}
 
+	public function getUploadStatusIcon($status)
+	{
+		switch ($status) {
+			# Nog niet gezien
+			case '0':
+				echo '<div class="tooltip"><i class="fa fa-eye-slash w3-margin-right w3-text-red" aria-hidden="true"><span class="tooltiptext">Nog niet gezien</span></div></i>';
+				break;
+			# Gezien
+			case '1':
+				echo '<div class="tooltip"><i class="fa fa-eye w3-margin-right w3-text-green" aria-hidden="true"><span class="tooltiptext">Gezien</span></div></i>';
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
 	public function uploadFile()
 	{
 		
