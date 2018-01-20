@@ -492,7 +492,6 @@ class User
 			
 			default:
 				# code...
-				break;
 		}
 	}
 
