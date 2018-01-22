@@ -110,6 +110,7 @@
 
         public function getAllStudentsInClass($ID)
         {
+            $count = 0;
             $sth = $this->db->selectDatabase('students', 'class_ID',$ID,'');
             $result = $sth->fetchAll();
 
@@ -119,7 +120,9 @@
                 $user->getUserByID($res['user_ID']);
 
                 echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
+                $count++;
             }
+            return $count;
         }
 
         public function dropdownClassList()

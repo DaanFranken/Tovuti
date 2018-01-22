@@ -6,6 +6,23 @@ if($user->loginCheck())
 		$sth = $db->selectDatabase('class','class_ID',$_GET['class_id'],'');
 		$result = $sth->fetch();
 	}
+
+	// Save new students into class
+	$userCount = 0;
+	if(isset($_POST['saveNewClassStudents']) && $user->permission > 1)
+	{
+		$sth = $db->selectDatabase('students', 'user_ID', $_POST['userID'.$userCount], '');
+		if($row = $sth->fetch())
+		{
+			if(empty($row['class_ID']))
+			{
+				$arrayValues['class_ID'] = $_GET['class_ID'];
+				$db->updateDatabase('students', 'user_ID', $_POST['userID'.$userCount], $arrayValues, '');
+				echo '<script>window.location.href = "class?class_ID='.$_GET['class_id'].'";</script>';
+			}
+		}
+		$userCount++;
+	}
 	?>
 
 	<div class="w3-container w3-margin">
@@ -42,18 +59,29 @@ if($user->loginCheck())
 					}
 					if(!$misc->readVar('GET','class_id'))
 					{
-						$misc->getAllClassesAsList();	
+						$misc->getAllClassesAsList();
 					}
 					else
 					{
 						$misc->getAllStudentsInClass($_GET['class_id']);
-					}			
+						$sth = $db->selectDatabase('students', 'class_ID', '', '');
+						$count = 0;
+						while($sth->fetch())
+						{
+							$count++;
+						}
+						echo '<input type="hidden" name="count" value="'.$count.'" id="count">';
+					}
 
 					?>	
 				</div>
 			</div>
 		</div>
-		<div id="addStudent"></div>
+		<form action="class?class_ID=<?php $_GET['class_id']; ?>" method="POST">
+			<div id="addStudent"></div>
+			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
+		</form>
+		<i><div id="studentLimit" style="color: #575757;"></div></i>
 		</div>
 		<?php 
 		}
@@ -65,9 +93,11 @@ if($user->loginCheck())
 else $user->showLoginMessage();
 ?>
 <script>
-	var count = 0;
-	function addNewStudent(){
-		if(window.XMLHttpRequest){
+var count = 0;
+var check1 = false;
+var check2 = false;
+function addNewStudent(){
+	if(window.XMLHttpRequest){
 		// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
 	}
@@ -78,12 +108,26 @@ else $user->showLoginMessage();
 	}
 	xmlhttp.onreadystatechange=function(){
 		if(this.readyState==4 && this.status==200){
-			document.getElementById('addStudent').innerHTML += '<select name="userID'+count+'">'+this.responseText+'</select>';
+			if(count != document.getElementById('count').value){
+				document.getElementById('addStudent').innerHTML += '<select name="userID'+count+'">'+this.responseText+'</select><br/>';
+				count++;
+			}
+			else if(!check1){
+				document.getElementById('studentLimit').innerHTML = 'Er zijn geen studenten meer om toe te voegen';
+				check1 = true;
+			}
+			if(!check2 && document.getElementById('count').value != 0){
+				document.getElementById('newStudentsBtn').style.cssText = 'display: block !important;color: white;background-color: #89D162;border-bottom: 2px solid #58B327;';
+				check2 = true;
+			}
 		}
 	}
 	xmlhttp.open("GET","addStudentToClass.php");
 	xmlhttp.send();
-	count++;
+	setTimeout(function(){
+		document.getElementById('studentLimit').innerHTML = '';
+		check1 = false;
+	}, 2000);
 }
 </script>
 <!-- <div class="w3-card-4 w3-rest"></div> -->

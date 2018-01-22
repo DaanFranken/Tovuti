@@ -90,7 +90,7 @@ CREATE TABLE `reaction` (
 
 CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
-  `class_ID` varchar(255) NOT NULL DEFAULT 0,
+  `class_ID` varchar(255),
   `user_ID` varchar(255) NOT NULL,
   `studentNumber` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -298,8 +298,7 @@ ALTER TABLE `reaction`
 -- Beperkingen voor tabel `students`
 --
 ALTER TABLE `students`
-  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`),
-  ADD CONSTRAINT `students_ibfk_2` FOREIGN KEY (`class_ID`) REFERENCES `class` (`class_ID`);
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `users` (`user_ID`);
 
 --
 -- Beperkingen voor tabel `teachers`
