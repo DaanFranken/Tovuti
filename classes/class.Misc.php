@@ -117,9 +117,16 @@
             foreach($result as $res)
             {
                 $user = new User();
+                if($user->loginCheck())
+                {
+                    if($user->permission > 1)
+                    {
+                        echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$user->id.'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form>';
+                    }
+                }
                 $user->getUserByID($res['user_ID']);
 
-                echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$user->id.'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form><a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
+                echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
                 $count++;
             }
             return $count;

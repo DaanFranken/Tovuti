@@ -38,10 +38,7 @@ a.thread:hover
     background-color: black;
     color: #fff;
     text-align: center;
-    /*border-radius: 6px;*/
     padding: 5px 0;
-    
-    /* Position the tooltip */
     position: absolute;
     z-index: 1;
     top: 100%;
@@ -51,4 +48,17 @@ a.thread:hover
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.w3-button, .w3-btn{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+button:focus, .w3-button:focus, .w3-btn:focus{
+    outline: 0;
 }

@@ -40,7 +40,6 @@ if($user->loginCheck())
 		}
 	}
 	?>
-
 	<div class="w3-container w3-margin">
 		<?php 
 		if($misc->readVar('GET','class_id'))
@@ -49,63 +48,55 @@ if($user->loginCheck())
 			<a class="w3-button w3-block w3-hover-blue" style="text-decoration: none;max-width: 300px;background-color: #2C9AC9;" href="class"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp;Terug naar klassenoverzicht</a><br/>
 			<?php
 		}
-		if(!isset($_POST['addUserToClass']))
-		{
-			?>
-			<div class="w3-card-4 w3-rest">
-				<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
-				{
-					?>
-					<button class="w3-button w3-circle w3-teal w3-right w3-medium w3-card-4" style="position: absolute;top: 24px;right: 50px;padding: 10px 15px;" onclick="addNewStudent()">+</button>
-					<?php
-				}
+		?>
+		<div class="w3-card-4 w3-rest">
+			<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
+			{
 				?>
-				<header class="w3-container w3-light-grey">
-					<h3><?php echo 'Klassenlijst '. (isset($_GET['class_id']) ? $result['Name'] : '');   ?></h3>
-				</header>
-				<div class="w3-container">
-					<?php 
-					if($misc->readVar('GET','class_id')) 
-					{ 
-						if($user->getTeacherByClassID($_GET['class_id'])) 
-						{
-							echo 'Docent: '. $user->getTeacherByClassID($_GET['class_id']); 
-							echo '<hr>';
-						}
-					}
-					if(!$misc->readVar('GET','class_id'))
+				<button class="w3-button w3-circle w3-teal w3-right w3-medium w3-card-4" style="position: absolute;top: 24px;right: 50px;padding: 10px 15px;" onclick="addNewStudent()">+</button>
+				<?php
+			}
+			?>
+			<header class="w3-container w3-light-grey">
+				<h3><?php echo 'Klassenlijst '. (isset($_GET['class_id']) ? $result['Name'] : '');   ?></h3>
+			</header>
+			<div class="w3-container">
+				<?php 
+				if($misc->readVar('GET','class_id')) 
+				{ 
+					if($user->getTeacherByClassID($_GET['class_id'])) 
 					{
-						$misc->getAllClassesAsList();
+						echo 'Docent: '. $user->getTeacherByClassID($_GET['class_id']); 
+						echo '<hr>';
 					}
-					else
+				}
+				if(!$misc->readVar('GET','class_id'))
+				{
+					$misc->getAllClassesAsList();
+				}
+				else
+				{
+					$misc->getAllStudentsInClass($_GET['class_id']);
+					echo '<style>.w3-btn{transition: all 0.2s;}.w3-btn:hover{opacity: 1 !important;}</style>';
+					$sth = $db->selectDatabase('students', 'class_ID', '0', '');
+					$count = 0;
+					while($sth->fetch())
 					{
-						$misc->getAllStudentsInClass($_GET['class_id']);
-						echo '<style>.w3-btn{transition: all 0.2s;}.w3-btn:hover{opacity: 1 !important;}</style>';
-						$sth = $db->selectDatabase('students', 'class_ID', '0', '');
-						$count = 0;
-						while($sth->fetch())
-						{
-							$count++;
-						}
-						echo '<input type="hidden" name="count" value="'.$count.'" id="count">';
+						$count++;
 					}
-
-					?>	
-				</div>
+					echo '<input type="hidden" name="count" value="'.$count.'" id="count">';
+				}
+				?>	
 			</div>
 		</div>
-		<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST">
-			<div id="addStudent"></div>
-			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
-		</form>
-		<i><div id="studentLimit" style="color: #575757;"></div></i>
-		</div>
-		<?php 
-		}
-		else
-		{
-				//
-		}
+	</div>
+	<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST" style="margin-left: 33px;">
+		<div id="addStudent"></div>
+		<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
+	</form>
+	<i><div id="studentLimit" style="color: #575757;margin-left: 33px;"></div></i>
+	</div>
+	<?php
 }
 else $user->showLoginMessage();
 ?>

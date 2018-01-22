@@ -105,12 +105,13 @@ if($user->loginCheck())
 					{
 						echo '<label class="w3-text-teal"><b>Klas</b></label><br/>';
 						$misc->dropdownClassList();
+						?>
+						<br/>
+						<input type="submit" name="accSubmit" value="Sla wijzigingen op" class="w3-btn" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+						<input type="submit" name="removeClassTeacher" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #E41118;position: relative;display: inline;height: 41px;border: none;border-bottom: 2px solid #A30005;" title="Verwijder jezelf van deze klas">
+						<?php
 					}
 					?>
-					<br/>
-
-					<input type="submit" name="accSubmit" value="Sla wijzigingen op" class="w3-btn" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
-					<input type="submit" name="removeClassTeacher" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #E41118;position: relative;display: inline;height: 41px;border: none;border-bottom: 2px solid #A30005;" title="Verwijder jezelf van deze klas">
 				</form>
 			</div>
 			<?php
