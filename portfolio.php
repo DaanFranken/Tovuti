@@ -64,7 +64,10 @@ if($user->loginCheck())
 							// Docent
 							if($user->permission == 2)
 							{
-								$user->getUploadedFilesByClassID($_GET['class_id']);
+								if($misc->readVar('GET','class_id'))
+								{
+									$user->getUploadedFilesByClassID($_GET['class_id']);
+								}
 							}
 							else
 							{
