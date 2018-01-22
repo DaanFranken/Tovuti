@@ -31,7 +31,7 @@ if($user->loginCheck())
 			{
 				$class = $_POST['classList'];
 			}
-			if($user->update($username, $voornaam, $achternaam, $email,$class))
+			if($user->update($username, $voornaam, $achternaam, $email, $class))
 			{
 				?>
 				<script>
@@ -44,10 +44,24 @@ if($user->loginCheck())
 			}
 		}
 
-	// Change password
+		// Change password
 		if(isset($_POST['chgPass']))
 		{
 			$user->passConfirm();
+			?>
+			<script>
+				setTimeout(function(){
+					window.location.href = 'account';
+				}, 3500);
+			</script>
+			<?php
+			$check = true;
+		}
+
+		// Delete teacher from class
+		if(isset($_POST['removeClassTeacher']))
+		{
+			$user->removeTeacherFromClass();
 			?>
 			<script>
 				setTimeout(function(){
@@ -96,6 +110,7 @@ if($user->loginCheck())
 					<br/>
 
 					<input type="submit" name="accSubmit" value="Sla wijzigingen op" class="w3-btn" style="color: white;background-color: #89D162;border-bottom: 2px solid #58B327;">
+					<input type="submit" name="removeClassTeacher" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #E41118;position: relative;display: inline;height: 41px;border: none;border-bottom: 2px solid #A30005;" title="Verwijder jezelf van deze klas">
 				</form>
 			</div>
 			<?php

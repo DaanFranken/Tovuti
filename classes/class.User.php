@@ -175,7 +175,7 @@ class User
 	}
 
 	// Change user
-	public function update($username, $voornaam, $achternaam, $email,$class)
+	public function update($username, $voornaam, $achternaam, $email, $class)
 	{
 		if(isset($_POST['accSubmit']))
 		{
@@ -257,10 +257,20 @@ class User
 					if(!empty($class))
 					{
 						$misc = new Misc();
-						$arrayValues['teacher_ID'] = $misc->getGUID();
-						$arrayValues['user_ID'] = $this->id;
-						$arrayValues['class_ID'] = $class;
-						$this->db->updateDatabase('teachers','user_ID',$this->id,$arrayValues,'');
+						$arrayValues = array();
+						$sth = $this->db->selectDatabase('teachers', 'user_ID', $this->id, '');
+						if($sth->fetch())
+						{
+							$arrayValues['class_ID'] = $class;
+							$this->db->updateDatabase('teachers', 'user_ID', $this->id, $arrayValues, '');
+						}
+						else
+						{
+							$arrayValues['teacher_ID'] = $misc->getGUID();
+							$arrayValues['user_ID'] = $this->id;
+							$arrayValues['class_ID'] = $class;
+							$this->db->insertDatabase('teachers', $arrayValues);
+						}
 					}
 
 					// Basic info
@@ -529,14 +539,23 @@ class User
 		}
 	}
 
-	public function uploadFile()
-	{
-		
-	}
-
 	public function showLoginMessage()
 	{
 		echo '<span class="w3-margin">U dient <a class="thread" href="login">in te loggen</a> om deze pagina te bekijken.</span>';
 	}
+
+    public function removeTeacherFromClass()
+    {
+    	$sth = $this->db->selectDatabase('teachers', 'user_ID', $this->id, '');
+    	if($sth->fetch())
+    	{
+        	$this->db->deleteDatabase('teachers', 'user_ID', $this->id, '');
+        	echo 'Uw bent succesvol van uw klas verwijderd';
+        }
+        else
+        {
+        	echo 'U bent niet toegewezen aan een klas';
+        }
+    }
 }
 ?>

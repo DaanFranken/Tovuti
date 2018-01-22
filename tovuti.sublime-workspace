@@ -35,7 +35,7 @@
 			"file": "tovuti.sql",
 			"settings":
 			{
-				"buffer_size": 8724,
+				"buffer_size": 8841,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -44,25 +44,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1481,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "menu.php",
-			"settings":
-			{
-				"buffer_size": 2177,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "home.php",
-			"settings":
-			{
-				"buffer_size": 156,
+				"buffer_size": 1518,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -71,7 +53,7 @@
 			"file": "classes/class.Database.php",
 			"settings":
 			{
-				"buffer_size": 2054,
+				"buffer_size": 2036,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -80,7 +62,7 @@
 			"file": "classes/class.Thread.php",
 			"settings":
 			{
-				"buffer_size": 10082,
+				"buffer_size": 10019,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -89,7 +71,7 @@
 			"file": "classes/class.Misc.php",
 			"settings":
 			{
-				"buffer_size": 4559,
+				"buffer_size": 4541,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -98,16 +80,24 @@
 			"file": "classes/class.User.php",
 			"settings":
 			{
-				"buffer_size": 12144,
+				"buffer_size": 13571,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "download.php",
+			"file": "/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
 			"settings":
 			{
-				"buffer_size": 1119,
-				"encoding": "UTF-8",
+				"buffer_size": 534,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
+			"settings":
+			{
+				"buffer_size": 768,
 				"line_ending": "Windows"
 			}
 		},
@@ -115,16 +105,7 @@
 			"file": "portfolio.php",
 			"settings":
 			{
-				"buffer_size": 1306,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "uploadForm.php",
-			"settings":
-			{
-				"buffer_size": 292,
+				"buffer_size": 2421,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -133,7 +114,7 @@
 			"file": "style/index.css",
 			"settings":
 			{
-				"buffer_size": 353,
+				"buffer_size": 793,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -216,23 +197,38 @@
 	},
 	"file_history":
 	[
+		"/D/Xampp/htdocs/HackathonDenBosch/content/public/controllers/index.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/content/content.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/admin/core/pagebuild.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/admin/index.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/admin/classcompiler.php",
+		"/D/Xampp/htdocs/Tovuti/register.php",
+		"/D/Xampp/htdocs/Tovuti/login.php",
+		"/D/Xampp/htdocs/Tovuti/activities.php",
+		"/D/Xampp/htdocs/VT-SC/index.php",
+		"/D/Xampp/htdocs/Tovuti/menu.php",
+		"/D/Xampp/htdocs/Tovuti/newPasswordForm.php",
+		"/D/Xampp/htdocs/Tovuti/download.php",
+		"/D/Xampp/htdocs/Tovuti/home.php",
+		"/D/Xampp/htdocs/Tovuti/passConfirm.php",
+		"/D/Xampp/htdocs/Tovuti/addStudentToClass.php",
+		"/D/Xampp/htdocs/Tovuti/autoloader.php",
+		"/D/Xampp/htdocs/Tovuti/classlist.php",
+		"/D/Xampp/htdocs/Tovuti/portfolio.php",
+		"/D/Xampp/htdocs/Tovuti/thread.php",
+		"/D/Xampp/htdocs/Tovuti/uploadForm.php",
+		"/D/Xampp/htdocs/Tovuti/accConfirm.php",
+		"/D/Xampp/htdocs/Tovuti/account.php",
+		"/D/Xampp/htdocs/VT-SC/classes/class.Misc.php",
 		"/D/Xampp/php/php.ini",
 		"/D/Xampp/htdocs/Tovuti/tovuti_old.sql",
 		"/D/Xampp/htdocs/Tovuti/classes/class.User.php",
-		"/D/Xampp/htdocs/Tovuti/account.php",
-		"/D/Xampp/htdocs/Tovuti/register.php",
 		"/D/Xampp/htdocs/VT-SC/account.php",
-		"/D/Xampp/htdocs/Tovuti/addStudentToClass.php",
-		"/D/Xampp/htdocs/Tovuti/classlist.php",
-		"/D/Xampp/htdocs/Tovuti/thread.php",
 		"/D/Xampp/htdocs/VT-SC/getCount.php",
 		"/D/Xampp/htdocs/VT-SC/getlang.php",
-		"/D/Xampp/htdocs/Tovuti/login.php",
 		"/D/Xampp/htdocs/VT-SC/classes/class.Database.php",
-		"/D/Xampp/htdocs/VT-SC/classes/class.Misc.php",
 		"/D/Xampp/htdocs/Tovuti/classes/class.Thread.php",
 		"/D/Xampp/htdocs/archive/database/archiveDisplay.php",
-		"/D/Xampp/htdocs/Tovuti/newPasswordForm.php",
 		"/D/Xampp/htdocs/Tovuti/style/style.css",
 		"/D/Xampp/htdocs/Tovuti/index.php",
 		"/D/Xampp/htdocs/U.R.S/urs.sql",
@@ -257,8 +253,6 @@
 		"/C/Users/Stijn/Downloads/urs.sql",
 		"/D/Xampp/htdocs/HackathonDenBosch/setup.php",
 		"/D/Xampp/htdocs/U.R.S/urs/js/template.js",
-		"/D/Xampp/htdocs/HackathonDenBosch/admin/core/pagebuild.php",
-		"/D/Xampp/htdocs/HackathonDenBosch/admin/classcompiler.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/index.php",
 		"/D/Xampp/htdocs/U.R.S/urs/js/newProject.js",
 		"/D/Xampp/htdocs/HackathonDenBosch/documenten/hackathondenbosch.sql",
@@ -296,7 +290,6 @@
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/views/register-view.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/index.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/views/change-view.php",
-		"/D/Xampp/htdocs/HackathonDenBosch/content/content.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/controllers/change-controller.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/views/register.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/controllers/home-controller.php",
@@ -341,6 +334,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hidden",
+			"index.php?pageStr=",
+			"&",
+			"ind",
+			"p",
+			"&",
+			"ind",
+			"&",
+			"&user",
+			"&",
+			"?pageStr=",
+			"index.php?pageStr=",
+			"?pageStr=",
+			"index.php?pageStr=",
+			"?pageStr=",
+			"index.php?pageStr=",
+			"?pageStr=",
+			"index.php?pageStr=",
+			"?pageStr=",
+			"pageStr",
+			"?pageStr=",
+			"Tovuti",
+			"pageStr",
+			"VT",
+			"index.php?pageStr=",
+			"pageStr",
+			"foi",
+			"!=",
+			"fileType",
+			"longblob",
+			"fileType",
+			"mediumblob",
+			"title",
+			"uploadFile",
 			"portfolio",
 			"upload",
 			"date",
@@ -434,41 +461,7 @@
 			"Reaction",
 			"reaction",
 			"thread_ID",
-			"pageStr",
-			"reactionID",
-			"reply",
-			"changeReply",
-			"reply",
-			"reactio",
-			"reactionID",
-			"reactionForm",
-			"arrayValues",
-			"whereKey",
-			"whereValue",
-			"tableName",
-			"threadID",
-			"reaction",
-			"editedReaction",
-			"editedReactionID",
-			"reactionID",
-			"editedReactionID",
-			"reactionID",
-			"changeReply",
-			"changeEditedReaction",
-			"editedReactionID",
-			"saveEditedReaction",
-			"editedReaction",
-			"saveEditedReaction",
-			"changeReply",
-			"Edit",
-			"thread_ID",
-			"changeReply",
-			"deleteReply",
-			"test",
-			"<a href=\"#\">",
-			"threa",
-			"cho '",
-			"w3-card-4"
+			"pageStr"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -496,15 +489,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8724,
+						"buffer_size": 8841,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4225,
-								4225
+								4344,
+								4344
 							]
 						],
 						"settings":
@@ -514,10 +507,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2487.0,
+						"translation.y": 2747.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -526,7 +519,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1481,
+						"buffer_size": 1518,
 						"regions":
 						{
 						},
@@ -543,27 +536,33 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 833.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 6,
+			"sheets":
+			[
 				{
 					"buffer": 2,
-					"file": "menu.php",
+					"file": "classes/class.Database.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2177,
+						"buffer_size": 2036,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2036,
+								2036
 							]
 						],
 						"settings":
@@ -580,82 +579,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "home.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 156,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15,
-								15
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 4,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "classes/class.Database.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2054,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1174,
-								1174
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 476.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "classes/class.Thread.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10082,
+						"buffer_size": 10019,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3941,
+								3942
 							]
 						],
 						"settings":
@@ -664,27 +600,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2183.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "classes/class.Misc.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4559,
+						"buffer_size": 4541,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2223,
-								2223
+								161,
+								161
 							]
 						],
 						"settings":
@@ -694,27 +630,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1329.0,
+						"translation.y": 2200.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "classes/class.User.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12144,
+						"buffer_size": 13571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11796,
-								11796
+								12559,
+								12559
 							]
 						],
 						"settings":
@@ -723,55 +659,87 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8881.0,
+						"translation.y": 9837.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "download.php",
+					"buffer": 6,
+					"file": "/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1119,
+						"buffer_size": 534,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								369,
-								369
+								98,
+								98
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "portfolio.php",
+					"buffer": 7,
+					"file": "/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1306,
+						"buffer_size": 768,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								556,
-								556
+								765,
+								27
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "portfolio.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2421,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2421,
+								2421
 							]
 						],
 						"settings":
@@ -780,38 +748,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1255.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "uploadForm.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								114,
-								114
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -821,12 +761,12 @@
 			"sheets":
 			[
 				{
-					"buffer": 11,
+					"buffer": 9,
 					"file": "style/index.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 353,
+						"buffer_size": 793,
 						"regions":
 						{
 						},
@@ -840,17 +780,18 @@
 						"settings":
 						{
 							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 10,
 					"file": "style/home.css",
 					"semi_transient": false,
 					"settings":
@@ -874,11 +815,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 11,
 					"file": "style/menu.css",
 					"semi_transient": false,
 					"settings":
@@ -903,11 +844,11 @@
 						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 12,
 					"file": "style/login.css",
 					"semi_transient": false,
 					"settings":
@@ -931,11 +872,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 13,
 					"file": "style/register.css",
 					"semi_transient": false,
 					"settings":
@@ -959,11 +900,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 14,
 					"file": "style/account.css",
 					"semi_transient": false,
 					"settings":
@@ -987,7 +928,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1027,7 +968,7 @@
 		"cols":
 		[
 			0.0,
-			0.305729166666,
+			0.0260416666667,
 			0.973958333333,
 			1.0
 		],
