@@ -80,6 +80,7 @@ if($user->loginCheck())
 					else
 					{
 						$misc->getAllStudentsInClass($_GET['class_id']);
+						echo '<style>.w3-btn{transition: all 0.2s;}.w3-btn:hover{opacity: 1 !important;}</style>';
 						$sth = $db->selectDatabase('students', 'class_ID', '0', '');
 						$count = 0;
 						while($sth->fetch())
@@ -129,8 +130,12 @@ function addNewStudent(){
 				count++;
 			}
 			else if(!check1){
-				document.getElementById('studentLimit').innerHTML = 'Er zijn geen studenten meer om toe te voegen';
 				check1 = true;
+				document.getElementById('studentLimit').innerHTML = 'Er zijn geen studenten meer om toe te voegen';
+				setTimeout(function(){
+					document.getElementById('studentLimit').innerHTML = '';
+					check1 = false;
+				}, 2000);
 			}
 			if(!check2 && document.getElementById('count').value != 0){
 				document.getElementById('newStudentsBtn').style.cssText = 'display: block !important;color: white;background-color: #89D162;border-bottom: 2px solid #58B327;';
@@ -140,10 +145,6 @@ function addNewStudent(){
 	}
 	xmlhttp.open("GET","addStudentToClass.php");
 	xmlhttp.send();
-	setTimeout(function(){
-		document.getElementById('studentLimit').innerHTML = '';
-		check1 = false;
-	}, 2000);
 }
 </script>
 <!-- <div class="w3-card-4 w3-rest"></div> -->
