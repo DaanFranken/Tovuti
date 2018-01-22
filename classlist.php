@@ -14,14 +14,30 @@ if($user->loginCheck())
 		$sth = $db->selectDatabase('students', 'user_ID', $_POST['userID'.$userCount], '');
 		if($row = $sth->fetch())
 		{
-			if(empty($row['class_ID']))
+			if($row['class_ID'] == 0)
 			{
-				$arrayValues['class_ID'] = $_GET['class_ID'];
+				$arrayValues['class_ID'] = $_GET['class_id'];
 				$db->updateDatabase('students', 'user_ID', $_POST['userID'.$userCount], $arrayValues, '');
-				echo '<script>window.location.href = "class?class_ID='.$_GET['class_id'].'";</script>';
+				echo '<script>window.location.href = "class?class_id='.$_GET['class_id'].'";</script>';
 			}
 		}
 		$userCount++;
+	}
+
+	// Remove user from class
+	if(isset($_POST['remStudentFromClass']))
+	{
+		$sth = $db->selectDatabase('students', 'user_ID', $_POST['user_ID'], '');
+		if($row = $sth->fetch())
+		{
+			$arrayValues['class_ID'] = 0;
+			$db->updateDatabase('students', 'user_ID', $_POST['user_ID'], $arrayValues, '');
+			echo '<script>window.location.href = "class?class_id='.$_GET['class_id'].'";</script>';
+		}
+		else
+		{
+			echo '<script>window.location.href = "class?class_id='.$_GET['class_id'].'";</script>';
+		}
 	}
 	?>
 
@@ -64,7 +80,7 @@ if($user->loginCheck())
 					else
 					{
 						$misc->getAllStudentsInClass($_GET['class_id']);
-						$sth = $db->selectDatabase('students', 'class_ID', '', '');
+						$sth = $db->selectDatabase('students', 'class_ID', '0', '');
 						$count = 0;
 						while($sth->fetch())
 						{
@@ -77,7 +93,7 @@ if($user->loginCheck())
 				</div>
 			</div>
 		</div>
-		<form action="class?class_ID=<?php $_GET['class_id']; ?>" method="POST">
+		<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST">
 			<div id="addStudent"></div>
 			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
 		</form>

@@ -119,7 +119,7 @@
                 $user = new User();
                 $user->getUserByID($res['user_ID']);
 
-                echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
+                echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><form action="class?class_id='.$_GET['class_id'].'" method="POST"><input type="hidden" name="user_ID" value="'.$user->id.'"><input type="submit" name="remStudentFromClass" value="X"></form><br/>';
                 $count++;
             }
             return $count;
