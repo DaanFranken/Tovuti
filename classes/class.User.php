@@ -253,7 +253,7 @@ class User
 						echo 'Een email is verstuurd naar de doorgegeven mail.<br/>Valideer uw email door deze link te bezoeken.<br/><br/>';
 					}
 
-					// Aanpassen van een klas (indien van toepassing)
+					// Aanpassen van een klas
 					if(!empty($class))
 					{
 						$misc = new Misc();

@@ -52,9 +52,13 @@ if($user->loginCheck())
 		<div class="w3-card-4 w3-rest">
 			<?php if($misc->readVar('GET','class_id') && $user->permission > 1)
 			{
-				?>
-				<button class="w3-button w3-circle w3-teal w3-right w3-medium w3-card-4" style="position: absolute;top: 24px;right: 50px;padding: 10px 15px;" onclick="addNewStudent()">+</button>
-				<?php
+				$sth = $db->selectDatabase('teachers', 'user_ID', $user->id, 'AND class_ID = "'.$_GET['class_id'].'"');
+				if($sth->fetch())
+				{
+					?>
+					<button class="w3-button w3-circle w3-teal w3-right w3-medium w3-card-4" style="position: absolute;top: 24px;right: 50px;padding: 10px 15px;" onclick="addNewStudent()">+</button>
+					<?php
+				}
 			}
 			?>
 			<header class="w3-container w3-light-grey">

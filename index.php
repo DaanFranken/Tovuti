@@ -64,6 +64,9 @@ $user->loginCheck();
 		case 'portfolio':
 			include 'portfolio.php';
 			break;
+		case 'admin':
+			include 'admin.php';
+			break;
 		default:
 			include 'home.php';
 	}

@@ -57,6 +57,19 @@ if($user->permission == 2)
 <?php
 }
 
+if($user->permission == 3)
+{
+	?>
+	<a href="admin" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'admin'); ?>>
+		<div class="mainMenuLinkText">
+			Admin menu
+		</div>
+	</div>
+	</a> 
+	<?php
+}
+
 if($user->loginCheck())
 {
 	?>

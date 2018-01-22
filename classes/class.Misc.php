@@ -110,7 +110,6 @@
 
         public function getAllStudentsInClass($ID)
         {
-            $count = 0;
             $sth = $this->db->selectDatabase('students', 'class_ID',$ID,'');
             $result = $sth->fetchAll();
 
@@ -121,15 +120,21 @@
                 {
                     if($user->permission > 1)
                     {
-                        echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$user->id.'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form>';
+                        $sth = $this->db->selectDatabase('teachers', 'user_ID', $user->id, 'AND class_ID = "'.$_GET['class_id'].'"');
+                        if($sth->fetch())
+                        {
+                            echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$user->id.'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form>';
+                        }
                     }
                 }
                 $user->getUserByID($res['user_ID']);
 
                 echo '<a class="thread" href="account?user_id='.$user->id.'">'.$user->firstname .'&nbsp;'.$user->lastname.'</a><br/>';
-                $count++;
             }
-            return $count;
+            if(empty($result))
+            {
+                echo '<div style="color: #6B6B6B;">Er zitten geen studenten in deze klas</div>';
+            }
         }
 
         public function dropdownClassList()
