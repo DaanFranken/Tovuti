@@ -122,7 +122,10 @@ if($user->loginCheck())
 					echo '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'</div>';
 					?>
 				</div>
-				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts van <?php echo $name; ?></a>
+				<!-- Posts -->
+				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts</a>
+
+		
 			</div>
 		</div>
 		<?php

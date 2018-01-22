@@ -382,7 +382,8 @@ class User
 			break;
 
 			case '2':
-			return '<span class="w3-text-green">Docent</span> van klas '.$this->getTeacherClass($this->id);
+			$row = $this->getTeacherClass($this->id);
+			return '<span class="w3-text-green">Docent</span> van klas <a class="thread" href="class?class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
 			break;
 
 			case '3':
@@ -424,7 +425,7 @@ class User
 			$sth = $this->db->selectDatabase('class','class_ID',$class,'');
 			if($row = $sth->fetch())
 			{
-				return '<a class="thread" href="class?class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
+				return $row;
 			}
 			else return false;
 		}
@@ -468,6 +469,7 @@ class User
 				
 					<li>
 						<?php 
+						$this->getUploadStatusIcon($file['status']);
 							echo '<a class="thread" href="download.php?file_id='.$file['upload_ID'].'">'.$file['title'].'</a>';
 						?>
 						<span class="w3-right"><?php echo $formattedDate; ?></span>	
@@ -478,9 +480,41 @@ class User
 		}
 	}
 
+	public function getUploadedFilesByClassID($ID)
+	{
+		$sth = $this->db->selectDatabase('students','class_ID',$ID,'');
+		$result = $sth->fetchAll();
+		echo 'Klik op een link om het bestand te downloaden';
+		echo '<ul class="w3-ul w3-card-4">';
+
+		foreach($result as $students)
+		{
+			$studentID = $students['user_ID'];
+			$sth = $this->db->selectDatabase('upload','user_ID',$studentID,'');
+			$result = $sth->fetchAll();
+			
+			foreach($result as $uploadFile)
+			{
+				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $uploadFile['uploadDate']);
+				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+				?>
+				
+					<li>
+						<?php 
+						$this->getUploadStatusIcon($uploadFile['status']);
+							echo '<a class="thread" href="download.php?file_id='.$uploadFile['upload_ID'].'">'.$uploadFile['title'].'</a>';
+						?>
+						<span class="w3-right"><?php echo $formattedDate; ?></span>	
+					</li>
+				<?php
+			}
+		}			
+	}
+
 	public function getUploadStatusIcon($status)
 	{
-		switch ($status) {
+		switch ($status) 
+		{
 			# Nog niet gezien
 			case '0':
 				echo '<div class="tooltip"><i class="fa fa-eye-slash w3-margin-right w3-text-red" aria-hidden="true"><span class="tooltiptext">Nog niet gezien</span></div></i>';
@@ -492,7 +526,6 @@ class User
 			
 			default:
 				# code...
-				break;
 		}
 	}
 

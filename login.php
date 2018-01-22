@@ -7,6 +7,7 @@
 <h2>Inloggen</h2>
 </div>
 <?php
+$user = new User();
 if($user->loginCheck())
 {
 	echo 'U bent al ingelogd';

@@ -43,6 +43,20 @@ if($user->permission == 1)
 <?php
 }
 
+if($user->permission == 2)
+{
+	$row = $user->getTeacherClass($user->id);
+	?>
+	<a href="portfolio?class_id=<?php echo $row['class_ID']; ?>" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'portfolio'); ?>>
+		<div class="mainMenuLinkText">
+			Mijn klas
+		</div>
+	</div>
+	</a> 
+<?php
+}
+
 if($user->loginCheck())
 {
 	?>

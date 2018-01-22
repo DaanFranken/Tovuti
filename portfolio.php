@@ -55,7 +55,22 @@ if($user->loginCheck())
 				</header>
 				<div class="w3-container" style="height: 450px;">
 					<?php
-						$user->getUploadedFiles($user->id);
+						if(!$misc->readVar('GET','class_id'))
+						{
+							$user->getUploadedFiles($user->id);
+						}
+						else
+						{
+							// Docent
+							if($user->permission == 2)
+							{
+								$user->getUploadedFilesByClassID($_GET['class_id']);
+							}
+							else
+							{
+								echo 'U heeft geen rechten om deze pagina te bekijken.';
+							}
+						}						
 					?>
 					<form action="" method="POST">
 						<input type="submit" name="uploadFile" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4" style="padding: 10px 15px;">
