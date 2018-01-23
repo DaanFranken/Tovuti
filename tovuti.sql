@@ -100,7 +100,6 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_ID`, `class_ID`, `user_ID`, `studentNumber`) VALUES
-('00000000-0000-0000-0000-0000000000000', '741AD801-EA2B-4585-BD30-5EB97F75C00C', 'B2022F48-ED35-43F9-BB61-B97A3019E004', 1337),
 ('00000000-0000-0000-0000-0000000000001', '741AD801-EA2B-4585-BD30-5EB97F75C00C', '2ac50383-23d0-444c-84c7-6c26d2960609', 1234);
 
 -- --------------------------------------------------------
@@ -115,6 +114,13 @@ CREATE TABLE `teachers` (
   `class_ID` varchar(255)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `students`
+--
+
+INSERT INTO `students` (`teacher_ID`, `class_ID`, `user_ID`) VALUES
+('00000000-0000-0000-0000-0000000000001', '741AD801-EA2B-4585-BD30-5EB97F75C00C', '2ac20383-23d0-444c-84c7-6c26d2960609');
 
 -- --------------------------------------------------------
 
@@ -196,7 +202,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_ID`, `Username`, `Firstname`, `Lastname`, `Password`, `Email`, `Permission`, `Status`) VALUES
-('2ac50383-23d0-444c-84c7-6c26d2960609', 'daan', 'Daan', 'Franken', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'dgmfranken@gmail.com', 1, 1),
+('2ac50383-23d0-444c-84c7-6c26d2960609', 'daanAcc', 'Daan', 'Franken', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'dgmfranken@gmail.com', 1, 1),
+('2ac20383-23d0-444c-84c7-6c26d2960609', 'stijnAcc', 'Stijn', 'Klomp', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'stijnklomp@gmail.com', 2, 1),
 ('B2022F48-ED35-43F9-BB61-B97A3019E004', 'creator', 'Admin', 'von Adminson', '$2y$10$k.eE6IORn8ODNfpktvzpLu5fnSFV5I5vQler1O.hxkL7bQK2Q5Qoq', 'admin@admin.com', 3, 1);
 
 --
