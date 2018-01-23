@@ -82,9 +82,13 @@ if($user->loginCheck())
 							}
 						}						
 					?>
+					<?php
+					if($user->permission == 1) {
+					?>
 					<form action="" method="POST">
 						<input type="submit" name="uploadFile" value="+" class="w3-button w3-circle w3-teal w3-right w3-medium w3-margin w3-card-4" style="padding: 10px 15px;">
 					</form>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
