@@ -138,10 +138,36 @@ if($user->loginCheck())
 					echo '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.$user->email .'</div>';
 					?>
 				</div>
-				<!-- Posts -->
-				<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts</a>
 
-		
+				<?php $loggedInUser = new User($_SESSION['user_ID']); ?>
+				<!-- Posts -->
+				<?php
+				if($loggedInUser->permission == 1)
+				{
+					?>
+					<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts</a>	
+					<?php	
+				}
+				else
+				{
+					if($user->permission == 1)
+					{
+					?>
+						<!-- Posts -->
+						<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;width:50%;float: left;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts</a>
+
+						<!-- Uploads -->
+						<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;width:50%" href="portfolio?user_id=<?php echo $user->id ?>"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Uploads</a>
+					<?php
+					}
+					else
+					{
+						?>
+						<a class="thread w3-button w3-block w3-light-grey" style="text-decoration: none;" href="forum?user_id=<?php echo $user->id ?>"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp;Posts</a>	
+						<?php
+					}
+				}
+				?>
 			</div>
 		</div>
 		<?php

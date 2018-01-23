@@ -470,9 +470,9 @@ class User
 
 	public function getUploadedFiles($ID)
 	{
-		$user = new User($_SESSION['user_ID']);
 		$sth = $this->db->selectDatabase('upload','user_ID',$ID,'');
 		$result = $sth->fetchAll();
+		$user = new User($_SESSION['user_ID']);
 
 		if(!$result && $user->permission == 1)
 		{

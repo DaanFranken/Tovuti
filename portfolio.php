@@ -62,9 +62,17 @@ if($user->loginCheck())
 				</header>
 				<div class="w3-container w3-display-container" style="height: 450px;">
 					<?php
-						if(!$misc->readVar('GET','class_id') && !$misc->readVar('GET','file_id'))
+						if(!$misc->readVar('GET','class_id') && !$misc->readVar('GET','file_id') && !$misc->readVar('GET','user_id'))
 						{
 							$user->getUploadedFiles($user->id);
+						}
+						elseif($misc->readVar('GET','user_id'))
+						{
+							if($user->permission > 1)
+							{
+								$user->getUploadedFiles($_GET['user_id']);
+							}
+							else echo 'U heeft geen rechten om deze pagina te bekijken.';
 						}
 						else
 						{
@@ -141,7 +149,7 @@ if($user->loginCheck())
 						}						
 					?>
 					<?php
-					if(!$misc->readVar('GET','class_id'))
+					if(!$misc->readVar('GET','class_id') && !$misc->readVar('GET','user_id'))
 					{
 						if($user->permission == 1) 
 						{
