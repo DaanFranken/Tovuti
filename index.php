@@ -34,9 +34,6 @@ $user->loginCheck();
 	<?php
 	switch($uri)
 	{
-		case 'home':
-			include 'home.php';
-			break;
 		case 'login':
 			include 'login.php';
 			break;
