@@ -119,7 +119,7 @@ CREATE TABLE `teachers` (
 -- Gegevens worden geëxporteerd voor tabel `students`
 --
 
-INSERT INTO `students` (`teacher_ID`, `class_ID`, `user_ID`) VALUES
+INSERT INTO `teachers` (`teacher_ID`, `class_ID`, `user_ID`) VALUES
 ('00000000-0000-0000-0000-0000000000001', '741AD801-EA2B-4585-BD30-5EB97F75C00C', '2ac20383-23d0-444c-84c7-6c26d2960609');
 
 -- --------------------------------------------------------
