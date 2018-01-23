@@ -35,7 +35,7 @@
 			"file": "tovuti.sql",
 			"settings":
 			{
-				"buffer_size": 8841,
+				"buffer_size": 8747,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -44,7 +44,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1518,
+				"buffer_size": 1568,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -59,19 +59,19 @@
 			}
 		},
 		{
-			"file": "classes/class.Thread.php",
+			"file": "classes/class.Misc.php",
 			"settings":
 			{
-				"buffer_size": 10019,
+				"buffer_size": 5582,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "classes/class.Misc.php",
+			"file": "classes/class.Thread.php",
 			"settings":
 			{
-				"buffer_size": 4541,
+				"buffer_size": 10044,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -80,32 +80,42 @@
 			"file": "classes/class.User.php",
 			"settings":
 			{
-				"buffer_size": 13571,
+				"buffer_size": 14186,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
+			"file": "classlist.php",
 			"settings":
 			{
-				"buffer_size": 534,
+				"buffer_size": 4598,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
+			"file": "addStudentToClass.php",
 			"settings":
 			{
-				"buffer_size": 768,
+				"buffer_size": 695,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "portfolio.php",
+			"file": "account.php",
 			"settings":
 			{
-				"buffer_size": 2421,
+				"buffer_size": 5310,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "admin.php",
+			"settings":
+			{
+				"buffer_size": 3045,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -114,7 +124,7 @@
 			"file": "style/index.css",
 			"settings":
 			{
-				"buffer_size": 793,
+				"buffer_size": 992,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -197,16 +207,22 @@
 	},
 	"file_history":
 	[
+		"/D/Xampp/htdocs/Tovuti/menu.php",
+		"/D/Xampp/htdocs/Tovuti/thread.php",
+		"/D/Xampp/htdocs/Tovuti/account.php",
+		"/D/Xampp/htdocs/Tovuti/activities.php",
+		"/D/Xampp/htdocs/Tovuti/portfolio.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
+		"/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
+		"/D/Xampp/htdocs/Tovuti/register.php",
+		"/D/Xampp/htdocs/Tovuti/login.php",
+		"/D/Xampp/htdocs/Tovuti/login",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/controllers/index.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/content.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/admin/core/pagebuild.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/admin/index.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/admin/classcompiler.php",
-		"/D/Xampp/htdocs/Tovuti/register.php",
-		"/D/Xampp/htdocs/Tovuti/login.php",
-		"/D/Xampp/htdocs/Tovuti/activities.php",
 		"/D/Xampp/htdocs/VT-SC/index.php",
-		"/D/Xampp/htdocs/Tovuti/menu.php",
 		"/D/Xampp/htdocs/Tovuti/newPasswordForm.php",
 		"/D/Xampp/htdocs/Tovuti/download.php",
 		"/D/Xampp/htdocs/Tovuti/home.php",
@@ -214,11 +230,8 @@
 		"/D/Xampp/htdocs/Tovuti/addStudentToClass.php",
 		"/D/Xampp/htdocs/Tovuti/autoloader.php",
 		"/D/Xampp/htdocs/Tovuti/classlist.php",
-		"/D/Xampp/htdocs/Tovuti/portfolio.php",
-		"/D/Xampp/htdocs/Tovuti/thread.php",
 		"/D/Xampp/htdocs/Tovuti/uploadForm.php",
 		"/D/Xampp/htdocs/Tovuti/accConfirm.php",
-		"/D/Xampp/htdocs/Tovuti/account.php",
 		"/D/Xampp/htdocs/VT-SC/classes/class.Misc.php",
 		"/D/Xampp/php/php.ini",
 		"/D/Xampp/htdocs/Tovuti/tovuti_old.sql",
@@ -261,12 +274,10 @@
 		"/D/Xampp/htdocs/U.R.S/urs/php/navigator.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/admin/core/marketproduct.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/admin/database/database.php",
-		"/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
 		"/D/Xampp/htdocs/U.R.S/urs/php/userProjects.php",
 		"/D/Xampp/htdocs/U.R.S/urs/php/accLogin.php",
 		"/D/Xampp/htdocs/U.R.S/urs/php/accChange.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/documenten/hackathondenboschOLD.sql",
-		"/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
 		"/D/Xampp/htdocs/U.R.S/urs/navigator.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/views/home-view.php",
 		"/D/Xampp/htdocs/HackathonDenBosch/content/public/views/market-view.php",
@@ -334,134 +345,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"hidden",
-			"index.php?pageStr=",
-			"&",
-			"ind",
-			"p",
-			"&",
-			"ind",
-			"&",
-			"&user",
-			"&",
-			"?pageStr=",
-			"index.php?pageStr=",
-			"?pageStr=",
-			"index.php?pageStr=",
-			"?pageStr=",
-			"index.php?pageStr=",
-			"?pageStr=",
-			"index.php?pageStr=",
-			"?pageStr=",
-			"pageStr",
-			"?pageStr=",
-			"Tovuti",
-			"pageStr",
-			"VT",
-			"index.php?pageStr=",
-			"pageStr",
-			"foi",
-			"!=",
-			"fileType",
-			"longblob",
-			"fileType",
-			"mediumblob",
-			"title",
-			"uploadFile",
-			"portfolio",
-			"upload",
-			"date",
-			"name",
-			"filetype",
-			"size",
-			"uploadFile",
-			"_POST",
-			"_FILES",
-			"uploadFile",
-			"submitUpload",
-			"uploadFile",
-			"check",
-			"Status",
-			"date",
-			"uploadDate",
-			"uploadContent",
-			"type",
-			"1ae0501f24",
-			"script",
-			"uploadFile",
-			"title",
-			"titel",
-			"user_ID",
-			"getGUID",
-			"misc",
-			"upload_ID",
-			"int(11)",
-			"11",
+			"activateUserAcc",
+			"delUserAcc",
+			"delUserForm",
 			"arrayValues",
-			"cover_image",
-			"uploadFile",
-			"==",
-			"Save",
-			"submitUpload",
-			"uploadFile",
-			"index",
-			"Username",
+			"whereKey",
+			"whereValue",
+			"tableName",
+			"addon",
+			"delUserAccConfirm",
+			"delUserAcc",
+			"user_ID",
+			"delUserID",
+			"delUserAcc",
+			"block",
+			"\">",
+			"\"",
+			"Gebruikersnaam",
+			"Voornaam",
+			"Gebruikersnaam",
+			"424242",
+			";\">",
+			"div",
+			"top",
+			"grey",
+			"thread",
+			"threadText",
+			"thread",
+			"whereValue",
+			"whereKey",
+			"tableName",
+			"addon",
+			"portfolio",
+			"accSubmit",
+			"addNewStudent",
+			"addNew",
+			"whereValue",
+			"whereKey",
+			"tableName",
+			"addon",
+			"EEEF;background-color: #C2000D;",
+			"EEEF;background-color: #C2000D;p",
+			"remStudentFromClass",
+			"deleteForm",
+			"w3-bar-item w3-hover-red w3-xlarge w3-right",
+			"deleteForm",
+			"deleteForm\n",
+			"deleteForm",
+			"deleteThread",
+			"w3-bar-item",
+			"w3-bar-item w3-hover-red w3-xlarge w3-right",
+			"voeg",
+			"studentLimit",
+			"B40E19",
+			" $_GET['class_id'];",
+			" $_GET['class_ID'];",
+			"lass?class_ID",
+			"arrayValues",
+			"whereKey",
+			"whereValue",
+			"tableName",
+			"$'');",
+			"addon",
+			"whereValue",
+			"whereKey",
+			"tableName",
+			", ",
+			"addon",
+			"remStudentFromClass",
+			"user_ID",
+			"student_ID",
+			"student",
+			"students",
+			"whereKey",
+			"whereValue",
+			"users",
+			"tableName",
+			"addon",
+			"home",
+			"whereValue",
+			"whereKey",
+			"tableName",
+			", ",
+			"addon",
+			"userID",
+			"count",
+			"newStudentsBtn",
+			"newStudents",
+			"saveNewClassStudents",
+			"saveNewStudents",
+			"addStudentToClass",
+			"submit",
+			"check",
+			"none",
+			"studentLimit",
+			"count",
+			"account?",
 			"class_ID",
 			"students",
-			"student_ID",
-			"addon",
+			"class_id",
+			"addNewStudent()",
 			"whereValue",
 			"whereKey",
 			"tableName",
-			"whereKey",
-			"tableName",
-			"whereValue",
 			"addon",
-			");",
-			"autoloader",
-			"addStudentToClass",
-			"addStudent",
-			"addUser",
-			"addNewStudent",
-			"input",
-			"editReaction",
-			"reageer",
-			"reactionDate",
-			"editedReaction",
-			"_POST",
-			"Reaction",
-			"update",
-			"thread_ID",
-			"_GET",
-			"thread_ID",
-			"reactionID",
-			"_POST",
-			"thread_id",
-			"thread_ID",
-			"arrayValues",
 			"whereKey",
 			"whereValue",
 			"tableName",
-			"whereKey",
-			"arrayValues",
 			"addon",
-			"whereKey",
-			"reaction_ID",
-			"whereValue",
-			"tableName",
-			"addon",
-			"deleteReply",
+			"misc",
+			"removeClassTeacher",
+			"padding",
 			"bottom",
-			"top",
-			"'",
-			"header",
-			"he",
-			"header",
-			"thread",
-			"Reaction",
-			"reaction",
-			"thread_ID",
-			"pageStr"
+			"darkred",
+			"AB0D12",
+			"white",
+			"red",
+			"color",
+			"tpye",
+			"removeClassTeacher",
+			"user",
+			"teacher_ID",
+			"tableName",
+			"arrayValues",
+			"update",
+			"uodate",
+			"hidden",
+			"index.php?pageStr=",
+			"&"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -480,7 +491,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -489,15 +500,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8841,
+						"buffer_size": 8747,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4344,
-								4344
+								2287,
+								2287
 							]
 						],
 						"settings":
@@ -507,10 +518,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2747.0,
+						"translation.y": 1347.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -519,15 +530,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1518,
+						"buffer_size": 1568,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1454,
+								1454
 							]
 						],
 						"settings":
@@ -536,18 +547,12 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 2,
 					"file": "classes/class.Database.php",
@@ -561,8 +566,188 @@
 						"selection":
 						[
 							[
-								2036,
-								2036
+								1363,
+								1363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 14300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "classes/class.Misc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5582,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4727,
+								4727
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "classes/class.Thread.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2193,
+								2193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1283.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "classes/class.User.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6403,
+								6403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4797.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "classlist.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4598,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2055,
+								2055
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1197.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "addStudentToClass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								695,
+								695
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "account.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								226,
+								226
 							]
 						],
 						"settings":
@@ -578,177 +763,28 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "classes/class.Thread.php",
+					"buffer": 9,
+					"file": "admin.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10019,
+						"buffer_size": 3045,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3941,
-								3942
+								715,
+								715
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2183.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "classes/class.Misc.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4541,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								161,
-								161
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2200.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "classes/class.User.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13571,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12559,
-								12559
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 9837.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/D/Xampp/htdocs/HackathonDenBosch/content/load.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 534,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								98,
-								98
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/D/Xampp/htdocs/HackathonDenBosch/admin/router/router.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 768,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								765,
-								27
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "portfolio.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2421,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2421,
-								2421
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1255.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -761,20 +797,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "style/index.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 793,
+						"buffer_size": 992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								249,
-								249
+								575,
+								575
 							]
 						],
 						"settings":
@@ -791,7 +827,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "style/home.css",
 					"semi_transient": false,
 					"settings":
@@ -815,11 +851,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "style/menu.css",
 					"semi_transient": false,
 					"settings":
@@ -844,11 +880,11 @@
 						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "style/login.css",
 					"semi_transient": false,
 					"settings":
@@ -872,11 +908,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "style/register.css",
 					"semi_transient": false,
 					"settings":
@@ -900,11 +936,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "style/account.css",
 					"semi_transient": false,
 					"settings":
@@ -928,7 +964,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
