@@ -98,7 +98,7 @@ if($user->loginCheck())
 	if(isset($_GET['class_id']))
 	{
 		?>
-<<<<<<< HEAD
+
 		<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST" style="margin-left: 33px;">
 			<div id="addStudent"></div>
 			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
@@ -107,19 +107,8 @@ if($user->loginCheck())
 		<?php
 	}
 	?>
-=======
-			<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST" style="margin-left: 33px;">
-			<div id="addStudent"></div>
-			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
-			</form>
-			<i><div id="studentLimit" style="color: #575757;margin-left: 33px;"></div></i>
-		<?php
-	}
-	?>
-	
->>>>>>> 4cefc46574293f32360f332e3035f0df1e4d3066
-	</div>
-	<?php
+</div>
+<?php
 }
 else $user->showLoginMessage();
 ?>
