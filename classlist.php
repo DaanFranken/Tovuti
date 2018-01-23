@@ -12,7 +12,7 @@ if($user->loginCheck())
 	if(isset($_POST['saveNewClassStudents']) && $user->permission > 1)
 	{
 		$sth = $db->selectDatabase('students', 'user_ID', $_POST['userID'.$userCount], '');
-		if($row = $sth->fetch())
+		while($row = $sth->fetch())
 		{
 			if($row['class_ID'] == 0)
 			{
@@ -20,8 +20,9 @@ if($user->loginCheck())
 				$db->updateDatabase('students', 'user_ID', $_POST['userID'.$userCount], $arrayValues, '');
 				echo '<script>window.location.href = "class?class_id='.$_GET['class_id'].'";</script>';
 			}
+			$userCount++;
+			$sth = $db->selectDatabase('students', 'user_ID', $_POST['userID'.$userCount], '');
 		}
-		$userCount++;
 	}
 
 	// Remove user from class
