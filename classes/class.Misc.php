@@ -114,20 +114,17 @@
             $user = new User();
             if($user->loginCheck())
             {
-                if($user->permission > 1)
+                $sth = $this->db->selectDatabase('students', 'class_ID', $_GET['class_id'], '');
+                while($row = $sth->fetch())
                 {
-                    $sth = $this->db->selectDatabase('teachers', 'user_ID', $user->id, 'AND class_ID = "'.$_GET['class_id'].'"');
-                    if($sth->fetch())
+                    $sth2 = $this->db->selectDatabase('users', 'user_ID', $row['user_ID'], '');
+                    $row2 = $sth2->fetch();
+                    if($user->permission > 1)
                     {
-                        $sth = $this->db->selectDatabase('students', 'class_ID', $_GET['class_id'], '');
-                        while($row = $sth->fetch())
-                        {
-                            $sth2 = $this->db->selectDatabase('users', 'user_ID', $row['user_ID'], '');
-                            $row2 = $sth2->fetch();
-                            echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$row['user_ID'].'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form><a class="thread" href="account?user_id='.$row['user_ID'].'">'.$row2['Firstname'] .'&nbsp;'.$row2['Lastname'].'</a><br/>';
-                            $check = true;
-                        }
+                        echo '<form action="class?class_id='.$_GET['class_id'].'" method="POST" style="position: relative;display: inline;left: -6px;"><input type="hidden" name="user_ID" value="'.$row['user_ID'].'"><input type="submit" name="remStudentFromClass" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Verwijder student van klas"></form>';
+                        $check = true;
                     }
+                    echo '<a class="thread" href="account?user_id='.$row['user_ID'].'">'.$row2['Firstname'] .'&nbsp;'.$row2['Lastname'].'</a><br/>';
                 }
             }
             if(!$check)
