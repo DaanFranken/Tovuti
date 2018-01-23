@@ -147,8 +147,17 @@ if($user->loginCheck())
 			}
 
 		// Delete thread | Alleen docenten en admins kunnen posts verwijderen
+			if(isset($_POST['threadID']))
+			{
+				$sth = $db->selectDatabase('thread', 'user_ID', $user->id, ' AND thread_ID = "'.$_POST['threadID'].'"');
+				if($sth->fetch())
+				{
+					goto skip;
+				}
+			}
 			if($misc->readVar('POST','threadID') && $user->permission > 1 && !isset($_POST['editThread']))
 			{
+				skip:
 				$thread->deleteThread($_POST['threadID']);
 				echo '<script>window.location.href = "forum";</script>';
 			}
