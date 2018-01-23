@@ -525,8 +525,8 @@ class User
 						$this->getUploadStatusIcon($uploadFile['status']);
 							echo '<a class="thread" href="download.php?file_id='.$uploadFile['upload_ID'].'">'.$uploadFile['title'].'</a>';
 						?>
-						<span class="w3-right w3-margin-left">@<?php echo $formattedDate; ?></span>
-						<span class="w3-right w3-margin-right">Geüpload door <?php echo '<a class="thread" href="account?user_id='.$uploader->id.'">'. $uploader->firstname .'&nbsp;'. $uploader->lastname .'</a>'; ?></span>
+						<span class="w3-right"><?php echo $formattedDate; ?></span>
+						<span class="w3-right">Geüpload door <?php echo '<a class="thread" href="account?user_id='.$uploader->id.'">'. $uploader->firstname .'&nbsp;'. $uploader->lastname .'</a> op&nbsp;'; ?></span>
 
 					</li>
 				<?php

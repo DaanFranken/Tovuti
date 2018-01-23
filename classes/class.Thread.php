@@ -260,7 +260,7 @@ class Thread
 				<label class="w3-text-teal"><b>Title</b></label>
 				<input type="text" name="title" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['title'].'"' : 'placeholder="Title"'; }else{echo 'value="'.$row['Title'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
 				<label class="w3-text-teal"><b>Thread</b></label>
-				<input type="text" name="thread" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; }else{echo 'value="'.$row['Thread'].'"';} ?> class="w3-input w3-border w3-light-grey" required>
+				<textarea style="height:335px;max-height: 335px;" name="thread" <?php if(empty($check)){ echo (isset($_POST['newThread'])) ? 'value="'.$_POST['thread'].'"' : 'placeholder="Thread"'; }else{echo 'value="'.$row['Thread'].'"';} ?> class="w3-input w3-border w3-light-grey" required></textarea>
 				<label class="w3-text-teal"><b>Urgency</b></label><br/>
 				<select name="urgency">
 					<option value="0" <?php if(isset($_POST['newThread']) AND $_POST['urgency'] == 0){echo 'selected';}elseif(!isset($_POST['newThread'])){echo 'selected';} ?>>Overig</option>
