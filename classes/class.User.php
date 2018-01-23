@@ -367,6 +367,7 @@ class User
 			{
 				return $row['Name'];
 			}
+			else return false;
 		}
 	}
 
@@ -380,6 +381,7 @@ class User
 			{
 				return $row['class_ID'];
 			}
+			else return false;
 		}
 	}
 
@@ -388,12 +390,20 @@ class User
 		switch($permissionLvl)
 		{			
 			case '1':
-			return 'Student in klas <a class="thread" href="class?class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
+			if($this->getStudentClassID($this->id))
+			{
+				return 'Student in klas <a class="thread" href="class?class_id='.$this->getStudentClassID($this->id).'">'.$this->getStudentClass($this->id).'</a>';
+			}
+			else return 'Student';			
 			break;
 
 			case '2':
 			$row = $this->getTeacherClass($this->id);
-			return '<span class="w3-text-green">Docent</span> van klas <a class="thread" href="class?class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
+			if($row)
+			{
+				return '<span class="w3-text-green">Docent</span> van klas <a class="thread" href="class?class_id='.$row['class_ID'].'">'.$row['Name'].'</a>';
+			}
+			else return '<span class="w3-text-green">Docent</span>';			
 			break;
 
 			case '3':

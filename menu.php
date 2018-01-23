@@ -43,7 +43,7 @@ if($user->permission == 1)
 <?php
 }
 
-if($user->permission == 2)
+if($user->permission == 2 && $user->getTeacherClass($user->id))
 {
 	$row = $user->getTeacherClass($user->id);
 	?>

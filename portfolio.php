@@ -51,7 +51,14 @@ if($user->loginCheck())
 		<div class="w3-container w3-margin">
 			<div class="w3-card-4 w3-rest">
 				<header class="w3-container w3-light-grey">
-					<h3>Mijn portfolio</h3>
+					<?php 
+						if($user->permission == 2 && $misc->readVar('GET','class_id') && $user->getTeacherClass($user->id))
+						{
+							echo '<h3>Mijn klas</h3>';
+						}
+						else echo '<h3>Mijn portfolio</h3>';
+					?>
+					
 				</header>
 				<div class="w3-container" style="height: 450px;">
 					<?php
