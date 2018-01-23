@@ -517,6 +517,7 @@ class User
 			{
 				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $uploadFile['uploadDate']);
 				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
+				$uploader = new User($studentID);
 				?>
 				
 					<li>
@@ -524,7 +525,9 @@ class User
 						$this->getUploadStatusIcon($uploadFile['status']);
 							echo '<a class="thread" href="download.php?file_id='.$uploadFile['upload_ID'].'">'.$uploadFile['title'].'</a>';
 						?>
-						<span class="w3-right"><?php echo $formattedDate; ?></span>	
+						<span class="w3-right w3-margin-left"><?php echo $formattedDate; ?></span>
+						<span class="w3-right w3-margin-right"><?php echo '<a class="thread" href="account?user_id='.$uploader->id.'">'. $uploader->firstname .'&nbsp;'. $uploader->lastname .'</a>'; ?></span>
+
 					</li>
 				<?php
 			}
