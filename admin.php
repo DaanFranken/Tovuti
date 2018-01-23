@@ -146,8 +146,8 @@ if($user->loginCheck() && $user->permission == 3)
 							if($row['Status'] == 1)
 							{
 								?>
-								<input type="submit" name="delUserAcc" value="X" title="Deactiveer account">
-								<input type="submit" name="changeUserPerm" value="Veranderd gebruikers rechten">
+								<input type="submit" name="delUserAcc" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Deactiveer account">
+								<input type="submit" name="changeUserPerm" value="Verander gebruikers rechten" class="w3-btn" style="color: #F1EEEF;background-color: #89D162;position: relative;height: 41px;border: none;border-bottom: 2px solid #58B327;border-radius: 5px;">
 								<?php
 							}
 							else
@@ -161,6 +161,7 @@ if($user->loginCheck() && $user->permission == 3)
 					</div>
 					<?php
 				}
+				echo '<style>.w3-btn{transition: all 0.2s;}.w3-btn:hover{opacity: 1 !important;}</style>';
 				?>
 			</div>
 		</div>
