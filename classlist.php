@@ -94,11 +94,19 @@ if($user->loginCheck())
 			</div>
 		</div>
 	</div>
-	<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST" style="margin-left: 33px;">
-		<div id="addStudent"></div>
-		<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
-	</form>
-	<i><div id="studentLimit" style="color: #575757;margin-left: 33px;"></div></i>
+	<?php
+	if(isset($_GET['class_id']))
+	{
+		?>
+			<form action="class?class_id=<?php echo $_GET['class_id']; ?>" method="POST" style="margin-left: 33px;">
+			<div id="addStudent"></div>
+			<input type="submit" name="saveNewClassStudents" value="Voeg studenten toe" class="w3-btn" id="newStudentsBtn" style="display: none;">
+			</form>
+			<i><div id="studentLimit" style="color: #575757;margin-left: 33px;"></div></i>
+		<?php
+	}
+	?>
+	
 	</div>
 	<?php
 }
