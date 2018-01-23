@@ -470,10 +470,11 @@ class User
 
 	public function getUploadedFiles($ID)
 	{
+		$user = new User($_SESSION['user_ID']);
 		$sth = $this->db->selectDatabase('upload','user_ID',$ID,'');
 		$result = $sth->fetchAll();
 
-		if(!$result)
+		if(!$result && $user->permission == 1)
 		{
 			echo 'Je hebt nog geen bestanden toegevoegd aan je persoonlijke portfolio.';
 		}
@@ -485,10 +486,17 @@ class User
 			{
 				$unformattedDate = DateTime::createFromFormat('Y-m-d H:i:s', $file['uploadDate']);
 				$formattedDate = $unformattedDate->format('d-m-Y H:i:s');
-				?>
-				
+				?>				
 					<li>
-						<?php 
+						<?php
+						if(!empty($file['grade']) && $file['grade'] != NULL)
+						{
+							if($file['grade'] > 5)
+							{
+								echo '<span class="w3-badge w3-small w3-green">'.$file['grade'].'</span>&nbsp;';
+							}
+							else echo '<span class="w3-badge w3-small w3-red">'.$file['grade'].'</span>&nbsp;';							
+						} 
 						$this->getUploadStatusIcon($file['status']);
 							echo '<a class="thread" href="download.php?file_id='.$file['upload_ID'].'">'.$file['title'].'</a>';
 						?>
@@ -504,7 +512,9 @@ class User
 	{
 		$sth = $this->db->selectDatabase('students','class_ID',$ID,'');
 		$result = $sth->fetchAll();
-		echo 'Klik op een link om het bestand te downloaden';
+		$user = new User($_SESSION['user_ID']);
+		if($user->permission == 1) echo 'Klik op een link om het bestand te downloaden';
+		if($user->permission == 2) echo 'Klik op een link om het bestand te beoordelen';
 		echo '<ul class="w3-ul w3-card-4">';
 
 		foreach($result as $students)
@@ -522,8 +532,16 @@ class User
 				
 					<li>
 						<?php 
+						if(!empty($uploadFile['grade']) && $uploadFile['grade'] != NULL)
+						{
+							if($uploadFile['grade'] > 5)
+							{
+								echo '<span class="w3-badge w3-small w3-green">'.$uploadFile['grade'].'</span>&nbsp;';
+							}
+							else echo '<span class="w3-badge w3-small w3-red">'.$uploadFile['grade'].'</span>&nbsp;';							
+						}
 						$this->getUploadStatusIcon($uploadFile['status']);
-							echo '<a class="thread" href="download.php?file_id='.$uploadFile['upload_ID'].'">'.$uploadFile['title'].'</a>';
+							echo '<a class="thread" href="portfolio?file_id='.$uploadFile['upload_ID'].'">'.$uploadFile['title'].'</a>';
 						?>
 						<span class="w3-right"><?php echo $formattedDate; ?></span>
 						<span class="w3-right">Geüpload door <?php echo '<a class="thread" href="account?user_id='.$uploader->id.'">'. $uploader->firstname .'&nbsp;'. $uploader->lastname .'</a> op&nbsp;'; ?></span>
@@ -545,6 +563,11 @@ class User
 			# Gezien
 			case '1':
 				echo '<div class="tooltip"><i class="fa fa-eye w3-margin-right w3-text-green" aria-hidden="true"><span class="tooltiptext">Gezien</span></div></i>';
+				break;
+
+			# Te laat
+			case '2':
+				echo '<div class="tooltip"><i class="fa fa-clock-o w3-margin-right w3-text-yellow" aria-hidden="true"><span class="tooltiptext">Te laat</span></div></i>';
 				break;
 			
 			default:

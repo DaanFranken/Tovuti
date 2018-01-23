@@ -3,7 +3,11 @@ if($user->loginCheck())
 {
 	$check = false;
 	?>
-	<div class="w3-margin">
+	<div class="w3-margin w3-container">
+		<div class="w3-card-4 w3-rest">
+		<header class="w3-container w3-light-grey">
+			<h3>Forum</h3>
+		</header>
 		<?php
 
 		// Creat new thread
@@ -163,6 +167,7 @@ if($user->loginCheck())
 			}
 
 			?>
+		</div>
 		</div>
 		<?php
 		if(!$check && !isset($_GET['thread_id']))

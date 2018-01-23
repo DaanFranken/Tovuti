@@ -152,5 +152,19 @@
             }
             echo '</select>';
         }
+
+        /**
+         * @param  ID The ID of the file
+         * @return File data from database
+         */
+        public function getUploadDetails($ID)
+        {
+            $sth = $this->db->selectDatabase('upload', 'upload_ID', $ID,'');
+            if($file = $sth->fetch())
+            {
+                return $file;
+            }
+            else return false;
+        }
     }
 ?>
