@@ -146,14 +146,14 @@ if($user->loginCheck() && $user->permission == 3)
 							if($row['Status'] == 1)
 							{
 								?>
-								<input type="submit" name="delUserAcc" value="X" class="w3-btn" style="color: #F1EEEF;background-color: #C2000D;position: relative;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Deactiveer account">
-								<input type="submit" name="changeUserPerm" value="Verander gebruikers rechten" class="w3-btn" style="color: #F1EEEF;background-color: #89D162;position: relative;height: 41px;border: none;border-bottom: 2px solid #58B327;border-radius: 5px;">
+								<input type="submit" name="delUserAcc" value="X" class="w3-btn w3-right w3-margin-left" style="color: #F1EEEF;background-color: #C2000D;position: relative;top:-25px;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Deactiveer account">
+								<input type="submit" name="changeUserPerm" value="Verander rechten" class="w3-btn w3-right" style="color: #F1EEEF;background-color: #89D162;position: relative;top:-25px;height: 41px;border: none;border-bottom: 2px solid #58B327;border-radius: 5px;">
 								<?php
 							}
 							else
 							{
 								?>
-								<input type="submit" name="activateUserAcc" value="&check;" title="Activeer account">
+								<input type="submit" name="activateUserAcc" class="w3-btn w3-right" style="color: #F1EEEF;background-color: #89D162;position: relative;top:-25px;" value="&check;" title="Activeer account">
 								<?php
 							}
 							?>

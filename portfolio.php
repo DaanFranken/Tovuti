@@ -22,7 +22,7 @@ if($user->loginCheck())
 				}
 				else
 				{
-					echo 'U kunt alleen deze vorm bestanden uploaden: "xlsx - xls - docx - doc - pdf - ppt - pptx - zip "<br/>';
+					echo 'U kunt alleen de volgende bestanden uploaden: "xlsx - xls - docx - doc - pdf - ppt - pptx - zip "<br/>';
 					include 'uploadForm.php';
 				}
 			}
