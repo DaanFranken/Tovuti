@@ -34,6 +34,90 @@ if($user->loginCheck() && $user->permission == 3)
 		$db->updateDatabase('users', 'user_ID', $_POST['user_ID'], $arrayValues, '');
 		echo '<script>window.location.href = "admin";</script>';
 	}
+	elseif(isset($_POST['changeUserPerm']))
+	{
+		$sth = $db->selectDatabase('users', 'user_ID', $_POST['user_ID'], '');
+		if($row = $sth->fetch())
+		{
+			if(isset($_POST['saveChangedPerm']))
+			{
+				$sth = $db->selectDatabase('users', 'user_ID', $_POST['user_ID'], '');
+				if($sth->fetch())
+				{
+					$arrayValues = array();
+					$arrayValues['Permission'] = $_POST['userPerm'];
+					$db->updateDatabase('users', 'user_ID', $_POST['user_ID'], $arrayValues, '');
+					if($_POST['user_ID'] != 2)
+					{
+						$sth = $db->selectDatabase('teachers', 'user_ID', $_POST['user_ID'], '');
+						if($sth->fetch())
+						{
+							$db->deleteDatabase('teachers', 'user_ID', $_POST['user_ID'], '');
+						}
+					}
+					if($_POST['user_ID'] != 1)
+					{
+						$sth = $db->selectDatabase('students', 'user_ID', $_POST['user_ID'], '');
+						if($sth->fetch())
+						{
+							$db->deleteDatabase('students', 'user_ID', $_POST['user_ID'], '');
+						}
+					}
+					if($_POST['userPerm'] == 1)
+					{
+						$arrayValues = array();
+						$arrayValues['student_ID'] = $misc->getGUID();
+						$arrayValues['user_ID'] = $_POST['user_ID'];
+						$arrayValues['studentNumber'] = $misc->getGUID();
+						$db->insertDatabase('students', $arrayValues);
+					}
+					if($_POST['userPerm'] == 2)
+					{
+						$arrayValues = array();
+						$arrayValues['teacher_ID'] = $misc->getGUID();
+						$arrayValues['user_ID'] = $_POST['user_ID'];
+						$db->insertDatabase('teachers', $arrayValues);
+					}
+					echo '<script>window.location.href = "admin";</script>';
+				}
+				else
+				{
+					echo '<script>window.location.href = "admin";</script>';
+				}
+			}
+			else
+			{
+				?>
+				<a href="admin" class="thread">
+					Terug
+				</a>
+				<form action="admin" method="POST">
+					<input type="hidden" name="changeUserPerm" value="true">
+					<input type="hidden" name="user_ID" value="<?php echo $_POST['user_ID']; ?>">
+					<select name="userPerm">
+						<option value="0">
+							Normaal account
+						</option>
+						<option value="1" <?php if($row['Permission'] == 1){echo 'style="color: #177D97;" selected';} ?>>
+							Student account
+						</option>
+						<option value="2" <?php if($row['Permission'] == 2){echo 'style="color: #177D97;" selected';} ?>>
+							Docent account
+						</option>
+						<option value="3" <?php if($row['Permission'] == 3){echo 'style="color: #177D97;" selected';} ?>>
+							Admin account
+						</option>
+					</select>
+					<input type="submit" name="saveChangedPerm" value="Pas toe">
+				</form>
+				<?php
+			}
+		}
+		else
+		{
+			echo '<script>window.location.href = "admin";</script>';
+		}
+	}
 	else
 	{
 		?>
@@ -63,6 +147,7 @@ if($user->loginCheck() && $user->permission == 3)
 							{
 								?>
 								<input type="submit" name="delUserAcc" value="X" title="Deactiveer account">
+								<input type="submit" name="changeUserPerm" value="Veranderd gebruikers rechten">
 								<?php
 							}
 							else

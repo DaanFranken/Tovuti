@@ -92,7 +92,7 @@ CREATE TABLE `students` (
   `student_ID` varchar(255) NOT NULL,
   `class_ID` varchar(255) NOT NULL DEFAULT 0,
   `user_ID` varchar(255) NOT NULL,
-  `studentNumber` int NOT NULL
+  `studentNumber` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -112,7 +112,6 @@ CREATE TABLE `teachers` (
   `teacher_ID` varchar(255) NOT NULL,
   `user_ID` varchar(255) NOT NULL,
   `class_ID` varchar(255)
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
