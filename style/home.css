@@ -24,8 +24,9 @@ div.container{
 h3.title{
 	text-align: center;
 	background-color: #EAEAEA;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	width:100%;
+	background-color: #2EB0E8;
 }
 ul{
 	border: 1px solid black;
@@ -33,9 +34,10 @@ ul{
 
 p.text{
 	margin-top: -10px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	height: 200px;
 	overflow-x: auto;
+	background-color: #D2F6FF;
 }
 
 div.floatingText{
@@ -46,6 +48,7 @@ div.floatingText{
 
 p.infoText, .infoTitle{
 	text-align: center;
+	color: #009FE3;
 }
 
 a, a:hover, a:visited{

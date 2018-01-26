@@ -47,7 +47,7 @@
 		</div>
 		<div class="w3-col l4 zevensprongInformatie">
 			<h3 class="infoTitle">de Zevensprong</h3>
-			<p class="infoText">
+			<p class="w3-center">
 			de Zevensprong biedt kinderopvang, tussen- en naschoolse opvang en basisonderwijs.
 			</p>
 		</div>
