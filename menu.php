@@ -29,6 +29,13 @@ if(isset($_POST['logout']))
 		</div>
 	</div>
 </a> 
+<a href="contact" class="mainMenuLink mainMenuLinkDiv">
+	<div <?php $misc->menuCurrentPage($uri, 'contact'); ?>>
+		<div class="mainMenuLinkText">
+			Contact
+		</div>
+	</div>
+</a>
 <?php 
 if($user->permission == 1)
 {

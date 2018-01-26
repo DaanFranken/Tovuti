@@ -58,6 +58,9 @@ $user->loginCheck();
 		case 'activities':
 			include 'activities.php';
 			break;
+		case 'contact':
+			include 'contact.php';
+			break;
 		case 'portfolio':
 			include 'portfolio.php';
 			break;
