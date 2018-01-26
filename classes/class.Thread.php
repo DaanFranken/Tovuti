@@ -145,7 +145,7 @@ class Thread
 			$result = $sth->fetchAll();
 			if(!$result)
 			{
-				echo '<div class="w3-small">Er zijn nog geen reacties op deze post!</div>';
+				echo '<div class="w3-margin w3-small">Er zijn nog geen reacties op deze post!</div>';
 			}
 			else
 			{
@@ -245,7 +245,7 @@ class Thread
 		public function newThreadForm($check)
 		{
 			?>
-			<form action="forum" method="POST">
+			<form action="forum" class="w3-margin" method="POST">
 				<?php
 				if(!empty($check))
 				{
