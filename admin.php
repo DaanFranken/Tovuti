@@ -122,14 +122,15 @@ if($user->loginCheck() && $user->permission == 3)
 	{
 		?>
 		<div class="w3-container w3-margin">
-			<div class="w3-card-4 w3-rest">
+			<div class="w3-card-4 w3-rest" style="min-width: 850px;">
 				<header class="w3-container w3-light-grey">
 					<h3>Alle gebruikers</h3>
 					<div class="w3-container">
 						<div style="color: #6B6B6B;padding-bottom: 5px;">
-							<div class="userText" style="left: -20px;width: 32.5%;">Gebruikersnaam</div>
-							<div class="userText" style="width: 33%;">Voornaam</div>
-							<div class="userText" style="width: 30%;">Achternaam</div>
+							<div class="w3-left" style="position: relative; left:-20px;width: 25%;">Gebruikersnaam</div>
+							<div class="w3-left" style="width: 20%;position: relative; left:-10px;">Voornaam</div>
+							<div class="w3-left" style="width: 20%;position: relative; left:-10px;">Achternaam</div>
+							<div class="w3-left" style="width: 20%;">Functie</div>
 						</div>
 					</div>
 				</header>
@@ -137,23 +138,39 @@ if($user->loginCheck() && $user->permission == 3)
 				$sth = $db->selectDatabase('users', '', '', '');
 				while($row = $sth->fetch())
 				{
+					if($row['Permission'] == 1)
+					{
+						$function = 'Student';
+					}
+					elseif($row['Permission'] == 2)
+					{
+						$function = 'Docent'; 
+					}
+					elseif($row['Permission'] == 3)
+					{
+						$function = 'Administrator';
+					}
+					else
+					{
+						$function = 'Gastaccount';
+					}
 					?>
-					<div class="w3-container">
-						<a class="user" <?php if($row['Status'] == 1){echo 'href="account?user_id='.$row['user_ID'].'"';} ?> <?php if($row['Status'] == 0){echo 'style="color: #D6000B;cursor: not-allowed;" title="Gedeactiveerd account"';} ?>><?php echo '<div class="userText">'.$row['Username'].'</div><div class="userText">'.$row['Firstname'].'</div><div class="userText">'.$row['Lastname'].'</div>'; ?></a>
+					<div class="w3-container w3-margin-top">
+						<a class="user" <?php if($row['Status'] == 1){echo 'href="account?user_id='.$row['user_ID'].'"';} ?> <?php if($row['Status'] == 0){echo 'style="color: #D6000B;cursor: not-allowed;" title="Gedeactiveerd account"';} ?>><?php echo '<div class="w3-left" style="width: 25%;">'.$row['Username'].'</div><div class="w3-left" style="width: 20%;">'.$row['Firstname'].'</div><div class="w3-left" style="width: 20%;">'.$row['Lastname'].'</div><div class="w3-left" style="width: 20%;">'.$function.'</div>'; ?></a>
 						<form action="admin" method="POST">
 							<input type="hidden" name="user_ID" value="<?php echo $row['user_ID']; ?>">
 							<?php
 							if($row['Status'] == 1)
 							{
 								?>
-								<input type="submit" name="delUserAcc" value="X" class="w3-btn w3-right w3-margin-left" style="color: #F1EEEF;background-color: #C2000D;position: relative;top:-25px;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Deactiveer account">
+								<input type="submit" name="delUserAcc" value="X" class="w3-btn w3-right w3-margin-left" style="color: #F1EEEF;background-color: #C2000D;height: 41px;opacity: 0.5;border: none;border-bottom: 2px solid #A30005;border-radius: 5px;" title="Deactiveer account">
 								<input type="submit" name="changeUserPerm" value="Verander rechten" class="w3-btn w3-right" style="color: #F1EEEF;background-color: #89D162;position: relative;top:-25px;height: 41px;border: none;border-bottom: 2px solid #58B327;border-radius: 5px;">
 								<?php
 							}
 							else
 							{
 								?>
-								<input type="submit" name="activateUserAcc" class="w3-btn w3-right" style="color: #F1EEEF;background-color: #89D162;position: relative;top:-25px;" value="&check;" title="Activeer account">
+								<input type="submit" name="activateUserAcc" class="w3-btn w3-right" style="color: #F1EEEF;background-color: #89D162;" value="&check;" title="Activeer account">
 								<?php
 							}
 							?>
