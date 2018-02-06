@@ -166,5 +166,21 @@
             }
             else return false;
         }
+
+        /* send email, message and subject to the host, standard reply to user */
+        public function sendMail($email, $subject, $message)
+        {
+            // the message
+            $msg = $message . "\n\n" . $email;
+            //$msg = "First line of text\nSecond line of text";
+
+            // use wordwrap() if lines are longer than 70 characters
+            $msg = wordwrap($msg,70);
+
+            // send email
+            mail("patrickderonde2001@outlook.com",$subject,$msg);
+            mail($email,'confirmation',"Your question has been delivered, you will recieve an answer within 3 workdays.");
+            echo 'Your question has been delivered and is being processed. Please check your mailbox for a confirmation.';
+        }
     }
 ?>

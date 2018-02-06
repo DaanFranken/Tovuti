@@ -9,11 +9,14 @@ h5.contactFormTitle{
 }
 
 #userEmail, #emailSubject{
-	width: 505px;
+	width: 500px;
 }
 #emailMessage{
-	height: 200px;
-	width: 500px;
+	min-height: 200px;
+	min-width: 500px;
+	max-height: 200px;
+	max-width: 500px;
+	resize: none;
 }
 th, td{
 	width: 200px;

@@ -13,15 +13,21 @@
 			<h5 class="contactFormTitle">
 				Stuur ons een mail
 			</h5>
-			<form class="contactForm" method="POST">
+			<form action="#" class="contactForm" method="POST">
 				Uw mail<br>
-				<input type="text" name="userEmail" id="userEmail" placeholder="voorbeeld@hotmail.com"><br><br>
+				<input type="text" name="userEmail" id="userEmail" placeholder="voorbeeld@hotmail.com" required><br><br>
 				Onderwerp<br>
-				<input type="text" name="emailSubject" id="emailSubject" placeholder="Titel..."><br><br>
+				<input type="email" name="emailSubject" id="emailSubject" placeholder="Titel..." required><br><br>
 				Bericht<br>
-				<textarea name="emailMessage" rows="10" cols="55" placeholder="Uw bericht..."></textarea>
+				<textarea name="emailMessage" id="emailMessage" rows="10" cols="55" placeholder="Uw bericht..." required></textarea>
 				<input type="submit" name="emailSubmit">
 			</form>
+			<?php
+				if($misc->readVar('POST', 'emailSubmit') && isset($_POST['userEmail']) && isset($_POST['emailSubject']) && isset($_POST['emailMessage']
+				)){
+					$misc->sendMail($_POST['userEmail'], $_POST['emailSubject'], $_POST['emailMessage']);
+				}
+			?>
 		</div>
 		<div class="w3-col l3 hidden">
 			ree
