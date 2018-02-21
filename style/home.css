@@ -54,3 +54,9 @@ p.infoText, .infoTitle{
 a, a:hover, a:visited{
 	color: black;
 }
+
+.nieuwsText{
+	height: 135px;
+	border: 1px solid #646464;
+	overflow: auto;
+}

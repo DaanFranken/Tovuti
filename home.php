@@ -37,10 +37,46 @@
 		<h4 class="infoTitle">
 			Het laatste nieuws
 		</h4>
-		<p class="nieuwsText">
-			<u>Klas A12 | 12-20-17 | Excursie</u><br>
-			<u>Klas A3 | 12-21-17 | Les uitval</u>
-		</p>
+		<div class="nieuwsText">
+			<?php
+				$sth = $db->selectDatabase('thread', '', '', '');
+				while($row = $sth->fetch())
+				{
+					$sth2 = $db->selectDatabase('students', 'user_ID', $row['user_ID'], '');
+					if($row2 = $sth2->fetch())
+					{
+						$klas = $row2['class_ID'];
+					}
+					else
+					{
+						$sth2 = $db->selectDatabase('teachers', 'user_ID', $row['user_ID'], '');
+						if($row2 = $sth2->fetch())
+						{
+							$klas = $row2['class_ID'];
+						}
+					}
+					if(empty($klas))
+					{
+						$klas = '';
+					}
+					else
+					{
+						$sth2 = $db->selectDatabase('class', 'class_ID', $klas, '');
+						$row2 = $sth2->fetch();
+						$klas = $row2['Name'];
+					}
+					if($user->loginCheck())
+					{
+						echo '<a href="forum?thread_id='.$row['thread_ID'].'">';
+					}
+					echo '<ul style="border:none;">'.$klas.' | '. $row['threadDate'].' | '. $row['Title'].'</ul>';
+					if($user->loginCheck())
+					{
+						echo '</a>';
+					}
+				}
+			?>
+		</div>
 		</div>
 		<div class="w3-col l4 hidden">
 		deze tekst die hier staat is eigenlijk best wel nutteloos, ik heb geen idee waarom je dit leest want dit stukje tekst doet echt helemaal niks. het komt niet eens op de website te staan. nou niks is een groot woord. er moet iets in deze div staan anders is de layout van de webpagina niet goed. maar verder heb ik geen idee waarom ik dit stukje tekst er überhaupt in heb gezet.
@@ -58,7 +94,7 @@
 				Vacatures
 			</h4>
 			<p class="vacatureText">
-				De Zevensprong zoekt pedagogische medewerkers
+				De Zevensprong zoekt pedagogische medewerkers.
 			</p>
 			<a href="#">Lees meer</a>
 		</div>
