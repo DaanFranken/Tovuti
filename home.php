@@ -39,7 +39,7 @@
 		</h4>
 		<div class="nieuwsText">
 			<?php
-				$sth = $db->selectDatabase('thread', '', '', '');
+				$sth = $db->selectDatabase('thread', 'Status', '1', '');
 				while($row = $sth->fetch())
 				{
 					$sth2 = $db->selectDatabase('students', 'user_ID', $row['user_ID'], '');
